@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 /*
   A tiny live synth (kick + bass + arpeggio) built with the Web Audio API,
-  drawn as a radial spectrum on <canvas>. No audio files needed.
+  drawn as a two-ink halftone on <canvas>. No audio files needed.
   Swap `playLoop` for an <audio> element + MediaElementSource to visualise a real track.
 */
 const BPM = 124;
@@ -48,33 +48,38 @@ export default function Visualizer({ labels }) {
   const audio = useRef(null);
   const [on, setOn] = useState(false);
 
-  // Draw loop: idle "breathing" when silent, spectrum when playing.
+  // Draw loop: a two-ink halftone grid. Dot size follows the spectrum;
+  // the blue plate is printed slightly off-register, like a real riso print.
   useEffect(() => {
     const c = canvas.current, g = c.getContext("2d");
     const dpr = Math.min(devicePixelRatio || 1, 2);
+    const ink = getComputedStyle(c);
+    const PINK = ink.getPropertyValue("--pink").trim() || "#ff48b0";
+    const BLUE = ink.getPropertyValue("--blue").trim() || "#0078bf";
     let raf, t = 0;
     const data = new Uint8Array(128);
     const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
     resize(); addEventListener("resize", resize);
 
+    const plate = (color, dx, dy, phase) => {
+      const { width: w, height: h } = c, cols = 22, cell = w / cols, rows = Math.floor(h / cell);
+      g.fillStyle = color;
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        const cx = x * cell + cell / 2, cy = y * cell + cell / 2;
+        const dist = Math.hypot(cx - w / 2, cy - h / 2) / (w / 2);
+        let v;
+        if (audio.current) v = data[Math.floor(Math.abs(x - cols / 2) * 2.6 + phase)] / 255 * (1.15 - dist * .55);
+        else v = .25 + .2 * Math.sin(t * 1.6 - dist * 6 + phase);
+        const r = Math.max(0, Math.min(1, v)) * cell * .52;
+        if (r > .6) { g.beginPath(); g.arc(cx + dx * dpr, cy + dy * dpr, r, 0, Math.PI * 2); g.fill(); }
+      }
+    };
     const draw = () => {
       t += 0.016;
-      const { width: w, height: h } = c, cx = w / 2, cy = h / 2, r = Math.min(w, h) * 0.26;
-      g.clearRect(0, 0, w, h);
       if (audio.current) audio.current.analyser.getByteFrequencyData(data);
-      const N = 96;
-      for (let k = 0; k < N; k++) {
-        const a = (k / N) * Math.PI * 2 - Math.PI / 2;
-        const v = audio.current ? data[k % 64] / 255 : 0.12 + 0.08 * Math.sin(t * 2 + k / 4);
-        const len = r * 0.15 + v * r * 0.95;
-        const hue = 300 + (k / N) * 140; // pink → cyan → lime
-        g.strokeStyle = `hsl(${hue % 360} 100% 62%)`;
-        g.lineWidth = Math.max(2, w / 220); g.lineCap = "round";
-        g.beginPath();
-        g.moveTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
-        g.lineTo(cx + Math.cos(a) * (r + len), cy + Math.sin(a) * (r + len));
-        g.stroke();
-      }
+      g.clearRect(0, 0, c.width, c.height);
+      g.globalCompositeOperation = "source-over"; plate(PINK, 0, 0, 0);
+      g.globalCompositeOperation = "multiply"; plate(BLUE, 3, 2, 4);
       raf = requestAnimationFrame(draw);
     };
     draw();

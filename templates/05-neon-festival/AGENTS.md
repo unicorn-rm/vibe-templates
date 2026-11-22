@@ -4,15 +4,15 @@
 Instructions for AI coding agents working in this folder.
 
 ## Context
-- Template: **Neon Bloom**, music festival, style "Neon Y2K, chrome".
+- Template: **Neon Bloom**, music festival, style "Risograph gig poster".
 - Stack: React 19, Vite, Motion. Do not add dependencies unless the user asks.
 - The design contract is in `DESIGN.md`. Read it before changing anything visual.
 
 ## Files
 - `src/content.js` — festival data, lineup, map spots, all copy (EN + RU)
 - `src/App.jsx` — page sections as components
-- `src/Visualizer.jsx` — Web Audio synth + canvas spectrum
-- `src/styles.css` — tokens at the top, then sections
+- `src/Visualizer.jsx` — Web Audio synth + two-ink halftone canvas
+- `src/styles.css` — inks and tokens at the top
 
 ## How to run
 - `npm install`
@@ -23,14 +23,14 @@ Instructions for AI coding agents working in this folder.
 - Content changes go to the content file, not into markup or components.
 - Every user-facing string exists in **en** and **ru**. English is the default; `?lang=ru` and the language button switch it.
 - Colors, fonts, radii and spacing are tokens. Change tokens, not individual elements.
-- Keep the signature block: Live audio visualizer — a tiny Web Audio synth drawn as a radial spectrum, no audio files.
+- Keep the signature block: Two-ink halftone audio visualizer — a live Web Audio synth printed as riso dots, pink and blue off-register.
 - Keep accessibility: semantic headings, visible focus, alt text, `prefers-reduced-motion` support, body text contrast ≥ 4.5:1.
 - Keep it static: no backend, no booking or payment flows.
-- Three neon colors map to three stages — keep that mapping everywhere (chips, cards, map).
-- Headings are Unbounded 900 with tight tracking; body is Rubik.
-- Chrome gradient is reserved for the hero title.
-- Shapes are pills and 28px cards; stickers may rotate, layout grids may not.
-- Every animation is a spring or a short fade; respect reduced motion.
+- Only two inks (pink, blue) plus their overprint (violet) and a blue-black. No gradients, no glow, no blur.
+- Overlaps use mix-blend-mode: multiply — like ink on paper.
+- Lineup follows poster billing: headliner biggest, then tier 2, then everyone in one line.
+- Display type is Alumni Sans 900, always uppercase and condensed.
+- Crop marks and print credits are part of the look — keep them.
 
 ## Done means
 - The page builds/opens without console errors.

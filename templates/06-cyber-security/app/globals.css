@@ -1,48 +1,68 @@
 @import "tailwindcss";
 
 /* ==========================================================
-   06 · Cyber Security — design tokens (Tailwind v4 @theme)
+   06 · Bastion — "declassified file" design tokens
+   A printed report on a grey desk. Two inks: black and stamp red.
    ========================================================== */
 @theme {
-  --color-void: #05080d;
-  --color-panel: #0b121b;
-  --color-edge: #1a2633;
-  --color-text: #d7e3ee;
-  --color-dim: #7f93a6;
-  --color-cyan: #2de2e6;
-  --color-alert: #ff4d5e;
-  --color-warn: #ffb547;
-  --color-ok: #3ddc97;
-  --font-display: var(--font-tektur), system-ui, sans-serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --color-desk: #d6d5cf;
+  --color-sheet: #fbfaf6;
+  --color-ink: #141414;
+  --color-pencil: #6d6c67;
+  --color-rule: #c9c7bf;
+  --color-stamp: #c8102e;
+  --font-serif: var(--font-serif-doc), Georgia, serif;
+  --font-mono: var(--font-mono-doc), "Courier New", monospace;
+  --ease-thump: cubic-bezier(.2, 1.6, .4, 1);
 }
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply bg-void text-text antialiased; }
-  ::selection { @apply bg-cyan text-void; }
-  :focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 2px; }
+  body { @apply bg-desk text-ink font-serif antialiased; }
+  ::selection { background: var(--color-ink); color: var(--color-sheet); }
+  :focus-visible { outline: 2px solid var(--color-stamp); outline-offset: 2px; }
 }
 
-/* blueprint grid + scan line */
-.grid-bg {
-  background-image:
-    linear-gradient(var(--color-edge) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-edge) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+/* a sheet of paper: real paper shadow, faint fibres */
+.sheet {
+  background: var(--color-sheet);
+  box-shadow: 0 1px 0 rgb(0 0 0 / .06), 0 18px 30px -22px rgb(0 0 0 / .45);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.scanline { animation: scan 6s linear infinite; }
-@keyframes scan { from { transform: translateY(-100%); } to { transform: translateY(100vh); } }
 
-/* clipped corners — the "HUD panel" shape used everywhere */
-.cut { clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
+/* redaction bar — hover or focus to declassify */
+.redact {
+  color: transparent; padding: 0 .12em; cursor: help;
+  /* the bar is drawn shorter than the line so stacked lines never merge */
+  background: linear-gradient(var(--color-ink), var(--color-ink)) 0 58% / 100% .82em no-repeat;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-size .35s, color .35s;
+}
+.redact:hover, .redact:focus-visible {
+  color: var(--color-ink); outline: none;
+  background-image: linear-gradient(rgb(200 16 46 / .14), rgb(200 16 46 / .14));
+}
 
-@keyframes feed { to { transform: translateY(-50%); } }
-.feed { animation: feed 40s linear infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-.blink { animation: blink 1s steps(1) infinite; }
+/* rubber stamp: double border, uneven ink */
+.stamp {
+  display: inline-block; color: var(--color-stamp); border: 3px solid currentColor; padding: .15em .5em;
+  font-family: var(--font-mono); font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  box-shadow: inset 0 0 0 2px var(--color-sheet), inset 0 0 0 4px currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.6' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.2 1.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.thump { animation: thump .45s var(--ease-thump) both; }
+@keyframes thump { from { transform: scale(2.2) rotate(var(--rot, -8deg)); opacity: 0; } to { transform: scale(1) rotate(var(--rot, -8deg)); opacity: 1; } }
+
+/* typed text */
+.type { overflow: hidden; white-space: nowrap; animation: type .6s steps(28) both; }
+@keyframes type { from { max-width: 0; } to { max-width: 100%; } }
+
+/* hatch patterns for a print-friendly severity chart */
+.hatch-solid { background: var(--color-ink); }
+.hatch-diag { background: repeating-linear-gradient(45deg, var(--color-ink) 0 2px, transparent 2px 6px); }
+.hatch-dots { background: radial-gradient(var(--color-ink) 1.1px, transparent 1.3px) 0 0 / 5px 5px; }
+.hatch-none { background: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -1,130 +1,149 @@
-// All copy (EN + RU) and demo data. The scanner is a simulation: it makes no network requests.
+// All copy (EN + RU) and demo data.
+// Text inside [[double brackets]] is rendered as a redaction bar that reveals on hover/focus.
+// The request form is a simulation: it makes no network requests.
 export type Lang = "en" | "ru";
-export type Status = "ok" | "warn" | "fail";
+export type Mark = "ok" | "warn" | "fail";
 
 const en = {
-  nav: { services: "Services", method: "Method", scanner: "Scanner", cases: "Cases", cta: "Incident? 24/7" },
+  file: { no: "File No. BS-2026-117", cls: "Classification", was: "Secret", now: "Public", page: "Page", of: "of" },
+  stamp: "Declassified",
+  nav: [["services", "§1 Services"], ["method", "§2 Method"], ["form", "Form BS-7"], ["log", "Appendix A"]] as [string, string][],
+  lang: "RU",
   hero: {
-    tag: "Offensive security · Incident response",
-    title: ["We break in", "so others can't."],
-    lead: "Bastion is a team of 14 penetration testers and incident responders. We find the door before the attacker does — and stay with you until it's closed.",
-    a: "Book a scoping call", b: "See a sample report",
+    to: "To: whoever is responsible for security", from: "From: Bastion, offensive security & incident response",
+    re: "Re: why your next breach is optional",
+    title: "We break in so that [[somebody else]] can't.",
+    lead: "Fourteen people who think like attackers and write like accountants. Our last client had [[an admin panel open to the internet for 3 years]] before we were called. Nobody had noticed. That is the normal case.",
+    sign: "— The Bastion team",
   },
-  scanner: {
-    title: "Attack surface check", note: "Simulation for demo purposes — no requests leave your browser.",
-    placeholder: "your-company.com", run: "Run check", again: "Run again",
+  services: {
+    title: "§1 Scope of services",
+    head: ["Code", "Service", "Typical length", "You receive"],
+    rows: [
+      ["PT", "Penetration test — web, mobile, API, internal network", "2–4 weeks", "Report + retest"],
+      ["RT", "Red team operation, goal-based", "4–8 weeks", "Attack narrative + debrief"],
+      ["CL", "Cloud & Kubernetes review", "1–3 weeks", "Findings + IaC fixes"],
+      ["IR", "Incident response, on call 24/7", "Hours, not days", "Containment + root cause"],
+      ["CR", "Secure code review", "Per release", "Annotated pull requests"],
+      ["TR", "Developer training from your own findings", "1–2 days", "Labs + recordings"],
+    ] as string[][],
+    note: "All work under written authorisation and agreed rules of engagement. We never test what you did not sign for.",
+  },
+  method: {
+    title: "§2 Method",
+    steps: [["Scope", "Targets, rules, timing, emergency contacts."], ["Recon", "Map what an outsider can see."], ["Exploit", "Prove impact safely, stop at the line."], ["Report", "Summary for the board, steps for engineers."], ["Retest", "Every fix re-checked, free, within 90 days."]] as [string, string][],
+    margin: "Average engagement found 26 issues; 2 were critical.",
+  },
+  form: {
+    title: "Form BS-7 · Surface check request",
+    sub: "Demonstration only. Nothing you type leaves this page.",
+    field: "Domain to examine", placeholder: "example.com", submit: "Submit for review", again: "New form",
     checks: [
       ["TLS configuration", "TLS 1.3, HSTS preload"],
       ["Security headers", "CSP missing on 2 routes"],
-      ["Exposed subdomains", "staging.* reachable from internet"],
-      ["DNS & email (SPF/DMARC)", "DMARC p=none"],
-      ["Open ports", "22, 443 · no legacy services"],
-      ["Leaked credentials", "3 emails in known breaches"],
+      ["Exposed subdomains", "staging.* reachable from the internet"],
+      ["Mail authentication", "DMARC policy is p=none"],
+      ["Open ports", "22, 443 — no legacy services"],
+      ["Credentials in known leaks", "3 staff addresses found"],
     ] as [string, string][],
-    score: "Exposure score", verdict: "Worth a closer look",
-  },
-  certs: ["OSCP", "OSCE³", "CREST CRT", "ISO 27001", "PCI QSA", "GIAC GCIH"],
-  services: {
-    title: "What we do",
-    items: [
-      ["Penetration testing", "Web, mobile, API and internal networks. Manual first, tools second.", "PT"],
-      ["Red teaming", "Multi-week, goal-based operations that test people, process and tech together.", "RT"],
-      ["Cloud security review", "AWS, Azure, GCP and Kubernetes — misconfigurations and identity paths.", "CL"],
-      ["Incident response", "On call 24/7. Containment within hours, root cause within days.", "IR"],
-      ["Secure code review", "Pull-request level review for the parts that move money or data.", "CR"],
-      ["Security training", "Hands-on labs for developers, built from findings in your own code.", "TR"],
-    ] as [string, string, string][],
-  },
-  method: {
-    title: "How an engagement runs",
-    steps: [["Scope", "Rules of engagement, targets, timing, emergency contacts."], ["Recon", "Map the attack surface the way an outsider would."], ["Exploit", "Prove impact safely, stop at agreed boundaries."], ["Report", "Executive summary plus reproducible technical findings."], ["Retest", "Free retest of every fix within 90 days."]] as [string, string][],
+    verdict: "Review advised", examiner: "Examiner", date: "Date",
   },
   report: {
-    title: "A typical report", sub: "Findings from a recent web + API test (anonymised).",
+    title: "§3 What a report looks like",
+    sub: "Severity tally from a recent web & API engagement (anonymised).",
     sev: [["Critical", 1], ["High", 4], ["Medium", 9], ["Low", 12]] as [string, number][],
-    found: "findings", fixed: "fixed after retest",
+    fixed: "fixed after retest",
   },
-  cases: {
-    title: "Recent work",
-    items: [
-      ["Fintech, EU", "Account takeover via password-reset race condition. Fixed in 36 hours."],
-      ["Logistics, 4,000 staff", "Red team reached domain admin in 6 days through a printer. Now it can't."],
-      ["SaaS, Series B", "Cloud review removed 212 unused IAM roles and two public buckets."],
+  log: {
+    title: "Appendix A · Incident log, excerpt",
+    lines: [
+      ["02:14", "Credential stuffing against /login, 412 attempts. Blocked."],
+      ["02:31", "New subdomain [[dev-api.client-07]] seen in CT logs."],
+      ["03:05", "Impossible travel: user [[m.k@client-03]] Lisbon → Jakarta in 40 min."],
+      ["03:06", "Session revoked. Owner contacted by phone."],
+      ["04:47", "Public bucket [[s3://backup-old]] closed."],
+      ["06:00", "Shift handover. Nothing on fire."],
     ] as [string, string][],
   },
-  feed: "Live feed (demo)",
-  cta: { title: "Something is happening right now?", sub: "Our incident line answers within 15 minutes, every day of the year.", btn: "+00 000 000 000" },
+  cases: {
+    title: "§4 Case files",
+    items: [["CF-117", "Fintech, EU", "Account takeover through a password-reset race. Fixed in 36 hours."], ["CF-104", "Logistics, 4,000 staff", "Red team reached domain admin in 6 days via [[a networked printer]]."], ["CF-091", "SaaS, Series B", "Cloud review removed 212 unused IAM roles and two public buckets."]] as [string, string, string][],
+  },
+  cut: { title: "In case of incident", sub: "Cut out and keep near the server room. We answer within 15 minutes, every day of the year.", phone: "+00 000 000 000" },
   foot: "Template by vibe-templates · fictional company · MIT",
 };
 
 const ru: typeof en = {
-  nav: { services: "Услуги", method: "Метод", scanner: "Сканер", cases: "Кейсы", cta: "Инцидент? 24/7" },
+  file: { no: "Дело № BS-2026-117", cls: "Гриф", was: "Секретно", now: "Открыто", page: "Стр.", of: "из" },
+  stamp: "Рассекречено",
+  nav: [["services", "§1 Услуги"], ["method", "§2 Метод"], ["form", "Форма BS-7"], ["log", "Приложение А"]],
+  lang: "EN",
   hero: {
-    tag: "Наступательная безопасность · Реагирование на инциденты",
-    title: ["Мы взламываем,", "чтобы не смогли другие."],
-    lead: "Bastion — команда из 14 пентестеров и специалистов по реагированию. Находим дверь раньше атакующего и остаёмся с вами, пока её не закроют.",
-    a: "Обсудить проект", b: "Пример отчёта",
+    to: "Кому: ответственному за безопасность", from: "От: Bastion, наступательная безопасность и реагирование",
+    re: "Тема: почему следующий взлом необязателен",
+    title: "Мы взламываем, чтобы [[кто-то другой]] не смог.",
+    lead: "Четырнадцать человек, которые думают как атакующие, а пишут как бухгалтеры. У последнего клиента [[админка три года была открыта в интернет]], пока нас не позвали. Никто не замечал. Это обычный случай.",
+    sign: "— Команда Bastion",
   },
-  scanner: {
-    title: "Проверка периметра", note: "Симуляция для демонстрации — запросы не покидают ваш браузер.",
-    placeholder: "your-company.ru", run: "Проверить", again: "Ещё раз",
+  services: {
+    title: "§1 Перечень услуг",
+    head: ["Код", "Услуга", "Обычный срок", "Вы получаете"],
+    rows: [
+      ["PT", "Пентест — веб, мобайл, API, внутренняя сеть", "2–4 недели", "Отчёт + перепроверка"],
+      ["RT", "Red Team с целью", "4–8 недель", "Хронология атаки + разбор"],
+      ["CL", "Аудит облака и Kubernetes", "1–3 недели", "Находки + правки IaC"],
+      ["IR", "Реагирование на инциденты 24/7", "Часы, не дни", "Сдерживание + первопричина"],
+      ["CR", "Аудит кода", "На релиз", "Размеченные pull request"],
+      ["TR", "Обучение разработчиков на ваших находках", "1–2 дня", "Лабы + записи"],
+    ],
+    note: "Работаем только по письменному разрешению и согласованным правилам. Не тестируем то, на что вы не подписались.",
+  },
+  method: {
+    title: "§2 Метод",
+    steps: [["Рамки", "Цели, правила, сроки, экстренные контакты."], ["Разведка", "Что видно снаружи."], ["Эксплуатация", "Безопасно доказываем ущерб и останавливаемся на черте."], ["Отчёт", "Резюме для руководства, шаги для инженеров."], ["Перепроверка", "Каждое исправление — бесплатно, в течение 90 дней."]],
+    margin: "В среднем проект находит 26 проблем; 2 из них критические.",
+  },
+  form: {
+    title: "Форма BS-7 · Заявка на проверку периметра",
+    sub: "Только демонстрация. Введённое никуда не уходит со страницы.",
+    field: "Домен для проверки", placeholder: "example.ru", submit: "Отправить на проверку", again: "Новый бланк",
     checks: [
       ["Настройки TLS", "TLS 1.3, HSTS preload"],
       ["Заголовки безопасности", "Нет CSP на 2 маршрутах"],
       ["Открытые поддомены", "staging.* доступен из интернета"],
-      ["DNS и почта (SPF/DMARC)", "DMARC p=none"],
-      ["Открытые порты", "22, 443 · без устаревших служб"],
-      ["Утечки учётных данных", "3 адреса в известных утечках"],
+      ["Почтовая аутентификация", "Политика DMARC p=none"],
+      ["Открытые порты", "22, 443 — без устаревших служб"],
+      ["Учётки в известных утечках", "Найдено 3 адреса сотрудников"],
     ],
-    score: "Индекс открытости", verdict: "Стоит присмотреться",
-  },
-  certs: en.certs,
-  services: {
-    title: "Что мы делаем",
-    items: [
-      ["Тестирование на проникновение", "Веб, мобайл, API и внутренние сети. Сначала руками, потом инструментами.", "PT"],
-      ["Red Team", "Многонедельные операции с целью: проверяем людей, процессы и технику вместе.", "RT"],
-      ["Аудит облака", "AWS, Azure, GCP и Kubernetes — ошибки конфигурации и пути через идентичности.", "CL"],
-      ["Реагирование на инциденты", "Дежурим 24/7. Сдерживание — за часы, первопричина — за дни.", "IR"],
-      ["Аудит кода", "Ревью на уровне pull request для частей, где двигаются деньги и данные.", "CR"],
-      ["Обучение", "Практические лабы для разработчиков на основе находок в вашем же коде.", "TR"],
-    ],
-  },
-  method: {
-    title: "Как проходит проект",
-    steps: [["Рамки", "Правила, цели, сроки, экстренные контакты."], ["Разведка", "Картируем периметр глазами внешнего атакующего."], ["Эксплуатация", "Безопасно доказываем ущерб в согласованных границах."], ["Отчёт", "Резюме для руководства и воспроизводимые технические находки."], ["Перепроверка", "Бесплатная проверка каждого исправления в течение 90 дней."]],
+    verdict: "Нужна проверка", examiner: "Проверил", date: "Дата",
   },
   report: {
-    title: "Типичный отчёт", sub: "Находки недавнего теста веба и API (обезличено).",
-    sev: [["Критич.", 1], ["Высокие", 4], ["Средние", 9], ["Низкие", 12]],
-    found: "находок", fixed: "исправлено после перепроверки",
+    title: "§3 Как выглядит отчёт",
+    sub: "Сводка по критичности из недавнего теста веба и API (обезличено).",
+    sev: [["Критические", 1], ["Высокие", 4], ["Средние", 9], ["Низкие", 12]],
+    fixed: "исправлено после перепроверки",
   },
-  cases: {
-    title: "Недавние проекты",
-    items: [
-      ["Финтех, ЕС", "Захват аккаунта через гонку в сбросе пароля. Исправлено за 36 часов."],
-      ["Логистика, 4 000 сотрудников", "Red Team получил домен-админа за 6 дней через принтер. Больше не получится."],
-      ["SaaS, раунд B", "Аудит облака убрал 212 лишних IAM-ролей и два публичных бакета."],
+  log: {
+    title: "Приложение А · Журнал инцидентов, выдержка",
+    lines: [
+      ["02:14", "Перебор паролей на /login, 412 попыток. Заблокировано."],
+      ["02:31", "Новый поддомен [[dev-api.client-07]] в логах CT."],
+      ["03:05", "Невозможное перемещение: [[m.k@client-03]] Лиссабон → Джакарта за 40 мин."],
+      ["03:06", "Сессия отозвана. Владельцу позвонили."],
+      ["04:47", "Публичный бакет [[s3://backup-old]] закрыт."],
+      ["06:00", "Пересменка. Ничего не горит."],
     ],
   },
-  feed: "Живая лента (демо)",
-  cta: { title: "Что-то происходит прямо сейчас?", sub: "Линия инцидентов отвечает в течение 15 минут, каждый день в году.", btn: "+00 000 000 000" },
+  cases: {
+    title: "§4 Дела",
+    items: [["CF-117", "Финтех, ЕС", "Захват аккаунта через гонку в сбросе пароля. Исправлено за 36 часов."], ["CF-104", "Логистика, 4 000 сотрудников", "Red Team получил домен-админа за 6 дней через [[сетевой принтер]]."], ["CF-091", "SaaS, раунд B", "Аудит облака убрал 212 лишних IAM-ролей и два публичных бакета."]],
+  },
+  cut: { title: "На случай инцидента", sub: "Вырежьте и держите возле серверной. Отвечаем в течение 15 минут, каждый день в году.", phone: "+00 000 000 000" },
   foot: "Шаблон vibe-templates · вымышленная компания · MIT",
 };
 
 export const CONTENT = { en, ru };
 export type Copy = typeof en;
 
-// statuses for the six simulated checks, in order
-export const SCAN_RESULT: Status[] = ["ok", "warn", "fail", "warn", "ok", "fail"];
-
-export const FEED = [
-  "blocked  ssh brute-force   185.220.x.x → bastion-gw",
-  "alert    new subdomain     dev-api.client-07",
-  "info     cert renewed      *.client-12",
-  "blocked  sqli attempt      /api/v2/orders?id=",
-  "alert    impossible travel user m.k@client-03",
-  "info     retest passed     CL-2026-114",
-  "blocked  credential stuff  /login  ×412",
-  "alert    public bucket     s3://backup-old",
-];
+// marks for the six simulated checks, in order
+export const FORM_RESULT: Mark[] = ["ok", "warn", "fail", "warn", "ok", "fail"];

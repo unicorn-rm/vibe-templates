@@ -1,0 +1,21 @@
+{
+  "name": "vibe-08-bakery",
+  "version": "1.0.0",
+  "description": "Hand-drawn pastel bakery template \u2014 Tailwind CSS v4, Alpine.js, Vite.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "alpinejs": "^3.17.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "tailwindcss": "^4.3.5",
+    "vite": "^8.3.8"
+  },
+  "private": true,
+  "type": "module"
+}

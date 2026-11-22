@@ -9,8 +9,8 @@ export const FESTIVAL = {
 
 export const STAGES = [
   { id: "orbit", color: "var(--pink)" },
-  { id: "garden", color: "var(--lime)" },
-  { id: "tunnel", color: "var(--cyan)" },
+  { id: "garden", color: "var(--blue)" },
+  { id: "tunnel", color: "var(--violet)" },
 ];
 
 // size: 3 = headliner, 2 = big, 1 = regular
@@ -47,10 +47,10 @@ export const LINEUP = {
 // Map hotspots: x/y in % of the map box
 export const SPOTS = [
   { id: "orbit", x: 26, y: 34, color: "var(--pink)" },
-  { id: "garden", x: 70, y: 28, color: "var(--lime)" },
-  { id: "tunnel", x: 60, y: 72, color: "var(--cyan)" },
-  { id: "food", x: 34, y: 74, color: "var(--chrome)" },
-  { id: "camp", x: 86, y: 62, color: "var(--chrome)" },
+  { id: "garden", x: 70, y: 28, color: "var(--blue)" },
+  { id: "tunnel", x: 60, y: 72, color: "var(--violet)" },
+  { id: "food", x: 34, y: 74, color: "var(--ink)" },
+  { id: "camp", x: 86, y: 62, color: "var(--ink)" },
 ];
 
 export const T = {
@@ -58,7 +58,7 @@ export const T = {
     nav: { lineup: "Lineup", stages: "Stages", map: "Map", faq: "FAQ" },
     hero: {
       dates: "16—18 July 2027 · Lake Arena",
-      tag: "Three nights of synth-pop, club and glitter by the water.",
+      tag: "Three nights of synth-pop, club music and night swimming at the lake.",
       play: "Play the teaser", stop: "Stop",
       hint: "Sound is generated live in your browser — no files.",
     },
@@ -87,13 +87,13 @@ export const T = {
         ["Is it accessible?", "Step-free routes to every stage, a raised viewing deck at Orbit and a quiet tent."],
       ],
     },
-    foot: { note: "Template by vibe-templates · fictional festival · MIT", top: "Back up ↑" },
+    foot: { note: "Printed in two inks: fluorescent pink + blue · template by vibe-templates · MIT", top: "Back up ↑" },
   },
   ru: {
     nav: { lineup: "Лайнап", stages: "Сцены", map: "Карта", faq: "Вопросы" },
     hero: {
       dates: "16—18 июля 2027 · Lake Arena",
-      tag: "Три ночи синти-попа, клуба и блёсток у воды.",
+      tag: "Три ночи синти-попа, клубной музыки и ночного купания в озере.",
       play: "Включить тизер", stop: "Стоп",
       hint: "Звук генерируется прямо в браузере, без файлов.",
     },
@@ -122,6 +122,6 @@ export const T = {
         ["Доступная среда?", "Пути без ступеней ко всем сценам, приподнятая площадка у Орбиты и тихий шатёр."],
       ],
     },
-    foot: { note: "Шаблон vibe-templates · вымышленный фестиваль · MIT", top: "Наверх ↑" },
+    foot: { note: "Отпечатано в две краски: флуоресцентный розовый + синий · шаблон vibe-templates · MIT", top: "Наверх ↑" },
   },
 };

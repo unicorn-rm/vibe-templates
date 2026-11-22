@@ -5,10 +5,10 @@
 
 ![Bastion preview](preview.png)
 
-- **Style:** Dark grid, cyan
+- **Style:** Declassified file
 - **Stack:** Next.js 16 · Tailwind CSS 4 · TypeScript
-- **Fonts:** [Tektur](https://fonts.google.com/specimen/Tektur), [Inter](https://fonts.google.com/specimen/Inter) (Latin + Cyrillic)
-- **Signature block:** Simulated attack-surface scanner: type a domain, watch six checks resolve to PASS/WARN/FAIL and an exposure score (no network requests)
+- **Fonts:** [Source Serif 4](https://fonts.google.com/specimen/Source+Serif+4), [Cousine](https://fonts.google.com/specimen/Cousine) (Latin + Cyrillic)
+- **Signature block:** Redaction bars that declassify on hover + a printed request form that gets rubber-stamped (simulated check, no network)
 
 ## Run it
 
@@ -20,25 +20,24 @@ npm run build   # static export to ./out
 
 ## Blocks inside
 
-- header with 24/7 incident button
-- blueprint-grid hero with scan line
-- scanner widget
-- certifications strip
-- services grid
-- engagement timeline
-- severity report chart
-- live event feed
-- case cards
-- incident CTA band
-- footer
+- folder-tab top bar
+- memo cover sheet with stamp
+- redacted headline and lead
+- services table
+- numbered method clauses with margin note
+- request form BS-7 with stamp
+- hatched severity tally
+- incident log appendix
+- case file cards
+- cut-out incident coupon
 
 ## Where things live
 
 | File | What to edit there |
 |---|---|
-| `lib/content.ts` | all copy (EN + RU), scan results, feed lines |
-| `app/page.tsx` | sections and the Scanner component |
-| `app/globals.css` | tokens in Tailwind `@theme` + HUD utilities |
+| `lib/content.ts` | all copy (EN + RU) with [[redactions]], form results |
+| `app/page.tsx` | sheets, redaction helper, request form |
+| `app/globals.css` | tokens in Tailwind `@theme`, paper, stamp, hatch utilities |
 | `app/layout.tsx` | fonts and metadata |
 
 The page speaks English by default. Russian: the language button, or `?lang=ru`.

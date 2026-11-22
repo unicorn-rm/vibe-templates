@@ -45,11 +45,15 @@ Most template packs look like the same landing page in different colors. And whe
 <td width="50%" valign="top"><a href="templates/04-brutalist-architecture/README.md"><img src="templates/04-brutalist-architecture/preview.png" alt="MASSA" /></a><br /><b>04 · MASSA</b> — Brutalism<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/04-brutalist-architecture/">demo</a></sub></td>
 </tr>
 <tr>
-<td width="50%" valign="top"><a href="templates/05-neon-festival/README.md"><img src="templates/05-neon-festival/preview.png" alt="Neon Bloom" /></a><br /><b>05 · Neon Bloom</b> — Neon Y2K, chrome<br /><sub>React 19 · Vite · Motion · <a href="https://unicorn-rm.github.io/vibe-templates/05-neon-festival/">demo</a></sub></td>
-<td width="50%" valign="top"><a href="templates/06-cyber-security/README.md"><img src="templates/06-cyber-security/preview.png" alt="Bastion" /></a><br /><b>06 · Bastion</b> — Dark grid, cyan<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/06-cyber-security/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/05-neon-festival/README.md"><img src="templates/05-neon-festival/preview.png" alt="Neon Bloom" /></a><br /><b>05 · Neon Bloom</b> — Risograph gig poster<br /><sub>React 19 · Vite · Motion · <a href="https://unicorn-rm.github.io/vibe-templates/05-neon-festival/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/06-cyber-security/README.md"><img src="templates/06-cyber-security/preview.png" alt="Bastion" /></a><br /><b>06 · Bastion</b> — Declassified file<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/06-cyber-security/">demo</a></sub></td>
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="templates/07-photographer/README.md"><img src="templates/07-photographer/preview.png" alt="Ines Varo" /></a><br /><b>07 · Ines Varo</b> — Airy minimal<br /><sub>SvelteKit 3 · Svelte 5 · <a href="https://unicorn-rm.github.io/vibe-templates/07-photographer/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/08-bakery/README.md"><img src="templates/08-bakery/preview.png" alt="Crumb & Co." /></a><br /><b>08 · Crumb & Co.</b> — Hand-drawn pastel<br /><sub>Tailwind CSS 4 · Alpine.js · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/08-bakery/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/09-esports-club/README.md"><img src="templates/09-esports-club/preview.png" alt="NOVA E.C." /></a><br /><b>09 · NOVA E.C.</b> — Football matchday programme<br /><sub>React 19 · Three.js (R3F) · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/09-esports-club/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/14-fine-dining/README.md"><img src="templates/14-fine-dining/preview.png" alt="Ombre" /></a><br /><b>14 · Ombre</b> — Dark luxury, candlelight<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/14-fine-dining/">demo</a></sub></td>
 </tr>
 </table>
@@ -64,11 +68,11 @@ Most template packs look like the same landing page in different colors. And whe
 | 02 | [**Alex Kern** · Developer portfolio](templates/02-terminal-portfolio/README.md) | Retro CRT terminal | HTML, CSS, Vanilla JS | A working command line: help, projects, theme, lang, history, Tab completion |
 | 03 | [**Paper Moon** · Specialty coffee](templates/03-coffee-editorial/README.md) | Warm paper editorial | Astro 7, Vanilla TS | Menu whose rows draw a hand-made line illustration on hover + a working pour-over brew timer |
 | 04 | [**MASSA** · Architecture studio](templates/04-brutalist-architecture/README.md) | Brutalism | HTML, CSS, GSAP + ScrollTrigger | Pinned horizontal project scroll with generated isometric massing models — no images at all |
-| 05 | [**Neon Bloom** · Music festival](templates/05-neon-festival/README.md) | Neon Y2K, chrome | React 19, Vite, Motion | Live audio visualizer — a tiny Web Audio synth drawn as a radial spectrum, no audio files |
-| 06 | [**Bastion** · Security consultancy](templates/06-cyber-security/README.md) | Dark grid, cyan | Next.js 16, Tailwind CSS 4, TypeScript | Simulated attack-surface scanner: type a domain, watch six checks resolve to PASS/WARN/FAIL and an exposure score (no network requests) |
+| 05 | [**Neon Bloom** · Music festival](templates/05-neon-festival/README.md) | Risograph gig poster | React 19, Vite, Motion | Two-ink halftone audio visualizer — a live Web Audio synth printed as riso dots, pink and blue off-register |
+| 06 | [**Bastion** · Security consultancy](templates/06-cyber-security/README.md) | Declassified file | Next.js 16, Tailwind CSS 4, TypeScript | Redaction bars that declassify on hover + a printed request form that gets rubber-stamped (simulated check, no network) |
 | 07 | [**Ines Varo** · Photographer](templates/07-photographer/README.md) | Airy minimal | SvelteKit 3, Svelte 5 | Masonry gallery with series filter and a keyboard/swipe lightbox showing EXIF |
-| 08 | Home bakery <sub>soon</sub> | Hand-drawn pastel | Tailwind CSS, Alpine.js | — |
-| 09 | Esports club <sub>soon</sub> | Game HUD | React, Three.js (R3F) | — |
+| 08 | [**Crumb & Co.** · Home bakery](templates/08-bakery/README.md) | Hand-drawn pastel | Tailwind CSS 4, Alpine.js, Vite | Chalkboard of today's bake with a live countdown to the next batch + allergen filters |
+| 09 | [**NOVA E.C.** · Esports club](templates/09-esports-club/README.md) | Football matchday programme | React 19, Three.js (R3F), Vite | 3D enamel club crest built from extruded shapes (no model files) + clickable cup bracket |
 | 10 | Yoga & wellness <sub>soon</sub> | Soft organic | Astro, Tailwind CSS | — |
 | 11 | Online course <sub>soon</sub> | Playful blocks | Vue 3, Vite | — |
 | 12 | Personal finance app <sub>soon</sub> | Dark glass | React, Tailwind CSS, Recharts | — |

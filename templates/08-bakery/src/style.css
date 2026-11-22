@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   08 · Bakery — design tokens (Tailwind v4 @theme)
+   ========================================================== */
+@theme {
+  --color-cream: #fff6e9;
+  --color-cocoa: #5a3e36;     /* the "ink" — never pure black */
+  --color-butter: #ffd98a;
+  --color-berry: #ff8fa3;
+  --color-mint: #a8e6cf;
+  --color-sky: #b8dcff;
+  --color-board: #2f4a3a;     /* chalkboard green */
+  --color-chalk: #f4f1e8;
+  --font-hand: "Caveat", "Comic Sans MS", cursive;
+  --font-body: "Nunito", system-ui, sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  ::selection { background: var(--color-butter); }
+  :focus-visible { outline: 3px dashed var(--color-berry); outline-offset: 3px; }
+  [x-cloak] { display: none !important; }
+}
+
+/* hand-drawn border: irregular radius + slight SVG wobble */
+.sketch {
+  border: 2.5px solid var(--color-cocoa);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+.card { rotate: var(--r, 0deg); transition: rotate .3s, translate .3s; box-shadow: 4px 5px 0 var(--color-cocoa); }
+.card:hover { rotate: 0deg; translate: 0 -4px; }
+
+/* single-stroke doodles */
+.doodle { fill: none; stroke: var(--color-cocoa); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; filter: url(#wobble); }
+
+/* sticky notes with a strip of tape */
+.note { position: relative; box-shadow: 0 10px 18px -10px rgb(90 62 54 / .45); }
+.note::before {
+  content: ""; position: absolute; top: -12px; left: 50%; width: 70px; height: 22px; translate: -50% 0; rotate: -4deg;
+  background: rgb(255 255 255 / .55); border: 1px solid rgb(90 62 54 / .15);
+}
+
+/* highlighter under the second hero line */
+.marker { background: linear-gradient(100deg, transparent 2%, var(--color-butter) 4% 96%, transparent 98%) 0 85% / 100% 42% no-repeat; }
+
+/* underline that wiggles on hover */
+.squiggle { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3' fill='none' stroke='%235a3e36' stroke-width='1.6'/%3E%3C/svg%3E") 0 100% / 0 6px repeat-x; padding-bottom: 4px; transition: background-size .35s; }
+.squiggle:hover { background-size: 20px 6px; }
+
+/* chalkboard */
+.chalkboard {
+  background: radial-gradient(ellipse at 30% 20%, #3b5b48, var(--color-board) 70%);
+  border-color: #8a6a4a; border-width: 10px;
+  box-shadow: inset 0 0 40px rgb(0 0 0 / .35);
+}
+.chalkboard * { text-shadow: 0 0 1px rgb(244 241 232 / .5); }
+.chalk-strike::after { content: ""; position: absolute; left: -4px; right: -4px; top: 55%; height: 3px; background: var(--color-berry); rotate: -3deg; border-radius: 2px; }
+
+/* "sold out" rubber stamp */
+.stamp { border: 2.5px solid currentColor; border-radius: 6px; background: rgb(255 255 255 / .8); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card, .squiggle { transition: none; }
+}

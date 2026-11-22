@@ -5,10 +5,10 @@
 
 ![Neon Bloom preview](preview.png)
 
-- **Стиль:** Неон Y2K, хром
+- **Стиль:** Ризограф-афиша
 - **Стек:** React 19 · Vite · Motion
-- **Шрифты:** [Unbounded](https://fonts.google.com/specimen/Unbounded), [Rubik](https://fonts.google.com/specimen/Rubik) (латиница + кириллица)
-- **Фирменный блок:** Живой визуализатор звука — маленький синтезатор на Web Audio, нарисованный радиальным спектром, без аудиофайлов
+- **Шрифты:** [Alumni Sans](https://fonts.google.com/specimen/Alumni+Sans), [Fira Sans](https://fonts.google.com/specimen/Fira+Sans) (латиница + кириллица)
+- **Фирменный блок:** Двухкрасочный растровый визуализатор звука — живой синтезатор Web Audio, отпечатанный ризо-точками розовым и синим со сдвигом
 
 ## Запуск
 
@@ -20,17 +20,16 @@ npm run build   # ./dist
 
 ## Какие блоки внутри
 
-- floating pill nav
-- chrome letter-by-letter title
-- countdown
-- audio visualizer
-- rotated marquee
-- lineup with day tabs and stage filter
-- stage cards
-- interactive site map
-- add-to-calendar (.ics)
-- FAQ accordion
-- outlined giant footer
+- printed top strip
+- poster hero with two-plate title
+- halftone visualizer
+- headliners per day
+- poster-style lineup billing with day + stage filters
+- halftone stage plates
+- numbered map with legend
+- ticket stub with countdown and .ics
+- FAQ set as a programme
+- print-credit footer
 
 ## Где что лежит
 
@@ -38,8 +37,8 @@ npm run build   # ./dist
 |---|---|
 | `src/content.js` | festival data, lineup, map spots, all copy (EN + RU) |
 | `src/App.jsx` | page sections as components |
-| `src/Visualizer.jsx` | Web Audio synth + canvas spectrum |
-| `src/styles.css` | tokens at the top, then sections |
+| `src/Visualizer.jsx` | Web Audio synth + two-ink halftone canvas |
+| `src/styles.css` | inks and tokens at the top |
 
 По умолчанию страница на английском. Русский — кнопкой языка или `?lang=ru`.
 

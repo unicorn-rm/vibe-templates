@@ -4,14 +4,14 @@
 Instructions for AI coding agents working in this folder.
 
 ## Context
-- Template: **Bastion**, security consultancy, style "Dark grid, cyan".
+- Template: **Bastion**, security consultancy, style "Declassified file".
 - Stack: Next.js 16, Tailwind CSS 4, TypeScript. Do not add dependencies unless the user asks.
 - The design contract is in `DESIGN.md`. Read it before changing anything visual.
 
 ## Files
-- `lib/content.ts` — all copy (EN + RU), scan results, feed lines
-- `app/page.tsx` — sections and the Scanner component
-- `app/globals.css` — tokens in Tailwind `@theme` + HUD utilities
+- `lib/content.ts` — all copy (EN + RU) with [[redactions]], form results
+- `app/page.tsx` — sheets, redaction helper, request form
+- `app/globals.css` — tokens in Tailwind `@theme`, paper, stamp, hatch utilities
 - `app/layout.tsx` — fonts and metadata
 
 ## How to run
@@ -23,14 +23,14 @@ Instructions for AI coding agents working in this folder.
 - Content changes go to the content file, not into markup or components.
 - Every user-facing string exists in **en** and **ru**. English is the default; `?lang=ru` and the language button switch it.
 - Colors, fonts, radii and spacing are tokens. Change tokens, not individual elements.
-- Keep the signature block: Simulated attack-surface scanner: type a domain, watch six checks resolve to PASS/WARN/FAIL and an exposure score (no network requests).
+- Keep the signature block: Redaction bars that declassify on hover + a printed request form that gets rubber-stamped (simulated check, no network).
 - Keep accessibility: semantic headings, visible focus, alt text, `prefers-reduced-motion` support, body text contrast ≥ 4.5:1.
 - Keep it static: no backend, no booking or payment flows.
-- Cyan = interactive/signal, red = danger/incident, amber = warning, green = passed. Never decorative.
-- Panels use the `.cut` clipped-corner shape; no rounded corners.
-- Headings are Tektur; telemetry and labels are monospace.
-- The scanner must stay a simulation — never send the typed domain anywhere.
-- Motion is functional: scan line, feed ticker, progress bars.
+- Two inks only: black and stamp red. Red is for stamps and margin notes, nothing else.
+- Every section is a numbered sheet with a page footer (`Page N of M`).
+- Hidden text is written as [[double brackets]] in content and renders as a redaction bar.
+- Charts are printable: hatching and dots, not colour.
+- The form is a simulation — never send what is typed.
 
 ## Done means
 - The page builds/opens without console errors.

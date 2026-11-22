@@ -303,8 +303,8 @@
         "ru": "Музыкальный фестиваль"
       },
       "style": {
-        "en": "Neon Y2K, chrome",
-        "ru": "Неон Y2K, хром"
+        "en": "Risograph gig poster",
+        "ru": "Ризограф-афиша"
       },
       "stack": [
         "React 19",
@@ -312,58 +312,57 @@
         "Motion"
       ],
       "fonts": [
-        "Unbounded",
-        "Rubik"
+        "Alumni Sans",
+        "Fira Sans"
       ],
       "palette": {
-        "bg": "#0a0614",
-        "pink": "#ff2bd6",
-        "lime": "#c6ff00",
-        "cyan": "#00e5ff",
-        "chrome": "#dcd6ea"
+        "paper": "#f4f1ea",
+        "ink": "#1d1a24",
+        "pink": "#ff48b0",
+        "blue": "#0078bf",
+        "violet": "#6a3d9a"
       },
       "signature": {
-        "en": "Live audio visualizer — a tiny Web Audio synth drawn as a radial spectrum, no audio files",
-        "ru": "Живой визуализатор звука — маленький синтезатор на Web Audio, нарисованный радиальным спектром, без аудиофайлов"
+        "en": "Two-ink halftone audio visualizer — a live Web Audio synth printed as riso dots, pink and blue off-register",
+        "ru": "Двухкрасочный растровый визуализатор звука — живой синтезатор Web Audio, отпечатанный ризо-точками розовым и синим со сдвигом"
       },
       "blocks": [
-        "floating pill nav",
-        "chrome letter-by-letter title",
-        "countdown",
-        "audio visualizer",
-        "rotated marquee",
-        "lineup with day tabs and stage filter",
-        "stage cards",
-        "interactive site map",
-        "add-to-calendar (.ics)",
-        "FAQ accordion",
-        "outlined giant footer"
+        "printed top strip",
+        "poster hero with two-plate title",
+        "halftone visualizer",
+        "headliners per day",
+        "poster-style lineup billing with day + stage filters",
+        "halftone stage plates",
+        "numbered map with legend",
+        "ticket stub with countdown and .ics",
+        "FAQ set as a programme",
+        "print-credit footer"
       ],
       "idea": {
-        "en": "A 2001 CD-ROM sleeve that learned motion design. Chrome type, acid colors, stickers and sparkles on a deep violet night.",
-        "ru": "Обложка CD-диска 2001 года, освоившая моушн-дизайн. Хромированный шрифт, кислотные цвета, стикеры и звёздочки на глубокой фиолетовой ночи."
+        "en": "A gig poster run through a risograph: two fluorescent inks on natural paper, slight misregistration, halftone dots, condensed type stacked like real festival billing.",
+        "ru": "Афиша концерта, напечатанная на ризографе: две флуоресцентные краски на натуральной бумаге, лёгкий сдвиг печати, растровые точки и узкий шрифт, сложенный как настоящая фестивальная афиша."
       },
       "rules": {
         "en": [
-          "Three neon colors map to three stages — keep that mapping everywhere (chips, cards, map).",
-          "Headings are Unbounded 900 with tight tracking; body is Rubik.",
-          "Chrome gradient is reserved for the hero title.",
-          "Shapes are pills and 28px cards; stickers may rotate, layout grids may not.",
-          "Every animation is a spring or a short fade; respect reduced motion."
+          "Only two inks (pink, blue) plus their overprint (violet) and a blue-black. No gradients, no glow, no blur.",
+          "Overlaps use mix-blend-mode: multiply — like ink on paper.",
+          "Lineup follows poster billing: headliner biggest, then tier 2, then everyone in one line.",
+          "Display type is Alumni Sans 900, always uppercase and condensed.",
+          "Crop marks and print credits are part of the look — keep them."
         ],
         "ru": [
-          "Три неоновых цвета = три сцены — держите это соответствие везде (чипы, карточки, карта).",
-          "Заголовки — Unbounded 900 с плотным трекингом; текст — Rubik.",
-          "Хромированный градиент только для заголовка первого экрана.",
-          "Формы — пилюли и карточки 28px; стикеры могут быть повёрнуты, сетка — нет.",
-          "Анимации — пружины или короткие проявления; уважайте reduced motion."
+          "Только две краски (розовая, синяя), их наложение (фиолетовый) и сине-чёрный. Без градиентов, свечений и размытия.",
+          "Наложения через mix-blend-mode: multiply — как краска на бумаге.",
+          "Лайнап по правилам афиши: хедлайнер крупнее всех, потом второй эшелон, остальные одной строкой.",
+          "Крупный шрифт — Alumni Sans 900, всегда капсом и узко.",
+          "Метки обреза и выходные данные печати — часть стиля, сохраняйте."
         ]
       },
       "files": {
         "src/content.js": "festival data, lineup, map spots, all copy (EN + RU)",
         "src/App.jsx": "page sections as components",
-        "src/Visualizer.jsx": "Web Audio synth + canvas spectrum",
-        "src/styles.css": "tokens at the top, then sections"
+        "src/Visualizer.jsx": "Web Audio synth + two-ink halftone canvas",
+        "src/styles.css": "inks and tokens at the top"
       },
       "run": [
         "npm install",
@@ -380,8 +379,8 @@
         "ru": "ИБ-консалтинг"
       },
       "style": {
-        "en": "Dark grid, cyan",
-        "ru": "Тёмная сетка, циан"
+        "en": "Declassified file",
+        "ru": "Рассекреченное досье"
       },
       "stack": [
         "Next.js 16",
@@ -389,58 +388,56 @@
         "TypeScript"
       ],
       "fonts": [
-        "Tektur",
-        "Inter"
+        "Source Serif 4",
+        "Cousine"
       ],
       "palette": {
-        "void": "#05080d",
-        "panel": "#0b121b",
-        "cyan": "#2de2e6",
-        "alert": "#ff4d5e",
-        "warn": "#ffb547",
-        "ok": "#3ddc97"
+        "desk": "#d6d5cf",
+        "sheet": "#fbfaf6",
+        "ink": "#141414",
+        "pencil": "#6d6c67",
+        "stamp": "#c8102e"
       },
       "signature": {
-        "en": "Simulated attack-surface scanner: type a domain, watch six checks resolve to PASS/WARN/FAIL and an exposure score (no network requests)",
-        "ru": "Симуляция проверки периметра: вводите домен и смотрите, как шесть проверок получают PASS/WARN/FAIL и индекс открытости (без сетевых запросов)"
+        "en": "Redaction bars that declassify on hover + a printed request form that gets rubber-stamped (simulated check, no network)",
+        "ru": "Плашки цензуры, которые снимаются при наведении, + бумажный бланк-заявка, на который ставится штамп (симуляция, без сети)"
       },
       "blocks": [
-        "header with 24/7 incident button",
-        "blueprint-grid hero with scan line",
-        "scanner widget",
-        "certifications strip",
-        "services grid",
-        "engagement timeline",
-        "severity report chart",
-        "live event feed",
-        "case cards",
-        "incident CTA band",
-        "footer"
+        "folder-tab top bar",
+        "memo cover sheet with stamp",
+        "redacted headline and lead",
+        "services table",
+        "numbered method clauses with margin note",
+        "request form BS-7 with stamp",
+        "hatched severity tally",
+        "incident log appendix",
+        "case file cards",
+        "cut-out incident coupon"
       ],
       "idea": {
-        "en": "A calm SOC screen at 3 am. Near-black blue, one cyan for signal, red only for real danger, clipped HUD corners and monospace telemetry.",
-        "ru": "Спокойный экран SOC в 3 часа ночи. Почти чёрный синий, один циан для сигнала, красный только для реальной опасности, срезанные углы HUD и моноширинная телеметрия."
+        "en": "The site is a declassified pentest report lying on a grey desk: paper sheets, typewriter mono, a serif body, black redaction bars and one red rubber stamp.",
+        "ru": "Сайт — это рассекреченный отчёт о пентесте на сером столе: листы бумаги, машинописный моноширинный, антиква в тексте, чёрные плашки цензуры и одна красная печать."
       },
       "rules": {
         "en": [
-          "Cyan = interactive/signal, red = danger/incident, amber = warning, green = passed. Never decorative.",
-          "Panels use the `.cut` clipped-corner shape; no rounded corners.",
-          "Headings are Tektur; telemetry and labels are monospace.",
-          "The scanner must stay a simulation — never send the typed domain anywhere.",
-          "Motion is functional: scan line, feed ticker, progress bars."
+          "Two inks only: black and stamp red. Red is for stamps and margin notes, nothing else.",
+          "Every section is a numbered sheet with a page footer (`Page N of M`).",
+          "Hidden text is written as [[double brackets]] in content and renders as a redaction bar.",
+          "Charts are printable: hatching and dots, not colour.",
+          "The form is a simulation — never send what is typed."
         ],
         "ru": [
-          "Циан = интерактив/сигнал, красный = опасность/инцидент, янтарный = предупреждение, зелёный = пройдено. Никогда не для украшения.",
-          "Панели — форма `.cut` со срезанными углами; без скруглений.",
-          "Заголовки — Tektur; телеметрия и подписи — моноширинные.",
-          "Сканер остаётся симуляцией — введённый домен никуда не отправляется.",
-          "Движение функциональное: линия сканирования, лента событий, прогресс-бары."
+          "Только две краски: чёрная и красная штемпельная. Красный — только для печатей и заметок на полях.",
+          "Каждая секция — пронумерованный лист с колонтитулом (`Стр. N из M`).",
+          "Скрытый текст пишется в контенте как [[двойные скобки]] и выводится плашкой цензуры.",
+          "Графики пригодны для печати: штриховка и точки вместо цвета.",
+          "Бланк — симуляция, введённое никуда не отправляется."
         ]
       },
       "files": {
-        "lib/content.ts": "all copy (EN + RU), scan results, feed lines",
-        "app/page.tsx": "sections and the Scanner component",
-        "app/globals.css": "tokens in Tailwind `@theme` + HUD utilities",
+        "lib/content.ts": "all copy (EN + RU) with [[redactions]], form results",
+        "app/page.tsx": "sheets, redaction helper, request form",
+        "app/globals.css": "tokens in Tailwind `@theme`, paper, stamp, hatch utilities",
         "app/layout.tsx": "fonts and metadata"
       },
       "run": [
@@ -524,8 +521,8 @@
     },
     {
       "id": "08-bakery",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Crumb & Co.",
       "kind": {
         "en": "Home bakery",
         "ru": "Домашняя пекарня"
@@ -535,33 +532,143 @@
         "ru": "Рисованная пастель"
       },
       "stack": [
-        "Tailwind CSS",
-        "Alpine.js"
+        "Tailwind CSS 4",
+        "Alpine.js",
+        "Vite"
       ],
       "fonts": [
         "Caveat",
         "Nunito"
+      ],
+      "palette": {
+        "cream": "#fff6e9",
+        "cocoa": "#5a3e36",
+        "butter": "#ffd98a",
+        "berry": "#ff8fa3",
+        "mint": "#a8e6cf",
+        "board": "#2f4a3a"
+      },
+      "signature": {
+        "en": "Chalkboard of today's bake with a live countdown to the next batch + allergen filters",
+        "ru": "Меловая доска «сегодня в печи» с живым отсчётом до следующей партии + фильтр по аллергенам"
+      },
+      "blocks": [
+        "doodle logo header",
+        "handwritten hero with sticky notes",
+        "chalkboard menu with sold-out strikes",
+        "allergen filter chips",
+        "tilted product cards with stamps",
+        "how-it's-made steps with drawn arrows",
+        "neighbour notes wall",
+        "hand-drawn map",
+        "footer"
+      ],
+      "idea": {
+        "en": "A neighbourhood bakery's own scrapbook: handwriting, sticky notes with tape, wobbly pen doodles and a real chalkboard by the counter.",
+        "ru": "Альбом соседской пекарни: почерк, стикеры на скотче, дрожащие рисунки ручкой и настоящая меловая доска у прилавка."
+      },
+      "rules": {
+        "en": [
+          "Ink is cocoa brown, never black. Pastels are paper colours, not gradients.",
+          "Borders are hand-drawn: irregular radius + the #wobble SVG filter.",
+          "Caveat for headings and prices, Nunito for reading text.",
+          "Things may tilt (cards, notes), the grid may not.",
+          "Doodles are single-stroke paths in main.js — add new ones in the same style."
+        ],
+        "ru": [
+          "Чернила — какао-коричневые, не чёрные. Пастель — цвета бумаги, а не градиенты.",
+          "Рамки нарисованы от руки: неровный радиус + SVG-фильтр #wobble.",
+          "Caveat для заголовков и цен, Nunito для текста.",
+          "Наклоняться могут карточки и стикеры, но не сетка.",
+          "Рисунки — одиночные линии в main.js; новые добавляйте в том же стиле."
+        ]
+      },
+      "files": {
+        "src/content.js": "products, batches, notes, all copy (EN + RU)",
+        "src/main.js": "Alpine component, doodles, countdown",
+        "index.html": "markup with Alpine directives",
+        "src/style.css": "tokens in Tailwind `@theme` + hand-drawn utilities"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {
       "id": "09-esports-club",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "NOVA E.C.",
       "kind": {
         "en": "Esports club",
         "ru": "Киберспорт-клуб"
       },
       "style": {
-        "en": "Game HUD",
-        "ru": "Игровой HUD"
+        "en": "Football matchday programme",
+        "ru": "Программка футбольного матча"
       },
       "stack": [
-        "React",
-        "Three.js (R3F)"
+        "React 19",
+        "Three.js (R3F)",
+        "Vite"
       ],
       "fonts": [
-        "Russo One",
-        "Exo 2"
+        "Rubik Mono One",
+        "PT Sans Narrow"
+      ],
+      "palette": {
+        "paper": "#f6f5f1",
+        "ink": "#121212",
+        "green": "#00704a",
+        "orange": "#f26522"
+      },
+      "signature": {
+        "en": "3D enamel club crest built from extruded shapes (no model files) + clickable cup bracket",
+        "ru": "3D-эмалевый герб клуба из выдавленных фигур (без файлов моделей) + кликабельная сетка кубка"
+      },
+      "blocks": [
+        "club-colour top bar",
+        "programme cover with 3D crest",
+        "kit stripes",
+        "fixture ticket with notches",
+        "league table",
+        "ground guide",
+        "cup bracket with path highlight",
+        "sticker-album squad cards",
+        "join band",
+        "sponsor strip",
+        "footer"
+      ],
+      "idea": {
+        "en": "An esports club dressed like a proper football club: matchday programme cover, club colours, a crest you could pin on a scarf, sticker-album players.",
+        "ru": "Киберспортивный клуб в образе настоящего футбольного: обложка программки, клубные цвета, герб как значок на шарф, игроки как наклейки из альбома."
+      },
+      "rules": {
+        "en": [
+          "Three club colours (green, orange, black) on programme paper — never neon, never dark mode.",
+          "Rubik Mono One for club lettering only; PT Sans Narrow for everything else.",
+          "The crest is geometry in Scene.jsx — redraw it with THREE.Shape, keep the enamel-pin materials.",
+          "Tables and brackets look printed: hard borders, tabular numbers.",
+          "Lighting is local (Lightformers); don't add remote HDR files."
+        ],
+        "ru": [
+          "Три клубных цвета (зелёный, оранжевый, чёрный) на бумаге программки — никакого неона и тёмной темы.",
+          "Rubik Mono One только для клубных надписей; остальное — PT Sans Narrow.",
+          "Герб — геометрия в Scene.jsx; перерисовывайте через THREE.Shape, сохраняя материалы эмалевого значка.",
+          "Таблицы и сетка выглядят напечатанными: жёсткие рамки, табличные цифры.",
+          "Свет локальный (Lightformer); не подключайте удалённые HDR."
+        ]
+      },
+      "files": {
+        "src/content.js": "club, fixtures, table, bracket scores, squad, all copy (EN + RU)",
+        "src/App.jsx": "page sections and the bracket",
+        "src/Scene.jsx": "3D crest (React Three Fiber)",
+        "src/styles.css": "tokens at the top"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {

@@ -5,10 +5,10 @@
 
 ![Neon Bloom preview](preview.png)
 
-- **Style:** Neon Y2K, chrome
+- **Style:** Risograph gig poster
 - **Stack:** React 19 · Vite · Motion
-- **Fonts:** [Unbounded](https://fonts.google.com/specimen/Unbounded), [Rubik](https://fonts.google.com/specimen/Rubik) (Latin + Cyrillic)
-- **Signature block:** Live audio visualizer — a tiny Web Audio synth drawn as a radial spectrum, no audio files
+- **Fonts:** [Alumni Sans](https://fonts.google.com/specimen/Alumni+Sans), [Fira Sans](https://fonts.google.com/specimen/Fira+Sans) (Latin + Cyrillic)
+- **Signature block:** Two-ink halftone audio visualizer — a live Web Audio synth printed as riso dots, pink and blue off-register
 
 ## Run it
 
@@ -20,17 +20,16 @@ npm run build   # ./dist
 
 ## Blocks inside
 
-- floating pill nav
-- chrome letter-by-letter title
-- countdown
-- audio visualizer
-- rotated marquee
-- lineup with day tabs and stage filter
-- stage cards
-- interactive site map
-- add-to-calendar (.ics)
-- FAQ accordion
-- outlined giant footer
+- printed top strip
+- poster hero with two-plate title
+- halftone visualizer
+- headliners per day
+- poster-style lineup billing with day + stage filters
+- halftone stage plates
+- numbered map with legend
+- ticket stub with countdown and .ics
+- FAQ set as a programme
+- print-credit footer
 
 ## Where things live
 
@@ -38,8 +37,8 @@ npm run build   # ./dist
 |---|---|
 | `src/content.js` | festival data, lineup, map spots, all copy (EN + RU) |
 | `src/App.jsx` | page sections as components |
-| `src/Visualizer.jsx` | Web Audio synth + canvas spectrum |
-| `src/styles.css` | tokens at the top, then sections |
+| `src/Visualizer.jsx` | Web Audio synth + two-ink halftone canvas |
+| `src/styles.css` | inks and tokens at the top |
 
 The page speaks English by default. Russian: the language button, or `?lang=ru`.
 

@@ -45,11 +45,15 @@
 <td width="50%" valign="top"><a href="templates/04-brutalist-architecture/README.ru.md"><img src="templates/04-brutalist-architecture/preview.png" alt="MASSA" /></a><br /><b>04 · MASSA</b> — Брутализм<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/04-brutalist-architecture/">demo</a></sub></td>
 </tr>
 <tr>
-<td width="50%" valign="top"><a href="templates/05-neon-festival/README.ru.md"><img src="templates/05-neon-festival/preview.png" alt="Neon Bloom" /></a><br /><b>05 · Neon Bloom</b> — Неон Y2K, хром<br /><sub>React 19 · Vite · Motion · <a href="https://unicorn-rm.github.io/vibe-templates/05-neon-festival/">demo</a></sub></td>
-<td width="50%" valign="top"><a href="templates/06-cyber-security/README.ru.md"><img src="templates/06-cyber-security/preview.png" alt="Bastion" /></a><br /><b>06 · Bastion</b> — Тёмная сетка, циан<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/06-cyber-security/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/05-neon-festival/README.ru.md"><img src="templates/05-neon-festival/preview.png" alt="Neon Bloom" /></a><br /><b>05 · Neon Bloom</b> — Ризограф-афиша<br /><sub>React 19 · Vite · Motion · <a href="https://unicorn-rm.github.io/vibe-templates/05-neon-festival/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/06-cyber-security/README.ru.md"><img src="templates/06-cyber-security/preview.png" alt="Bastion" /></a><br /><b>06 · Bastion</b> — Рассекреченное досье<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/06-cyber-security/">demo</a></sub></td>
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="templates/07-photographer/README.ru.md"><img src="templates/07-photographer/preview.png" alt="Ines Varo" /></a><br /><b>07 · Ines Varo</b> — Воздушный минимализм<br /><sub>SvelteKit 3 · Svelte 5 · <a href="https://unicorn-rm.github.io/vibe-templates/07-photographer/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/08-bakery/README.ru.md"><img src="templates/08-bakery/preview.png" alt="Crumb & Co." /></a><br /><b>08 · Crumb & Co.</b> — Рисованная пастель<br /><sub>Tailwind CSS 4 · Alpine.js · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/08-bakery/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/09-esports-club/README.ru.md"><img src="templates/09-esports-club/preview.png" alt="NOVA E.C." /></a><br /><b>09 · NOVA E.C.</b> — Программка футбольного матча<br /><sub>React 19 · Three.js (R3F) · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/09-esports-club/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/14-fine-dining/README.ru.md"><img src="templates/14-fine-dining/preview.png" alt="Ombre" /></a><br /><b>14 · Ombre</b> — Тёмная роскошь, свет свечи<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/14-fine-dining/">demo</a></sub></td>
 </tr>
 </table>
@@ -64,11 +68,11 @@
 | 02 | [**Alex Kern** · Портфолио разработчика](templates/02-terminal-portfolio/README.ru.md) | Ретро-терминал | HTML, CSS, Vanilla JS | Рабочая командная строка: help, projects, theme, lang, history, автодополнение по Tab |
 | 03 | [**Paper Moon** · Спешелти-кофейня](templates/03-coffee-editorial/README.ru.md) | Тёплая бумага, editorial | Astro 7, Vanilla TS | Меню, строки которого рисуют линейную иллюстрацию при наведении, + рабочий таймер заваривания пуровера |
 | 04 | [**MASSA** · Архитектурное бюро](templates/04-brutalist-architecture/README.ru.md) | Брутализм | HTML, CSS, GSAP + ScrollTrigger | Закреплённая горизонтальная прокрутка проектов с генерируемыми изометрическими моделями зданий — без единой картинки |
-| 05 | [**Neon Bloom** · Музыкальный фестиваль](templates/05-neon-festival/README.ru.md) | Неон Y2K, хром | React 19, Vite, Motion | Живой визуализатор звука — маленький синтезатор на Web Audio, нарисованный радиальным спектром, без аудиофайлов |
-| 06 | [**Bastion** · ИБ-консалтинг](templates/06-cyber-security/README.ru.md) | Тёмная сетка, циан | Next.js 16, Tailwind CSS 4, TypeScript | Симуляция проверки периметра: вводите домен и смотрите, как шесть проверок получают PASS/WARN/FAIL и индекс открытости (без сетевых запросов) |
+| 05 | [**Neon Bloom** · Музыкальный фестиваль](templates/05-neon-festival/README.ru.md) | Ризограф-афиша | React 19, Vite, Motion | Двухкрасочный растровый визуализатор звука — живой синтезатор Web Audio, отпечатанный ризо-точками розовым и синим со сдвигом |
+| 06 | [**Bastion** · ИБ-консалтинг](templates/06-cyber-security/README.ru.md) | Рассекреченное досье | Next.js 16, Tailwind CSS 4, TypeScript | Плашки цензуры, которые снимаются при наведении, + бумажный бланк-заявка, на который ставится штамп (симуляция, без сети) |
 | 07 | [**Ines Varo** · Фотограф](templates/07-photographer/README.ru.md) | Воздушный минимализм | SvelteKit 3, Svelte 5 | Masonry-галерея с фильтром серий и лайтбоксом (клавиатура/свайп) с данными EXIF |
-| 08 | Домашняя пекарня <sub>скоро</sub> | Рисованная пастель | Tailwind CSS, Alpine.js | — |
-| 09 | Киберспорт-клуб <sub>скоро</sub> | Игровой HUD | React, Three.js (R3F) | — |
+| 08 | [**Crumb & Co.** · Домашняя пекарня](templates/08-bakery/README.ru.md) | Рисованная пастель | Tailwind CSS 4, Alpine.js, Vite | Меловая доска «сегодня в печи» с живым отсчётом до следующей партии + фильтр по аллергенам |
+| 09 | [**NOVA E.C.** · Киберспорт-клуб](templates/09-esports-club/README.ru.md) | Программка футбольного матча | React 19, Three.js (R3F), Vite | 3D-эмалевый герб клуба из выдавленных фигур (без файлов моделей) + кликабельная сетка кубка |
 | 10 | Йога и велнес <sub>скоро</sub> | Мягкая органика | Astro, Tailwind CSS | — |
 | 11 | Онлайн-курс <sub>скоро</sub> | Игровые блоки | Vue 3, Vite | — |
 | 12 | Приложение финансов <sub>скоро</sub> | Тёмное стекло | React, Tailwind CSS, Recharts | — |

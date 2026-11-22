@@ -5,6 +5,7 @@ import { FESTIVAL, LINEUP, SPOTS, STAGES, T } from "./content.js";
 
 const read = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
 const write = (k, v) => { try { localStorage.setItem(k, v); } catch { /* private mode */ } };
+const EASE = [0.2, 0.8, 0.2, 1]; // the one easing used everywhere
 
 function useLang() {
   const initial = new URLSearchParams(location.search).get("lang") || read("vt-lang") || "en";
@@ -13,33 +14,25 @@ function useLang() {
   return [lang, setLang];
 }
 
-/* ---------- small pieces ---------- */
-function Sparkle({ className, size = 28 }) {
+/* Two-ink type: a pink plate and a blue plate printed with multiply.
+   On load the blue plate slides into (almost) register — like paper going through a riso. */
+function Riso({ children, as: Tag = "span", className = "", off = [5, 3] }) {
+  const reduce = useReducedMotion();
   return (
-    <svg className={`sparkle ${className}`} width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M16 0l3.5 12.5L32 16l-12.5 3.5L16 32l-3.5-12.5L0 16l12.5-3.5z" />
-    </svg>
+    <Tag className={`riso ${className}`}>
+      <span className="riso__pink">{children}</span>
+      <motion.span className="riso__blue" aria-hidden="true"
+        initial={reduce ? false : { x: 60, y: -24, opacity: 0 }}
+        animate={{ x: off[0], y: off[1], opacity: 1 }}
+        transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}>
+        {children}
+      </motion.span>
+    </Tag>
   );
 }
 
-function ChromeTitle({ text }) {
-  const reduce = useReducedMotion();
-  return (
-    <h1 className="hero__title" aria-label={text}>
-      {text.split(" ").map((word, w) => (
-        <span key={w} className="hero__word" aria-hidden="true">
-          {[...word].map((ch, i) => (
-            <motion.span key={i} className="chrome"
-              initial={reduce ? false : { y: "110%", rotate: 8, opacity: 0 }}
-              animate={{ y: 0, rotate: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.15 + (w * 5 + i) * 0.045 }}>
-              {ch}
-            </motion.span>
-          ))}
-        </span>
-      ))}
-    </h1>
-  );
+function Crop() {
+  return <span className="crop" aria-hidden="true"><i /><i /><i /><i /></span>;
 }
 
 function Countdown({ t }) {
@@ -47,79 +40,50 @@ function Countdown({ t }) {
   const [now, setNow] = useState(Date.now());
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(id); }, []);
   const left = Math.max(0, target - now);
-  if (!left) return <p className="count count--live">{t.live}</p>;
-  const parts = [
-    [Math.floor(left / 864e5), t.d],
-    [Math.floor(left / 36e5) % 24, t.h],
-    [Math.floor(left / 6e4) % 60, t.m],
-    [Math.floor(left / 1e3) % 60, t.s],
-  ];
+  if (!left) return <p className="stub__live">{t.live}</p>;
+  const parts = [[Math.floor(left / 864e5), t.d], [Math.floor(left / 36e5) % 24, t.h], [Math.floor(left / 6e4) % 60, t.m], [Math.floor(left / 1e3) % 60, t.s]];
   return (
     <dl className="count" aria-label="Countdown">
-      {parts.map(([v, l]) => (
-        <div key={l}><dt>{String(v).padStart(2, "0")}</dt><dd>{l}</dd></div>
-      ))}
+      {parts.map(([v, l]) => <div key={l}><dt>{String(v).padStart(2, "0")}</dt><dd>{l}</dd></div>)}
     </dl>
   );
 }
 
+/* Poster billing: headliner huge, then big names, then everyone else in one line. */
 function Lineup({ t, st }) {
   const [day, setDay] = useState("fri");
   const [stage, setStage] = useState("all");
   const acts = LINEUP[day].filter((a) => stage === "all" || a.stage === stage);
+  const tier = (n) => acts.filter((a) => a.size === n);
+  const color = (id) => STAGES.find((s) => s.id === id).color;
+
   return (
     <section className="sec lineup" id="lineup">
-      <div className="sec__head">
+      <Crop />
+      <div className="lineup__head">
         <h2 className="h2">{t.title}</h2>
-        <div className="tabs" role="tablist" aria-label="Day">
+        <div className="days" role="tablist" aria-label="Day">
           {Object.entries(t.days).map(([id, label]) => (
-            <button key={id} role="tab" aria-selected={day === id} className="tab" onClick={() => setDay(id)}>
-              {day === id && <motion.span layoutId="tab" className="tab__bg" transition={{ type: "spring", stiffness: 400, damping: 32 }} />}
-              <span>{label}</span>
+            <button key={id} role="tab" aria-selected={day === id} onClick={() => setDay(id)}>
+              <b>{label.split(" ")[1]}</b><span>{label.split(" ")[0]}</span>
             </button>
           ))}
         </div>
       </div>
-      <div className="chips">
+      <div className="stages-filter">
         {["all", ...STAGES.map((s) => s.id)].map((id) => (
-          <button key={id} className="chip" aria-pressed={stage === id} onClick={() => setStage(id)}
-            style={{ "--c": STAGES.find((s) => s.id === id)?.color || "var(--chrome)" }}>
+          <button key={id} aria-pressed={stage === id} onClick={() => setStage(id)} style={{ "--c": id === "all" ? "var(--ink)" : color(id) }}>
             {id === "all" ? t.all : st[id].name}
           </button>
         ))}
       </div>
-      <motion.ul className="acts" layout>
-        <AnimatePresence mode="popLayout">
-          {acts.map((a, i) => (
-            <motion.li key={day + a.name} layout className={`act act--${a.size}`}
-              style={{ "--c": STAGES.find((s) => s.id === a.stage).color }}
-              initial={{ opacity: 0, y: 24, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.35, delay: i * 0.03 }}>
-              <span className="act__name">{a.name}</span>
-              <span className="act__stage">{st[a.stage].name}</span>
-            </motion.li>
-          ))}
-        </AnimatePresence>
-      </motion.ul>
-    </section>
-  );
-}
-
-function Stages({ t }) {
-  return (
-    <section className="sec" id="stages">
-      <h2 className="h2">{t.title}</h2>
-      <div className="stages">
-        {STAGES.map((s, i) => (
-          <motion.article key={s.id} className="stage" style={{ "--c": s.color }}
-            initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }}
-            transition={{ delay: i * 0.1 }} whileHover={{ rotate: i % 2 ? 1.5 : -1.5, y: -6 }}>
-            <span className="stage__n">0{i + 1}</span>
-            <h3>{t[s.id].name}</h3>
-            <p>{t[s.id].desc}</p>
-          </motion.article>
-        ))}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div key={day + stage} className="bill" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35, ease: EASE }}>
+          {tier(3).map((a) => <p key={a.name} className="bill__1" style={{ color: color(a.stage) }}>{a.name}</p>)}
+          {tier(2).length > 0 && <p className="bill__2">{tier(2).map((a, i) => <span key={a.name}>{i > 0 && <i> • </i>}<span style={{ color: color(a.stage) }}>{a.name}</span></span>)}</p>}
+          {tier(1).length > 0 && <p className="bill__3">{tier(1).map((a, i) => <span key={a.name}>{i > 0 && " · "}{a.name}</span>)}</p>}
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 }
@@ -128,24 +92,27 @@ function SiteMap({ t, st }) {
   const [active, setActive] = useState("orbit");
   return (
     <section className="sec" id="map">
-      <div className="sec__head"><h2 className="h2">{t.title}</h2><p className="muted">{t.hint}</p></div>
+      <Crop />
+      <h2 className="h2">{t.title}</h2>
       <div className="map">
-        <svg className="map__art" viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true">
-          <path className="map__lake" d="M0 0h42c-6 10 4 18-6 26S20 30 14 40 0 46 0 46z" />
-          <path className="map__path" d="M26 24 C40 30 55 18 70 20 M26 24 C30 40 34 50 34 52 M34 52 C46 54 52 50 60 50 M70 20 C76 34 70 44 60 50 M60 50 C70 48 80 44 86 43" />
-        </svg>
-        {SPOTS.map((s) => (
-          <button key={s.id} className={`spot${active === s.id ? " is-on" : ""}`} style={{ left: `${s.x}%`, top: `${s.y}%`, "--c": s.color }}
-            onClick={() => setActive(s.id)} aria-pressed={active === s.id}>
-            <span className="sr">{st[s.id].name}</span>
-          </button>
-        ))}
-        <AnimatePresence mode="wait">
-          <motion.div key={active} className="map__card" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
-            <strong>{st[active].name}</strong>
-            <p>{st[active].desc}</p>
-          </motion.div>
-        </AnimatePresence>
+        <div className="map__art">
+          <svg viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true">
+            <path className="map__lake" d="M0 0h42c-6 10 4 18-6 26S20 30 14 40 0 46 0 46z" />
+            <path className="map__path" d="M26 24 C40 30 55 18 70 20 M26 24 C30 40 34 50 34 52 M34 52 C46 54 52 50 60 50 M70 20 C76 34 70 44 60 50 M60 50 C70 48 80 44 86 43" />
+          </svg>
+          {SPOTS.map((s, i) => (
+            <button key={s.id} className={`spot${active === s.id ? " is-on" : ""}`} style={{ left: `${s.x}%`, top: `${s.y}%`, "--c": s.color }}
+              onClick={() => setActive(s.id)} aria-pressed={active === s.id} aria-label={st[s.id].name}>{i + 1}</button>
+          ))}
+        </div>
+        <ol className="map__legend">
+          {SPOTS.map((s, i) => (
+            <li key={s.id} className={active === s.id ? "is-on" : ""}>
+              <button onClick={() => setActive(s.id)}><span className="n" style={{ "--c": s.color }}>{i + 1}</span><strong>{st[s.id].name}</strong></button>
+              {active === s.id && <p>{st[s.id].desc}</p>}
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
@@ -153,108 +120,92 @@ function SiteMap({ t, st }) {
 
 function downloadIcs() {
   const fmt = (d) => new Date(d).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-  const ics = [
-    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//vibe-templates//neon-bloom//EN", "BEGIN:VEVENT",
-    `UID:neon-bloom-${FESTIVAL.year}@example.com`, `DTSTAMP:${fmt(Date.now())}`,
-    `DTSTART:${fmt(FESTIVAL.start)}`, `DTEND:${fmt(FESTIVAL.end)}`,
-    `SUMMARY:${FESTIVAL.name} ${FESTIVAL.year}`, "LOCATION:Lake Arena", "END:VEVENT", "END:VCALENDAR",
-  ].join("\r\n");
-  const a = Object.assign(document.createElement("a"), {
-    href: URL.createObjectURL(new Blob([ics], { type: "text/calendar" })), download: "neon-bloom.ics",
-  });
+  const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//vibe-templates//neon-bloom//EN", "BEGIN:VEVENT",
+    `UID:neon-bloom-${FESTIVAL.year}@example.com`, `DTSTAMP:${fmt(Date.now())}`, `DTSTART:${fmt(FESTIVAL.start)}`, `DTEND:${fmt(FESTIVAL.end)}`,
+    `SUMMARY:${FESTIVAL.name} ${FESTIVAL.year}`, "LOCATION:Lake Arena", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+  const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([ics], { type: "text/calendar" })), download: "neon-bloom.ics" });
   a.click(); URL.revokeObjectURL(a.href);
 }
 
-function Faq({ t }) {
-  const [open, setOpen] = useState(0);
-  return (
-    <section className="sec" id="faq">
-      <h2 className="h2">{t.title}</h2>
-      <div className="faq">
-        {t.items.map(([q, a], i) => (
-          <div key={q} className="faq__item">
-            <button className="faq__q" aria-expanded={open === i} onClick={() => setOpen(open === i ? -1 : i)}>
-              <span>{q}</span><span className="faq__x" aria-hidden="true">+</span>
-            </button>
-            <AnimatePresence initial={false}>
-              {open === i && (
-                <motion.div className="faq__a" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
-                  <p>{a}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* ---------- page ---------- */
 export default function App() {
   const [lang, setLang] = useLang();
   const t = T[lang];
-  const marquee = Object.values(LINEUP).flat().map((a) => a.name);
+  const heads = Object.entries(LINEUP).map(([d, acts]) => [t.lineup.days[d], acts.find((a) => a.size === 3).name]);
+  const [w1, w2] = FESTIVAL.name.split(" ");
 
   return (
     <>
-      <div className="grain" aria-hidden="true" />
-      <header className="nav">
-        <a href="#top" className="nav__logo"><Sparkle size={18} className="nav__spark" />{FESTIVAL.name}</a>
-        <nav aria-label="Primary">
-          {Object.entries(t.nav).map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}
-        </nav>
-        <button className="nav__lang" onClick={() => setLang(lang === "en" ? "ru" : "en")} aria-label="Switch language">
-          {lang === "en" ? "RU" : "EN"}
-        </button>
+      <header className="bar">
+        <a href="#top" className="bar__logo">{FESTIVAL.name} <span>’{FESTIVAL.year.slice(2)}</span></a>
+        <nav aria-label="Primary">{Object.entries(t.nav).map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
+        <button className="bar__lang" onClick={() => setLang(lang === "en" ? "ru" : "en")} aria-label="Switch language">{lang === "en" ? "RU" : "EN"}</button>
       </header>
 
       <main id="top">
-        <section className="hero">
-          <div className="blob blob--1" aria-hidden="true" />
-          <div className="blob blob--2" aria-hidden="true" />
-          <Sparkle className="s1" size={44} /><Sparkle className="s2" /><Sparkle className="s3" size={20} />
-          <p className="hero__dates">{t.hero.dates}</p>
-          <ChromeTitle text={FESTIVAL.name} />
-          <div className="hero__row">
-            <div>
-              <p className="hero__tag">{t.hero.tag}</p>
-              <Countdown t={t.count} />
-            </div>
-            <div className="hero__viz">
-              <Visualizer labels={t.hero} />
-              <p className="muted small">{t.hero.hint}</p>
-            </div>
+        {/* HERO = the poster */}
+        <section className="poster">
+          <Crop />
+          <p className="poster__strip"><span>{t.hero.dates}</span><span>Vol. 05</span></p>
+          <h1 className="poster__title" aria-label={FESTIVAL.name}>
+            <Riso className="poster__w1">{w1}</Riso>
+            <Riso className="poster__w2" off={[-4, 4]}>{w2}</Riso>
+          </h1>
+          <div className="poster__viz">
+            <Visualizer labels={t.hero} />
+            <p className="small">{t.hero.hint}</p>
           </div>
-          <motion.span className="sticker" initial={{ rotate: -14, scale: 0 }} animate={{ rotate: -14, scale: 1 }} transition={{ delay: 1, type: "spring" }}>
-            ’{FESTIVAL.year.slice(2)}
-          </motion.span>
+          <div className="poster__info">
+            <p className="poster__tag">{t.hero.tag}</p>
+            <ul className="poster__heads">
+              {heads.map(([d, n]) => <li key={d}><span>{d}</span><b>{n}</b></li>)}
+            </ul>
+          </div>
         </section>
-
-        <div className="marquee" aria-hidden="true">
-          <div className="marquee__track">
-            {[...marquee, ...marquee].map((n, i) => <span key={i}>{n}<Sparkle size={16} className="marquee__s" /></span>)}
-          </div>
-        </div>
 
         <Lineup t={t.lineup} st={t.stages} />
-        <Stages t={t.stages} />
-        <SiteMap t={t.map} st={t.stages} />
 
-        <section className="sec save">
-          <div>
-            <h2 className="h2">{t.save.title}</h2>
-            <p className="muted">{t.save.text}</p>
+        <section className="sec" id="stages">
+          <Crop />
+          <h2 className="h2">{t.stages.title}</h2>
+          <div className="plates">
+            {STAGES.map((s, i) => (
+              <article key={s.id} className="plate" style={{ "--c": s.color }}>
+                <span className="plate__n">0{i + 1}</span>
+                <h3>{t.stages[s.id].name}</h3>
+                <p>{t.stages[s.id].desc}</p>
+              </article>
+            ))}
           </div>
-          <button className="btn" onClick={downloadIcs}>{t.save.btn}</button>
         </section>
 
-        <Faq t={t.faq} />
+        <SiteMap t={t.map} st={t.stages} />
+
+        <section className="sec">
+          <div className="stub">
+            <div className="stub__main">
+              <h2 className="h2">{t.save.title}</h2>
+              <p>{t.save.text}</p>
+              <Countdown t={t.count} />
+            </div>
+            <div className="stub__tear">
+              <button className="btn" onClick={downloadIcs}>{t.save.btn}</button>
+              <span className="stub__no">№ 000{FESTIVAL.year}</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="sec" id="faq">
+          <Crop />
+          <h2 className="h2">{t.faq.title}</h2>
+          <dl className="faq">
+            {t.faq.items.map(([q, a]) => <div key={q}><dt>{q}</dt><dd>{a}</dd></div>)}
+          </dl>
+        </section>
       </main>
 
       <footer className="foot">
-        <p className="foot__big" aria-hidden="true">{FESTIVAL.name}</p>
-        <div className="foot__row"><span>{t.foot.note}</span><a href="#top">{t.foot.top}</a></div>
+        <span>{t.foot.note}</span>
+        <a href="#top">{t.foot.top}</a>
       </footer>
     </>
   );

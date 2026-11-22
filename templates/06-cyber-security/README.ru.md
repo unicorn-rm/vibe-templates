@@ -5,10 +5,10 @@
 
 ![Bastion preview](preview.png)
 
-- **Стиль:** Тёмная сетка, циан
+- **Стиль:** Рассекреченное досье
 - **Стек:** Next.js 16 · Tailwind CSS 4 · TypeScript
-- **Шрифты:** [Tektur](https://fonts.google.com/specimen/Tektur), [Inter](https://fonts.google.com/specimen/Inter) (латиница + кириллица)
-- **Фирменный блок:** Симуляция проверки периметра: вводите домен и смотрите, как шесть проверок получают PASS/WARN/FAIL и индекс открытости (без сетевых запросов)
+- **Шрифты:** [Source Serif 4](https://fonts.google.com/specimen/Source+Serif+4), [Cousine](https://fonts.google.com/specimen/Cousine) (латиница + кириллица)
+- **Фирменный блок:** Плашки цензуры, которые снимаются при наведении, + бумажный бланк-заявка, на который ставится штамп (симуляция, без сети)
 
 ## Запуск
 
@@ -20,25 +20,24 @@ npm run build   # static export to ./out
 
 ## Какие блоки внутри
 
-- header with 24/7 incident button
-- blueprint-grid hero with scan line
-- scanner widget
-- certifications strip
-- services grid
-- engagement timeline
-- severity report chart
-- live event feed
-- case cards
-- incident CTA band
-- footer
+- folder-tab top bar
+- memo cover sheet with stamp
+- redacted headline and lead
+- services table
+- numbered method clauses with margin note
+- request form BS-7 with stamp
+- hatched severity tally
+- incident log appendix
+- case file cards
+- cut-out incident coupon
 
 ## Где что лежит
 
 | Файл | Что там менять |
 |---|---|
-| `lib/content.ts` | all copy (EN + RU), scan results, feed lines |
-| `app/page.tsx` | sections and the Scanner component |
-| `app/globals.css` | tokens in Tailwind `@theme` + HUD utilities |
+| `lib/content.ts` | all copy (EN + RU) with [[redactions]], form results |
+| `app/page.tsx` | sheets, redaction helper, request form |
+| `app/globals.css` | tokens in Tailwind `@theme`, paper, stamp, hatch utilities |
 | `app/layout.tsx` | fonts and metadata |
 
 По умолчанию страница на английском. Русский — кнопкой языка или `?lang=ru`.
