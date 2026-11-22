@@ -1,0 +1,19 @@
+{
+  "name": "vibe-03-coffee-editorial",
+  "version": "1.0.0",
+  "description": "Warm editorial coffee-roaster template \u2014 Astro, zero client framework.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^7.4.13"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  }
+}

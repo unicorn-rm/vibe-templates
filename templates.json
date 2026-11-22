@@ -2,94 +2,931 @@
   "$comment": "Single source of truth for the catalog. `npm run docs` regenerates READMEs, AGENTS.md, DESIGN.md and the gallery from this file.",
   "templates": [
     {
-      "id": "01-swiss-saas", "status": "ready",
-      "name": "Gridline", "kind": { "en": "SaaS landing", "ru": "Лендинг SaaS" },
-      "style": { "en": "Swiss grid", "ru": "Швейцарская сетка" },
-      "stack": ["Next.js 16", "Tailwind CSS 4", "TypeScript"],
-      "fonts": ["Onest", "JetBrains Mono"],
-      "palette": { "paper": "#f2f1ec", "ink": "#111111", "signal": "#e8361c", "rule": "#d3d0c5" },
-      "signature": { "en": "Bento grid with live mini-demos (typing command palette, burndown, keycaps) + changelog timeline", "ru": "Bento-сетка с живыми мини-демо (палитра команд с печатью, график сгорания, клавиши) + таймлайн изменений" },
-      "blocks": ["sticky header", "hero with stats", "product board mock", "logo strip", "bento features", "numbered steps", "stats band", "changelog", "pricing toggle", "FAQ (details)", "CTA band", "footer"],
-      "idea": { "en": "A poster from 1960s Zürich that happens to sell software. Strict 12-column grid, visible hairlines, one red signal color, huge tight headlines and monospace labels.", "ru": "Цюрихский плакат 1960-х, который продаёт софт. Строгая 12-колоночная сетка, видимые линии, один красный сигнальный цвет, огромные плотные заголовки и моноширинные подписи." },
-      "rules": {
-        "en": ["Only one accent color — red is a signal, never decoration.", "Square corners everywhere. No rounded cards, no soft shadows; the only shadow is the hard offset under the product mock.", "Section headers always follow the pattern `NN —  Title` on a 1px ink rule.", "Headlines use negative tracking (-0.04em…-0.06em) and line-height below 1.", "Labels, IDs and meta are JetBrains Mono, small, uppercase where they are categories."],
-        "ru": ["Только один акцентный цвет — красный это сигнал, а не украшение.", "Углы везде прямые. Никаких скруглённых карточек и мягких теней; единственная тень — жёсткий сдвиг под макетом продукта.", "Заголовки секций всегда по шаблону `NN —  Заголовок` на линии 1px.", "У крупных заголовков отрицательный трекинг (-0.04em…-0.06em) и межстрочный интервал меньше 1.", "Подписи, ID и метаданные — JetBrains Mono, мелко, капсом для категорий."]
+      "id": "01-swiss-saas",
+      "status": "ready",
+      "name": "Gridline",
+      "kind": {
+        "en": "SaaS landing",
+        "ru": "Лендинг SaaS"
       },
-      "files": { "lib/content.ts": "all copy (EN + RU), board issues, logos", "app/page.tsx": "every section as a small component", "app/globals.css": "design tokens in Tailwind `@theme`", "app/layout.tsx": "fonts and metadata" },
-      "run": ["npm install", "npm run dev", "npm run build   # static export to ./out"]
+      "style": {
+        "en": "Swiss grid",
+        "ru": "Швейцарская сетка"
+      },
+      "stack": [
+        "Next.js 16",
+        "Tailwind CSS 4",
+        "TypeScript"
+      ],
+      "fonts": [
+        "Onest",
+        "JetBrains Mono"
+      ],
+      "palette": {
+        "paper": "#f2f1ec",
+        "ink": "#111111",
+        "signal": "#e8361c",
+        "rule": "#d3d0c5"
+      },
+      "signature": {
+        "en": "Bento grid with live mini-demos (typing command palette, burndown, keycaps) + changelog timeline",
+        "ru": "Bento-сетка с живыми мини-демо (палитра команд с печатью, график сгорания, клавиши) + таймлайн изменений"
+      },
+      "blocks": [
+        "sticky header",
+        "hero with stats",
+        "product board mock",
+        "logo strip",
+        "bento features",
+        "numbered steps",
+        "stats band",
+        "changelog",
+        "pricing toggle",
+        "FAQ (details)",
+        "CTA band",
+        "footer"
+      ],
+      "idea": {
+        "en": "A poster from 1960s Zürich that happens to sell software. Strict 12-column grid, visible hairlines, one red signal color, huge tight headlines and monospace labels.",
+        "ru": "Цюрихский плакат 1960-х, который продаёт софт. Строгая 12-колоночная сетка, видимые линии, один красный сигнальный цвет, огромные плотные заголовки и моноширинные подписи."
+      },
+      "rules": {
+        "en": [
+          "Only one accent color — red is a signal, never decoration.",
+          "Square corners everywhere. No rounded cards, no soft shadows; the only shadow is the hard offset under the product mock.",
+          "Section headers always follow the pattern `NN —  Title` on a 1px ink rule.",
+          "Headlines use negative tracking (-0.04em…-0.06em) and line-height below 1.",
+          "Labels, IDs and meta are JetBrains Mono, small, uppercase where they are categories."
+        ],
+        "ru": [
+          "Только один акцентный цвет — красный это сигнал, а не украшение.",
+          "Углы везде прямые. Никаких скруглённых карточек и мягких теней; единственная тень — жёсткий сдвиг под макетом продукта.",
+          "Заголовки секций всегда по шаблону `NN —  Заголовок` на линии 1px.",
+          "У крупных заголовков отрицательный трекинг (-0.04em…-0.06em) и межстрочный интервал меньше 1.",
+          "Подписи, ID и метаданные — JetBrains Mono, мелко, капсом для категорий."
+        ]
+      },
+      "files": {
+        "lib/content.ts": "all copy (EN + RU), board issues, logos",
+        "app/page.tsx": "every section as a small component",
+        "app/globals.css": "design tokens in Tailwind `@theme`",
+        "app/layout.tsx": "fonts and metadata"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # static export to ./out"
+      ]
     },
     {
-      "id": "02-terminal-portfolio", "status": "ready",
-      "name": "Alex Kern", "kind": { "en": "Developer portfolio", "ru": "Портфолио разработчика" },
-      "style": { "en": "Retro CRT terminal", "ru": "Ретро-терминал" },
-      "stack": ["HTML", "CSS", "Vanilla JS"],
-      "fonts": ["IBM Plex Mono"],
-      "palette": { "bg": "#070a07", "fg": "#b6f5b0", "phosphor": "#7dff6e", "dim": "#4f7a4b" },
-      "signature": { "en": "A working command line: help, projects, theme, lang, history, Tab completion", "ru": "Рабочая командная строка: help, projects, theme, lang, history, автодополнение по Tab" },
-      "blocks": ["window title bar", "boot sequence", "interactive terminal", "man-page about", "ls -la project list with README drawers", "git log career timeline", "htop skill meters", "keyboard contact links", "vim status bar footer"],
-      "idea": { "en": "Your portfolio is a shell session. Everything is text, every section is the output of a familiar Unix command, and visitors can actually type.", "ru": "Портфолио — это сессия в шелле. Всё текст, каждая секция — вывод знакомой Unix-команды, и посетитель может реально печатать." },
-      "rules": {
-        "en": ["One font, one weight family. No images — ASCII and box-drawing only.", "Every section starts with a prompt line (`alex@kern:~$ command`).", "Three themes (green, amber, ice) are defined only via CSS variables — add new ones the same way.", "The CRT layer (scanlines, vignette, glow) must stay subtle; turn it off in reduced-motion mode.", "Keep the terminal usable without a mouse."],
-        "ru": ["Один шрифт. Никаких картинок — только ASCII и псевдографика.", "Каждая секция начинается со строки приглашения (`alex@kern:~$ команда`).", "Три темы (green, amber, ice) заданы только CSS-переменными — новые добавляйте так же.", "Слой ЭЛТ (сканлайны, виньетка, свечение) должен оставаться тонким; в режиме reduced-motion отключается.", "Терминал должен работать без мыши."]
+      "id": "02-terminal-portfolio",
+      "status": "ready",
+      "name": "Alex Kern",
+      "kind": {
+        "en": "Developer portfolio",
+        "ru": "Портфолио разработчика"
       },
-      "files": { "content.js": "all copy (EN + RU), projects, career log, skills, command output", "main.js": "terminal engine, renderers, language/theme switch", "styles.css": "tokens + themes at the top", "index.html": "page skeleton" },
-      "run": ["open index.html   # or any static server: npx serve ."]
+      "style": {
+        "en": "Retro CRT terminal",
+        "ru": "Ретро-терминал"
+      },
+      "stack": [
+        "HTML",
+        "CSS",
+        "Vanilla JS"
+      ],
+      "fonts": [
+        "IBM Plex Mono"
+      ],
+      "palette": {
+        "bg": "#070a07",
+        "fg": "#b6f5b0",
+        "phosphor": "#7dff6e",
+        "dim": "#4f7a4b"
+      },
+      "signature": {
+        "en": "A working command line: help, projects, theme, lang, history, Tab completion",
+        "ru": "Рабочая командная строка: help, projects, theme, lang, history, автодополнение по Tab"
+      },
+      "blocks": [
+        "window title bar",
+        "boot sequence",
+        "interactive terminal",
+        "man-page about",
+        "ls -la project list with README drawers",
+        "git log career timeline",
+        "htop skill meters",
+        "keyboard contact links",
+        "vim status bar footer"
+      ],
+      "idea": {
+        "en": "Your portfolio is a shell session. Everything is text, every section is the output of a familiar Unix command, and visitors can actually type.",
+        "ru": "Портфолио — это сессия в шелле. Всё текст, каждая секция — вывод знакомой Unix-команды, и посетитель может реально печатать."
+      },
+      "rules": {
+        "en": [
+          "One font, one weight family. No images — ASCII and box-drawing only.",
+          "Every section starts with a prompt line (`alex@kern:~$ command`).",
+          "Three themes (green, amber, ice) are defined only via CSS variables — add new ones the same way.",
+          "The CRT layer (scanlines, vignette, glow) must stay subtle; turn it off in reduced-motion mode.",
+          "Keep the terminal usable without a mouse."
+        ],
+        "ru": [
+          "Один шрифт. Никаких картинок — только ASCII и псевдографика.",
+          "Каждая секция начинается со строки приглашения (`alex@kern:~$ команда`).",
+          "Три темы (green, amber, ice) заданы только CSS-переменными — новые добавляйте так же.",
+          "Слой ЭЛТ (сканлайны, виньетка, свечение) должен оставаться тонким; в режиме reduced-motion отключается.",
+          "Терминал должен работать без мыши."
+        ]
+      },
+      "files": {
+        "content.js": "all copy (EN + RU), projects, career log, skills, command output",
+        "main.js": "terminal engine, renderers, language/theme switch",
+        "styles.css": "tokens + themes at the top",
+        "index.html": "page skeleton"
+      },
+      "run": [
+        "open index.html   # or any static server: npx serve ."
+      ]
     },
     {
-      "id": "03-coffee-editorial", "status": "planned", "name": "", "kind": { "en": "Specialty coffee", "ru": "Спешелти-кофейня" }, "style": { "en": "Warm paper editorial", "ru": "Тёплая бумага, editorial" }, "stack": ["Astro"], "fonts": ["Playfair Display", "Manrope"] },
-    {
-      "id": "04-brutalist-architecture", "status": "planned", "name": "", "kind": { "en": "Architecture studio", "ru": "Архитектурное бюро" }, "style": { "en": "Brutalism", "ru": "Брутализм" }, "stack": ["HTML", "GSAP"], "fonts": ["Dela Gothic One", "Inter Tight"] },
-    {
-      "id": "05-neon-festival", "status": "ready",
-      "name": "Neon Bloom", "kind": { "en": "Music festival", "ru": "Музыкальный фестиваль" },
-      "style": { "en": "Neon Y2K, chrome", "ru": "Неон Y2K, хром" },
-      "stack": ["React 19", "Vite", "Motion"],
-      "fonts": ["Unbounded", "Rubik"],
-      "palette": { "bg": "#0a0614", "pink": "#ff2bd6", "lime": "#c6ff00", "cyan": "#00e5ff", "chrome": "#dcd6ea" },
-      "signature": { "en": "Live audio visualizer — a tiny Web Audio synth drawn as a radial spectrum, no audio files", "ru": "Живой визуализатор звука — маленький синтезатор на Web Audio, нарисованный радиальным спектром, без аудиофайлов" },
-      "blocks": ["floating pill nav", "chrome letter-by-letter title", "countdown", "audio visualizer", "rotated marquee", "lineup with day tabs and stage filter", "stage cards", "interactive site map", "add-to-calendar (.ics)", "FAQ accordion", "outlined giant footer"],
-      "idea": { "en": "A 2001 CD-ROM sleeve that learned motion design. Chrome type, acid colors, stickers and sparkles on a deep violet night.", "ru": "Обложка CD-диска 2001 года, освоившая моушн-дизайн. Хромированный шрифт, кислотные цвета, стикеры и звёздочки на глубокой фиолетовой ночи." },
-      "rules": {
-        "en": ["Three neon colors map to three stages — keep that mapping everywhere (chips, cards, map).", "Headings are Unbounded 900 with tight tracking; body is Rubik.", "Chrome gradient is reserved for the hero title.", "Shapes are pills and 28px cards; stickers may rotate, layout grids may not.", "Every animation is a spring or a short fade; respect reduced motion."],
-        "ru": ["Три неоновых цвета = три сцены — держите это соответствие везде (чипы, карточки, карта).", "Заголовки — Unbounded 900 с плотным трекингом; текст — Rubik.", "Хромированный градиент только для заголовка первого экрана.", "Формы — пилюли и карточки 28px; стикеры могут быть повёрнуты, сетка — нет.", "Анимации — пружины или короткие проявления; уважайте reduced motion."]
+      "id": "03-coffee-editorial",
+      "status": "ready",
+      "name": "Paper Moon",
+      "kind": {
+        "en": "Specialty coffee",
+        "ru": "Спешелти-кофейня"
       },
-      "files": { "src/content.js": "festival data, lineup, map spots, all copy (EN + RU)", "src/App.jsx": "page sections as components", "src/Visualizer.jsx": "Web Audio synth + canvas spectrum", "src/styles.css": "tokens at the top, then sections" },
-      "run": ["npm install", "npm run dev", "npm run build   # ./dist"]
-    },
-    { "id": "06-cyber-security", "status": "planned", "name": "", "kind": { "en": "Security consultancy", "ru": "ИБ-консалтинг" }, "style": { "en": "Dark grid, cyan", "ru": "Тёмная сетка, циан" }, "stack": ["Next.js", "Tailwind CSS"], "fonts": ["Tektur", "Inter"] },
-    { "id": "07-photographer", "status": "planned", "name": "", "kind": { "en": "Photographer", "ru": "Фотограф" }, "style": { "en": "Airy minimal", "ru": "Воздушный минимализм" }, "stack": ["SvelteKit"], "fonts": ["Cormorant Garamond", "Jost"] },
-    { "id": "08-bakery", "status": "planned", "name": "", "kind": { "en": "Home bakery", "ru": "Домашняя пекарня" }, "style": { "en": "Hand-drawn pastel", "ru": "Рисованная пастель" }, "stack": ["Tailwind CSS", "Alpine.js"], "fonts": ["Caveat", "Nunito"] },
-    { "id": "09-esports-club", "status": "planned", "name": "", "kind": { "en": "Esports club", "ru": "Киберспорт-клуб" }, "style": { "en": "Game HUD", "ru": "Игровой HUD" }, "stack": ["React", "Three.js (R3F)"], "fonts": ["Russo One", "Exo 2"] },
-    { "id": "10-yoga-wellness", "status": "planned", "name": "", "kind": { "en": "Yoga & wellness", "ru": "Йога и велнес" }, "style": { "en": "Soft organic", "ru": "Мягкая органика" }, "stack": ["Astro", "Tailwind CSS"], "fonts": ["Lora", "Raleway"] },
-    { "id": "11-online-course", "status": "planned", "name": "", "kind": { "en": "Online course", "ru": "Онлайн-курс" }, "style": { "en": "Playful blocks", "ru": "Игровые блоки" }, "stack": ["Vue 3", "Vite"], "fonts": ["Comfortaa", "Nunito"] },
-    { "id": "12-finance-app", "status": "planned", "name": "", "kind": { "en": "Personal finance app", "ru": "Приложение финансов" }, "style": { "en": "Dark glass", "ru": "Тёмное стекло" }, "stack": ["React", "Tailwind CSS", "Recharts"], "fonts": ["Manrope"] },
-    { "id": "13-fashion-lookbook", "status": "planned", "name": "", "kind": { "en": "Fashion brand", "ru": "Модный бренд" }, "style": { "en": "Magazine lookbook", "ru": "Журнальный лукбук" }, "stack": ["Next.js"], "fonts": ["Prata", "Tenor Sans"] },
-    {
-      "id": "14-fine-dining", "status": "ready",
-      "name": "Ombre", "kind": { "en": "Fine-dining restaurant", "ru": "Ресторан высокой кухни" },
-      "style": { "en": "Dark luxury, candlelight", "ru": "Тёмная роскошь, свет свечи" },
-      "stack": ["HTML", "CSS", "GSAP + ScrollTrigger"],
-      "fonts": ["Yeseva One", "Spectral"],
-      "palette": { "ink": "#0e0b08", "cream": "#efe6d6", "gold": "#c8a46a", "oxblood": "#5a1a17" },
-      "signature": { "en": "Pinned tasting menu: a sticky photo and roman numeral change with every course you scroll past", "ru": "Закреплённое дегустационное меню: фото и римская цифра меняются на каждом блюде при прокрутке" },
-      "blocks": ["split navigation with centered logo", "full-bleed hero with line reveal", "word-by-word quote reveal", "drop-cap story columns", "pinned tasting menu", "chef portrait clip reveal", "count-up stats", "asymmetric parallax gallery", "press quotes", "hours table", "footer"],
-      "idea": { "en": "A dining room lit by one flame. Near-black warm background, cream type, gold used like a candle — rarely and only where the eye should land.", "ru": "Зал, освещённый одним пламенем. Почти чёрный тёплый фон, кремовый текст, золото как свеча — редко и только там, куда должен упасть взгляд." },
-      "rules": {
-        "en": ["All photos pass through one CSS filter (`--grade`) so any stock image matches the mood.", "Gold is for numbers, eyebrows and links only — never for large fills.", "Roman numerals number the sections and courses.", "Motion is slow (1–2.6 s) and eased with expo/power curves; nothing bounces.", "Without GSAP or with reduced motion the page must remain complete."],
-        "ru": ["Все фото проходят через один CSS-фильтр (`--grade`), поэтому любой сток попадает в настроение.", "Золото — только для цифр, надзаголовков и ссылок, никогда для больших заливок.", "Секции и блюда нумеруются римскими цифрами.", "Движение медленное (1–2,6 с) с expo/power-кривыми; ничего не прыгает.", "Без GSAP или при reduced motion страница должна оставаться полной."]
+      "style": {
+        "en": "Warm paper editorial",
+        "ru": "Тёплая бумага, editorial"
       },
-      "files": { "content.js": "courses with photos + Russian copy (English lives in the HTML)", "main.js": "language switch, menu sync, GSAP choreography with no-GSAP fallback", "styles.css": "tokens at the top", "index.html": "page skeleton and English copy" },
-      "run": ["open index.html   # or any static server: npx serve ."]
+      "stack": [
+        "Astro 7",
+        "Vanilla TS"
+      ],
+      "fonts": [
+        "Playfair Display",
+        "Manrope"
+      ],
+      "palette": {
+        "paper": "#f3ead8",
+        "ink": "#2a1d14",
+        "terra": "#c4572e",
+        "rule": "#cbb999"
+      },
+      "signature": {
+        "en": "Menu whose rows draw a hand-made line illustration on hover + a working pour-over brew timer",
+        "ru": "Меню, строки которого рисуют линейную иллюстрацию при наведении, + рабочий таймер заваривания пуровера"
+      },
+      "blocks": [
+        "newspaper masthead",
+        "editorial hero with animated line drawing",
+        "coffee bag label card",
+        "pull quote + drop-cap columns",
+        "menu with dotted leaders and drawing frame",
+        "brew timer with steps",
+        "hours table",
+        "colophon footer"
+      ],
+      "idea": {
+        "en": "A small-press magazine about coffee. Warm paper, espresso-brown ink, one terracotta accent, Playfair italics and hand-drawn line art instead of photos.",
+        "ru": "Маленький журнал о кофе. Тёплая бумага, коричневые чернила эспрессо, один терракотовый акцент, курсив Playfair и линейные рисунки вместо фото."
+      },
+      "rules": {
+        "en": [
+          "No photos — illustrations are single-stroke SVG paths drawn with stroke-dashoffset.",
+          "Terracotta marks only kickers, prices of attention and the last strokes of drawings.",
+          "Section titles: small `Nº N` label + big Playfair title.",
+          "Text in both languages is rendered by `<T>`; CSS shows one — never duplicate markup by hand.",
+          "Hairline rules and double rules separate sections like a printed page."
+        ],
+        "ru": [
+          "Без фото — иллюстрации из одиночных SVG-линий, рисуемых через stroke-dashoffset.",
+          "Терракота только для надзаголовков и последних штрихов рисунков.",
+          "Заголовки секций: маленькая метка `Nº N` + крупный Playfair.",
+          "Текст на двух языках выводит компонент `<T>`; CSS показывает один — не дублируйте разметку вручную.",
+          "Тонкие и двойные линейки разделяют секции, как в печатном издании."
+        ]
+      },
+      "files": {
+        "src/content.ts": "all copy (EN + RU), menu, roast, brew steps",
+        "src/pages/index.astro": "page markup + small client script (lang, menu, timer)",
+        "src/components/Illo.astro": "line illustrations (add your own paths)",
+        "src/components/T.astro": "bilingual text helper",
+        "src/styles/global.css": "tokens at the top"
+      },
+      "run": [
+        "npm install          # Node 22.23+ (Astro 7)",
+        "npm run dev",
+        "npm run build   # ./dist"
+      ]
     },
-    { "id": "15-eco-nonprofit", "status": "planned", "name": "", "kind": { "en": "Eco nonprofit", "ru": "Эко-НКО" }, "style": { "en": "Earthy craft", "ru": "Земляные тона, крафт" }, "stack": ["Astro"], "fonts": ["Literata", "Golos Text"] },
-    { "id": "16-oss-docs", "status": "planned", "name": "", "kind": { "en": "Open-source library", "ru": "Open-source библиотека" }, "style": { "en": "Clean docs", "ru": "Чистая документация" }, "stack": ["Astro", "MDX"], "fonts": ["Inter", "Fira Code"] },
-    { "id": "17-podcast", "status": "planned", "name": "", "kind": { "en": "Podcast", "ru": "Подкаст" }, "style": { "en": "Bold color blocks", "ru": "Крупные цветные плашки" }, "stack": ["SvelteKit"], "fonts": ["Unbounded", "Manrope"] },
-    { "id": "18-space-museum", "status": "planned", "name": "", "kind": { "en": "Space museum", "ru": "Музей космоса" }, "style": { "en": "WebGL starfield", "ru": "WebGL, звёздное небо" }, "stack": ["HTML", "Three.js"], "fonts": ["Exo 2", "PT Sans"] },
-    { "id": "19-barbershop", "status": "planned", "name": "", "kind": { "en": "Barbershop / tattoo", "ru": "Барбершоп / тату" }, "style": { "en": "Vintage poster", "ru": "Винтажный плакат" }, "stack": ["Tailwind CSS", "Alpine.js"], "fonts": ["Oswald", "Old Standard TT"] },
-    { "id": "20-ai-startup", "status": "planned", "name": "", "kind": { "en": "AI startup", "ru": "ИИ-стартап" }, "style": { "en": "Shader gradient", "ru": "Шейдерный градиент" }, "stack": ["Next.js", "Tailwind CSS"], "fonts": ["Inter Tight", "JetBrains Mono"] },
-    { "id": "21-tech-conference", "status": "planned", "name": "", "kind": { "en": "Tech conference", "ru": "IT-конференция" }, "style": { "en": "Acid poster grid", "ru": "Кислотная плакатная сетка" }, "stack": ["React", "Vite"], "fonts": ["Montserrat Alternates", "Inter"] },
-    { "id": "22-interior-studio", "status": "planned", "name": "", "kind": { "en": "Interior studio", "ru": "Студия интерьеров" }, "style": { "en": "Japandi", "ru": "Japandi" }, "stack": ["Nuxt 3"], "fonts": ["Cormorant", "Manrope"] },
-    { "id": "23-blog-newsletter", "status": "planned", "name": "", "kind": { "en": "Blog & newsletter", "ru": "Блог и рассылка" }, "style": { "en": "Reading-first", "ru": "Для чтения" }, "stack": ["Astro", "MDX"], "fonts": ["Literata", "Inter"] },
-    { "id": "24-pixel-game", "status": "planned", "name": "", "kind": { "en": "Indie game", "ru": "Инди-игра" }, "style": { "en": "8-bit pixel", "ru": "Пиксель-арт, 8 бит" }, "stack": ["HTML", "Canvas"], "fonts": ["Press Start 2P", "Pixelify Sans"] }
+    {
+      "id": "04-brutalist-architecture",
+      "status": "ready",
+      "name": "MASSA",
+      "kind": {
+        "en": "Architecture studio",
+        "ru": "Архитектурное бюро"
+      },
+      "style": {
+        "en": "Brutalism",
+        "ru": "Брутализм"
+      },
+      "stack": [
+        "HTML",
+        "CSS",
+        "GSAP + ScrollTrigger"
+      ],
+      "fonts": [
+        "Dela Gothic One",
+        "Inter Tight"
+      ],
+      "palette": {
+        "concrete": "#c9c7c1",
+        "ink": "#0a0a0a",
+        "yellow": "#ffd400",
+        "paper": "#f4f2ec"
+      },
+      "signature": {
+        "en": "Pinned horizontal project scroll with generated isometric massing models — no images at all",
+        "ru": "Закреплённая горизонтальная прокрутка проектов с генерируемыми изометрическими моделями зданий — без единой картинки"
+      },
+      "blocks": [
+        "boxed header with live city clock",
+        "hero with giant type + isometric model",
+        "marquee tape",
+        "horizontal pinned project cards",
+        "index table with cursor-follow preview",
+        "ethos list on black",
+        "stats with yellow cell",
+        "giant email link",
+        "footer"
+      ],
+      "idea": {
+        "en": "Raw concrete on screen. Thick black rules, a grid you can see, one safety-yellow accent, and buildings drawn as massing models like on a competition board.",
+        "ru": "Сырой бетон на экране. Толстые чёрные линии, видимая сетка, один сигнально-жёлтый акцент и здания, нарисованные объёмными моделями, как на конкурсном планшете."
+      },
+      "rules": {
+        "en": [
+          "Borders are 3px solid ink; hairlines are 1px. No radius, no soft shadow (only hard 8px offset).",
+          "Yellow marks one thing per screen: logo, model accent, hover row, last stat.",
+          "Display type is Dela Gothic One, always uppercase.",
+          "Buildings are data: `[x, y, z, w, d, h, accent]` boxes rendered by massing.js.",
+          "Without GSAP the project strip becomes a native horizontal scroller."
+        ],
+        "ru": [
+          "Рамки 3px сплошные, тонкие линии 1px. Без скруглений и мягких теней (только жёсткий сдвиг 8px).",
+          "Жёлтым отмечается одна вещь на экран: логотип, акцент модели, строка при наведении, последняя цифра.",
+          "Крупный шрифт — Dela Gothic One, всегда капсом.",
+          "Здания — это данные: блоки `[x, y, z, w, d, h, accent]`, их рисует massing.js.",
+          "Без GSAP лента проектов становится обычной горизонтальной прокруткой."
+        ]
+      },
+      "files": {
+        "content.js": "projects (with massing boxes), ethos, all copy (EN + RU)",
+        "massing.js": "isometric SVG renderer",
+        "main.js": "rendering, language, clock, GSAP choreography",
+        "styles.css": "tokens at the top"
+      },
+      "run": [
+        "open index.html   # or any static server: npx serve ."
+      ]
+    },
+    {
+      "id": "05-neon-festival",
+      "status": "ready",
+      "name": "Neon Bloom",
+      "kind": {
+        "en": "Music festival",
+        "ru": "Музыкальный фестиваль"
+      },
+      "style": {
+        "en": "Neon Y2K, chrome",
+        "ru": "Неон Y2K, хром"
+      },
+      "stack": [
+        "React 19",
+        "Vite",
+        "Motion"
+      ],
+      "fonts": [
+        "Unbounded",
+        "Rubik"
+      ],
+      "palette": {
+        "bg": "#0a0614",
+        "pink": "#ff2bd6",
+        "lime": "#c6ff00",
+        "cyan": "#00e5ff",
+        "chrome": "#dcd6ea"
+      },
+      "signature": {
+        "en": "Live audio visualizer — a tiny Web Audio synth drawn as a radial spectrum, no audio files",
+        "ru": "Живой визуализатор звука — маленький синтезатор на Web Audio, нарисованный радиальным спектром, без аудиофайлов"
+      },
+      "blocks": [
+        "floating pill nav",
+        "chrome letter-by-letter title",
+        "countdown",
+        "audio visualizer",
+        "rotated marquee",
+        "lineup with day tabs and stage filter",
+        "stage cards",
+        "interactive site map",
+        "add-to-calendar (.ics)",
+        "FAQ accordion",
+        "outlined giant footer"
+      ],
+      "idea": {
+        "en": "A 2001 CD-ROM sleeve that learned motion design. Chrome type, acid colors, stickers and sparkles on a deep violet night.",
+        "ru": "Обложка CD-диска 2001 года, освоившая моушн-дизайн. Хромированный шрифт, кислотные цвета, стикеры и звёздочки на глубокой фиолетовой ночи."
+      },
+      "rules": {
+        "en": [
+          "Three neon colors map to three stages — keep that mapping everywhere (chips, cards, map).",
+          "Headings are Unbounded 900 with tight tracking; body is Rubik.",
+          "Chrome gradient is reserved for the hero title.",
+          "Shapes are pills and 28px cards; stickers may rotate, layout grids may not.",
+          "Every animation is a spring or a short fade; respect reduced motion."
+        ],
+        "ru": [
+          "Три неоновых цвета = три сцены — держите это соответствие везде (чипы, карточки, карта).",
+          "Заголовки — Unbounded 900 с плотным трекингом; текст — Rubik.",
+          "Хромированный градиент только для заголовка первого экрана.",
+          "Формы — пилюли и карточки 28px; стикеры могут быть повёрнуты, сетка — нет.",
+          "Анимации — пружины или короткие проявления; уважайте reduced motion."
+        ]
+      },
+      "files": {
+        "src/content.js": "festival data, lineup, map spots, all copy (EN + RU)",
+        "src/App.jsx": "page sections as components",
+        "src/Visualizer.jsx": "Web Audio synth + canvas spectrum",
+        "src/styles.css": "tokens at the top, then sections"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
+      ]
+    },
+    {
+      "id": "06-cyber-security",
+      "status": "ready",
+      "name": "Bastion",
+      "kind": {
+        "en": "Security consultancy",
+        "ru": "ИБ-консалтинг"
+      },
+      "style": {
+        "en": "Dark grid, cyan",
+        "ru": "Тёмная сетка, циан"
+      },
+      "stack": [
+        "Next.js 16",
+        "Tailwind CSS 4",
+        "TypeScript"
+      ],
+      "fonts": [
+        "Tektur",
+        "Inter"
+      ],
+      "palette": {
+        "void": "#05080d",
+        "panel": "#0b121b",
+        "cyan": "#2de2e6",
+        "alert": "#ff4d5e",
+        "warn": "#ffb547",
+        "ok": "#3ddc97"
+      },
+      "signature": {
+        "en": "Simulated attack-surface scanner: type a domain, watch six checks resolve to PASS/WARN/FAIL and an exposure score (no network requests)",
+        "ru": "Симуляция проверки периметра: вводите домен и смотрите, как шесть проверок получают PASS/WARN/FAIL и индекс открытости (без сетевых запросов)"
+      },
+      "blocks": [
+        "header with 24/7 incident button",
+        "blueprint-grid hero with scan line",
+        "scanner widget",
+        "certifications strip",
+        "services grid",
+        "engagement timeline",
+        "severity report chart",
+        "live event feed",
+        "case cards",
+        "incident CTA band",
+        "footer"
+      ],
+      "idea": {
+        "en": "A calm SOC screen at 3 am. Near-black blue, one cyan for signal, red only for real danger, clipped HUD corners and monospace telemetry.",
+        "ru": "Спокойный экран SOC в 3 часа ночи. Почти чёрный синий, один циан для сигнала, красный только для реальной опасности, срезанные углы HUD и моноширинная телеметрия."
+      },
+      "rules": {
+        "en": [
+          "Cyan = interactive/signal, red = danger/incident, amber = warning, green = passed. Never decorative.",
+          "Panels use the `.cut` clipped-corner shape; no rounded corners.",
+          "Headings are Tektur; telemetry and labels are monospace.",
+          "The scanner must stay a simulation — never send the typed domain anywhere.",
+          "Motion is functional: scan line, feed ticker, progress bars."
+        ],
+        "ru": [
+          "Циан = интерактив/сигнал, красный = опасность/инцидент, янтарный = предупреждение, зелёный = пройдено. Никогда не для украшения.",
+          "Панели — форма `.cut` со срезанными углами; без скруглений.",
+          "Заголовки — Tektur; телеметрия и подписи — моноширинные.",
+          "Сканер остаётся симуляцией — введённый домен никуда не отправляется.",
+          "Движение функциональное: линия сканирования, лента событий, прогресс-бары."
+        ]
+      },
+      "files": {
+        "lib/content.ts": "all copy (EN + RU), scan results, feed lines",
+        "app/page.tsx": "sections and the Scanner component",
+        "app/globals.css": "tokens in Tailwind `@theme` + HUD utilities",
+        "app/layout.tsx": "fonts and metadata"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # static export to ./out"
+      ]
+    },
+    {
+      "id": "07-photographer",
+      "status": "ready",
+      "name": "Ines Varo",
+      "kind": {
+        "en": "Photographer",
+        "ru": "Фотограф"
+      },
+      "style": {
+        "en": "Airy minimal",
+        "ru": "Воздушный минимализм"
+      },
+      "stack": [
+        "SvelteKit 3",
+        "Svelte 5"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost"
+      ],
+      "palette": {
+        "bg": "#f7f6f2",
+        "ink": "#1b1b1b",
+        "muted": "#8b8a85",
+        "line": "#dddbd3",
+        "night": "#0f0f0e"
+      },
+      "signature": {
+        "en": "Masonry gallery with series filter and a keyboard/swipe lightbox showing EXIF",
+        "ru": "Masonry-галерея с фильтром серий и лайтбоксом (клавиатура/свайп) с данными EXIF"
+      },
+      "blocks": [
+        "minimal header",
+        "name + crossfading hero slideshow",
+        "series tabs with counts",
+        "masonry grid with hover captions",
+        "lightbox with EXIF, arrows, Esc, swipe",
+        "about with portrait, clients, exhibitions",
+        "centered contact",
+        "footer"
+      ],
+      "idea": {
+        "en": "A gallery wall with nothing on it but the work. Off-white space, thin light serif, small spaced capitals — the photos supply all the color.",
+        "ru": "Стена галереи, на которой нет ничего, кроме работ. Тёплый белый, тонкая светлая антиква, мелкие разреженные капители — весь цвет дают фотографии."
+      },
+      "rules": {
+        "en": [
+          "The interface has no color of its own — photographs are the only color.",
+          "Cormorant Garamond Light for names and titles, Jost for UI in small spaced caps.",
+          "Lots of air: generous padding, 1px hairlines only.",
+          "Lightbox must work with keyboard (← → Esc) and swipe.",
+          "Reserve image space with aspect-ratio to avoid layout shift."
+        ],
+        "ru": [
+          "У интерфейса нет своего цвета — цвет дают только фотографии.",
+          "Cormorant Garamond Light для имён и заголовков, Jost для интерфейса мелкими разреженными капителями.",
+          "Много воздуха: щедрые отступы, только линии 1px.",
+          "Лайтбокс работает с клавиатуры (← → Esc) и свайпом.",
+          "Резервируйте место под фото через aspect-ratio, чтобы не прыгала вёрстка."
+        ]
+      },
+      "files": {
+        "src/lib/content.js": "photos (Unsplash ids, ratio, EXIF), series, all copy (EN + RU)",
+        "src/routes/+page.svelte": "the whole page and lightbox",
+        "src/app.css": "tokens at the top",
+        "vite.config.js": "SvelteKit 3 config lives in the Vite plugin"
+      },
+      "run": [
+        "npm install          # Node 22.17+",
+        "npm run dev",
+        "npm run build   # ./build"
+      ]
+    },
+    {
+      "id": "08-bakery",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Home bakery",
+        "ru": "Домашняя пекарня"
+      },
+      "style": {
+        "en": "Hand-drawn pastel",
+        "ru": "Рисованная пастель"
+      },
+      "stack": [
+        "Tailwind CSS",
+        "Alpine.js"
+      ],
+      "fonts": [
+        "Caveat",
+        "Nunito"
+      ]
+    },
+    {
+      "id": "09-esports-club",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Esports club",
+        "ru": "Киберспорт-клуб"
+      },
+      "style": {
+        "en": "Game HUD",
+        "ru": "Игровой HUD"
+      },
+      "stack": [
+        "React",
+        "Three.js (R3F)"
+      ],
+      "fonts": [
+        "Russo One",
+        "Exo 2"
+      ]
+    },
+    {
+      "id": "10-yoga-wellness",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Yoga & wellness",
+        "ru": "Йога и велнес"
+      },
+      "style": {
+        "en": "Soft organic",
+        "ru": "Мягкая органика"
+      },
+      "stack": [
+        "Astro",
+        "Tailwind CSS"
+      ],
+      "fonts": [
+        "Lora",
+        "Raleway"
+      ]
+    },
+    {
+      "id": "11-online-course",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Online course",
+        "ru": "Онлайн-курс"
+      },
+      "style": {
+        "en": "Playful blocks",
+        "ru": "Игровые блоки"
+      },
+      "stack": [
+        "Vue 3",
+        "Vite"
+      ],
+      "fonts": [
+        "Comfortaa",
+        "Nunito"
+      ]
+    },
+    {
+      "id": "12-finance-app",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Personal finance app",
+        "ru": "Приложение финансов"
+      },
+      "style": {
+        "en": "Dark glass",
+        "ru": "Тёмное стекло"
+      },
+      "stack": [
+        "React",
+        "Tailwind CSS",
+        "Recharts"
+      ],
+      "fonts": [
+        "Manrope"
+      ]
+    },
+    {
+      "id": "13-fashion-lookbook",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Fashion brand",
+        "ru": "Модный бренд"
+      },
+      "style": {
+        "en": "Magazine lookbook",
+        "ru": "Журнальный лукбук"
+      },
+      "stack": [
+        "Next.js"
+      ],
+      "fonts": [
+        "Prata",
+        "Tenor Sans"
+      ]
+    },
+    {
+      "id": "14-fine-dining",
+      "status": "ready",
+      "name": "Ombre",
+      "kind": {
+        "en": "Fine-dining restaurant",
+        "ru": "Ресторан высокой кухни"
+      },
+      "style": {
+        "en": "Dark luxury, candlelight",
+        "ru": "Тёмная роскошь, свет свечи"
+      },
+      "stack": [
+        "HTML",
+        "CSS",
+        "GSAP + ScrollTrigger"
+      ],
+      "fonts": [
+        "Yeseva One",
+        "Spectral"
+      ],
+      "palette": {
+        "ink": "#0e0b08",
+        "cream": "#efe6d6",
+        "gold": "#c8a46a",
+        "oxblood": "#5a1a17"
+      },
+      "signature": {
+        "en": "Pinned tasting menu: a sticky photo and roman numeral change with every course you scroll past",
+        "ru": "Закреплённое дегустационное меню: фото и римская цифра меняются на каждом блюде при прокрутке"
+      },
+      "blocks": [
+        "split navigation with centered logo",
+        "full-bleed hero with line reveal",
+        "word-by-word quote reveal",
+        "drop-cap story columns",
+        "pinned tasting menu",
+        "chef portrait clip reveal",
+        "count-up stats",
+        "asymmetric parallax gallery",
+        "press quotes",
+        "hours table",
+        "footer"
+      ],
+      "idea": {
+        "en": "A dining room lit by one flame. Near-black warm background, cream type, gold used like a candle — rarely and only where the eye should land.",
+        "ru": "Зал, освещённый одним пламенем. Почти чёрный тёплый фон, кремовый текст, золото как свеча — редко и только там, куда должен упасть взгляд."
+      },
+      "rules": {
+        "en": [
+          "All photos pass through one CSS filter (`--grade`) so any stock image matches the mood.",
+          "Gold is for numbers, eyebrows and links only — never for large fills.",
+          "Roman numerals number the sections and courses.",
+          "Motion is slow (1–2.6 s) and eased with expo/power curves; nothing bounces.",
+          "Without GSAP or with reduced motion the page must remain complete."
+        ],
+        "ru": [
+          "Все фото проходят через один CSS-фильтр (`--grade`), поэтому любой сток попадает в настроение.",
+          "Золото — только для цифр, надзаголовков и ссылок, никогда для больших заливок.",
+          "Секции и блюда нумеруются римскими цифрами.",
+          "Движение медленное (1–2,6 с) с expo/power-кривыми; ничего не прыгает.",
+          "Без GSAP или при reduced motion страница должна оставаться полной."
+        ]
+      },
+      "files": {
+        "content.js": "courses with photos + Russian copy (English lives in the HTML)",
+        "main.js": "language switch, menu sync, GSAP choreography with no-GSAP fallback",
+        "styles.css": "tokens at the top",
+        "index.html": "page skeleton and English copy"
+      },
+      "run": [
+        "open index.html   # or any static server: npx serve ."
+      ]
+    },
+    {
+      "id": "15-eco-nonprofit",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Eco nonprofit",
+        "ru": "Эко-НКО"
+      },
+      "style": {
+        "en": "Earthy craft",
+        "ru": "Земляные тона, крафт"
+      },
+      "stack": [
+        "Astro"
+      ],
+      "fonts": [
+        "Literata",
+        "Golos Text"
+      ]
+    },
+    {
+      "id": "16-oss-docs",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Open-source library",
+        "ru": "Open-source библиотека"
+      },
+      "style": {
+        "en": "Clean docs",
+        "ru": "Чистая документация"
+      },
+      "stack": [
+        "Astro",
+        "MDX"
+      ],
+      "fonts": [
+        "Inter",
+        "Fira Code"
+      ]
+    },
+    {
+      "id": "17-podcast",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Podcast",
+        "ru": "Подкаст"
+      },
+      "style": {
+        "en": "Bold color blocks",
+        "ru": "Крупные цветные плашки"
+      },
+      "stack": [
+        "SvelteKit"
+      ],
+      "fonts": [
+        "Unbounded",
+        "Manrope"
+      ]
+    },
+    {
+      "id": "18-space-museum",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Space museum",
+        "ru": "Музей космоса"
+      },
+      "style": {
+        "en": "WebGL starfield",
+        "ru": "WebGL, звёздное небо"
+      },
+      "stack": [
+        "HTML",
+        "Three.js"
+      ],
+      "fonts": [
+        "Exo 2",
+        "PT Sans"
+      ]
+    },
+    {
+      "id": "19-barbershop",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Barbershop / tattoo",
+        "ru": "Барбершоп / тату"
+      },
+      "style": {
+        "en": "Vintage poster",
+        "ru": "Винтажный плакат"
+      },
+      "stack": [
+        "Tailwind CSS",
+        "Alpine.js"
+      ],
+      "fonts": [
+        "Oswald",
+        "Old Standard TT"
+      ]
+    },
+    {
+      "id": "20-ai-startup",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "AI startup",
+        "ru": "ИИ-стартап"
+      },
+      "style": {
+        "en": "Shader gradient",
+        "ru": "Шейдерный градиент"
+      },
+      "stack": [
+        "Next.js",
+        "Tailwind CSS"
+      ],
+      "fonts": [
+        "Inter Tight",
+        "JetBrains Mono"
+      ]
+    },
+    {
+      "id": "21-tech-conference",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Tech conference",
+        "ru": "IT-конференция"
+      },
+      "style": {
+        "en": "Acid poster grid",
+        "ru": "Кислотная плакатная сетка"
+      },
+      "stack": [
+        "React",
+        "Vite"
+      ],
+      "fonts": [
+        "Montserrat Alternates",
+        "Inter"
+      ]
+    },
+    {
+      "id": "22-interior-studio",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Interior studio",
+        "ru": "Студия интерьеров"
+      },
+      "style": {
+        "en": "Japandi",
+        "ru": "Japandi"
+      },
+      "stack": [
+        "Nuxt 3"
+      ],
+      "fonts": [
+        "Cormorant",
+        "Manrope"
+      ]
+    },
+    {
+      "id": "23-blog-newsletter",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Blog & newsletter",
+        "ru": "Блог и рассылка"
+      },
+      "style": {
+        "en": "Reading-first",
+        "ru": "Для чтения"
+      },
+      "stack": [
+        "Astro",
+        "MDX"
+      ],
+      "fonts": [
+        "Literata",
+        "Inter"
+      ]
+    },
+    {
+      "id": "24-pixel-game",
+      "status": "planned",
+      "name": "",
+      "kind": {
+        "en": "Indie game",
+        "ru": "Инди-игра"
+      },
+      "style": {
+        "en": "8-bit pixel",
+        "ru": "Пиксель-арт, 8 бит"
+      },
+      "stack": [
+        "HTML",
+        "Canvas"
+      ],
+      "fonts": [
+        "Press Start 2P",
+        "Pixelify Sans"
+      ]
+    }
   ]
 }

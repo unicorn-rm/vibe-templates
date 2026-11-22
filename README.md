@@ -41,7 +41,15 @@ Most template packs look like the same landing page in different colors. And whe
 <td width="50%" valign="top"><a href="templates/02-terminal-portfolio/README.md"><img src="templates/02-terminal-portfolio/preview.png" alt="Alex Kern" /></a><br /><b>02 · Alex Kern</b> — Retro CRT terminal<br /><sub>HTML · CSS · Vanilla JS · <a href="https://unicorn-rm.github.io/vibe-templates/02-terminal-portfolio/">demo</a></sub></td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="templates/03-coffee-editorial/README.md"><img src="templates/03-coffee-editorial/preview.png" alt="Paper Moon" /></a><br /><b>03 · Paper Moon</b> — Warm paper editorial<br /><sub>Astro 7 · Vanilla TS · <a href="https://unicorn-rm.github.io/vibe-templates/03-coffee-editorial/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/04-brutalist-architecture/README.md"><img src="templates/04-brutalist-architecture/preview.png" alt="MASSA" /></a><br /><b>04 · MASSA</b> — Brutalism<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/04-brutalist-architecture/">demo</a></sub></td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="templates/05-neon-festival/README.md"><img src="templates/05-neon-festival/preview.png" alt="Neon Bloom" /></a><br /><b>05 · Neon Bloom</b> — Neon Y2K, chrome<br /><sub>React 19 · Vite · Motion · <a href="https://unicorn-rm.github.io/vibe-templates/05-neon-festival/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/06-cyber-security/README.md"><img src="templates/06-cyber-security/preview.png" alt="Bastion" /></a><br /><b>06 · Bastion</b> — Dark grid, cyan<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/06-cyber-security/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/07-photographer/README.md"><img src="templates/07-photographer/preview.png" alt="Ines Varo" /></a><br /><b>07 · Ines Varo</b> — Airy minimal<br /><sub>SvelteKit 3 · Svelte 5 · <a href="https://unicorn-rm.github.io/vibe-templates/07-photographer/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/14-fine-dining/README.md"><img src="templates/14-fine-dining/preview.png" alt="Ombre" /></a><br /><b>14 · Ombre</b> — Dark luxury, candlelight<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/14-fine-dining/">demo</a></sub></td>
 </tr>
 </table>
@@ -54,11 +62,11 @@ Most template packs look like the same landing page in different colors. And whe
 |---|---|---|---|---|
 | 01 | [**Gridline** · SaaS landing](templates/01-swiss-saas/README.md) | Swiss grid | Next.js 16, Tailwind CSS 4, TypeScript | Bento grid with live mini-demos (typing command palette, burndown, keycaps) + changelog timeline |
 | 02 | [**Alex Kern** · Developer portfolio](templates/02-terminal-portfolio/README.md) | Retro CRT terminal | HTML, CSS, Vanilla JS | A working command line: help, projects, theme, lang, history, Tab completion |
-| 03 | Specialty coffee <sub>soon</sub> | Warm paper editorial | Astro | — |
-| 04 | Architecture studio <sub>soon</sub> | Brutalism | HTML, GSAP | — |
+| 03 | [**Paper Moon** · Specialty coffee](templates/03-coffee-editorial/README.md) | Warm paper editorial | Astro 7, Vanilla TS | Menu whose rows draw a hand-made line illustration on hover + a working pour-over brew timer |
+| 04 | [**MASSA** · Architecture studio](templates/04-brutalist-architecture/README.md) | Brutalism | HTML, CSS, GSAP + ScrollTrigger | Pinned horizontal project scroll with generated isometric massing models — no images at all |
 | 05 | [**Neon Bloom** · Music festival](templates/05-neon-festival/README.md) | Neon Y2K, chrome | React 19, Vite, Motion | Live audio visualizer — a tiny Web Audio synth drawn as a radial spectrum, no audio files |
-| 06 | Security consultancy <sub>soon</sub> | Dark grid, cyan | Next.js, Tailwind CSS | — |
-| 07 | Photographer <sub>soon</sub> | Airy minimal | SvelteKit | — |
+| 06 | [**Bastion** · Security consultancy](templates/06-cyber-security/README.md) | Dark grid, cyan | Next.js 16, Tailwind CSS 4, TypeScript | Simulated attack-surface scanner: type a domain, watch six checks resolve to PASS/WARN/FAIL and an exposure score (no network requests) |
+| 07 | [**Ines Varo** · Photographer](templates/07-photographer/README.md) | Airy minimal | SvelteKit 3, Svelte 5 | Masonry gallery with series filter and a keyboard/swipe lightbox showing EXIF |
 | 08 | Home bakery <sub>soon</sub> | Hand-drawn pastel | Tailwind CSS, Alpine.js | — |
 | 09 | Esports club <sub>soon</sub> | Game HUD | React, Three.js (R3F) | — |
 | 10 | Yoga & wellness <sub>soon</sub> | Soft organic | Astro, Tailwind CSS | — |

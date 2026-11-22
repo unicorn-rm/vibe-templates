@@ -1,0 +1,40 @@
+---
+// Hand-drawn line illustrations. Paths are "drawn" with stroke-dashoffset via CSS.
+interface Props { name: string; class?: string }
+const { name, class: cls = "" } = Astro.props;
+const P: Record<string, string[]> = {
+  cup: [
+    "M30 52 C30 80 38 96 60 96 C82 96 90 80 90 52 Z",
+    "M90 60 C106 58 108 82 88 82",
+    "M22 104 C40 110 80 110 98 104",
+    "M50 40 C44 30 56 26 50 16", "M66 40 C60 30 72 26 66 16",
+  ],
+  pourover: [
+    "M28 30 L92 30 L68 68 L52 68 Z",
+    "M48 68 L48 74 L72 74 L72 68",
+    "M36 80 L84 80 L84 108 C84 114 36 114 36 108 Z",
+    "M60 6 C58 14 62 18 60 26", "M84 92 C92 92 92 102 84 102",
+  ],
+  bean: [
+    "M60 14 C88 14 98 50 90 76 C82 102 38 106 30 80 C22 54 32 14 60 14 Z",
+    "M58 18 C44 40 76 58 60 102",
+  ],
+  croissant: [
+    "M14 78 C20 50 46 34 60 34 C74 34 100 50 106 78",
+    "M14 78 C26 84 34 80 38 72 C46 80 54 82 60 82 C66 82 74 80 82 72 C86 80 94 84 106 78",
+    "M38 72 C40 56 48 46 60 42", "M82 72 C80 56 72 46 60 42", "M60 42 L60 82",
+  ],
+  cake: [
+    "M20 70 L60 44 L100 70 Z", "M20 70 L20 98 L100 98 L100 70",
+    "M20 84 L100 84", "M56 38 C54 30 64 28 62 22", "M60 44 L60 40",
+  ],
+  leaf: [
+    "M24 96 C24 46 60 18 98 20 C100 60 72 96 24 96 Z",
+    "M24 96 C46 72 66 52 90 30", "M50 70 L42 52", "M64 58 L70 42",
+  ],
+};
+const paths = P[name] ?? P.cup;
+---
+<svg class={`illo ${cls}`} viewBox="0 0 120 120" aria-hidden="true">
+  {paths.map((d) => <path d={d} pathLength="1" />)}
+</svg>

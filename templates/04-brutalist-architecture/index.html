@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MASSA — Architecture in Concrete</title>
+  <meta name="description" content="Brutalist architecture studio template: horizontal project scroll, generated isometric massing models, hover-preview index. HTML, CSS, GSAP." />
+  <meta name="theme-color" content="#c9c7c1" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ffd400'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%230a0a0a'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter+Tight:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="#top">MASSA</a>
+    <nav class="top__nav" aria-label="Primary">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#index" data-i18n="nav.index">Index</a>
+      <a href="#ethos" data-i18n="nav.ethos">Ethos</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <span class="top__clock"><span data-i18n="clock">Berlin</span> <b id="clock">--:--</b></span>
+    <button class="top__lang" id="langBtn" type="button" aria-label="Switch language">RU</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1 class="hero__title">
+        <span class="row" data-i18n="hero.l1">We build</span>
+        <span class="row row--shift" data-i18n="hero.l2">in concrete</span>
+        <span class="row"><span data-i18n="hero.l3">and silence</span><span class="sq" aria-hidden="true"></span></span>
+      </h1>
+      <div class="hero__model" id="heroModel" aria-hidden="true"></div>
+      <dl class="hero__meta">
+        <div><dt data-i18n="hero.founded">Founded</dt><dd>2009</dd></div>
+        <div><dt data-i18n="hero.built">Built</dt><dd>41</dd></div>
+        <div><dt data-i18n="hero.coords">Coordinates</dt><dd>52.52° N · 13.40° E</dd></div>
+      </dl>
+      <p class="hero__lead" data-i18n="hero.lead">MASSA is a studio of eleven architects designing public buildings, housing and ruins-to-be. We believe in heavy walls, honest joints and rooms that stay cool in August.</p>
+    </section>
+
+    <div class="tape" aria-hidden="true"><div class="tape__track" id="tape"></div></div>
+
+    <!-- Horizontal project scroll -->
+    <section class="work" id="work" aria-labelledby="workTitle">
+      <div class="work__pin">
+        <h2 id="workTitle" class="work__title"><span data-i18n="work.title">Selected work</span> <span class="count">/06</span></h2>
+        <div class="work__track" id="workTrack"></div>
+        <div class="work__bar" aria-hidden="true"><span id="workProgress"></span></div>
+      </div>
+    </section>
+
+    <!-- Index with cursor preview -->
+    <section class="index" id="index">
+      <h2 class="h2" data-i18n="index.title">Index</h2>
+      <table class="tbl">
+        <thead><tr><th data-i18n="index.year">Year</th><th data-i18n="index.name">Project</th><th data-i18n="index.type">Type</th><th data-i18n="index.city">City</th><th data-i18n="index.status">Status</th></tr></thead>
+        <tbody id="indexBody"></tbody>
+      </table>
+      <div class="peek" id="peek" aria-hidden="true"></div>
+    </section>
+
+    <section class="ethos" id="ethos">
+      <h2 class="h2" data-i18n="ethos.title">Ethos</h2>
+      <ol class="ethos__list" id="ethos"></ol>
+    </section>
+
+    <section class="nums">
+      <div><b data-count="186000">0</b><span data-i18n="nums.n1">m² built</span></div>
+      <div><b data-count="11">0</b><span data-i18n="nums.n2">architects</span></div>
+      <div><b data-count="0">0</b><span data-i18n="nums.n3">glass towers</span></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <p class="contact__k" data-i18n="contact.k">Commissions, competitions, coffee</p>
+      <a class="contact__mail" href="mailto:office@example.com">office@<br />example.com</a>
+      <div class="contact__cols">
+        <address data-i18n="contact.addr">Hof 3, Brückenstraße 12<br />10179 Berlin</address>
+        <p><a href="tel:+490000000000">+49 000 000 00 00</a><br /><a href="#" data-i18n="contact.press">Press kit ↓</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>© MASSA 2009—2026</span>
+    <span data-i18n="foot.note">Template by vibe-templates · fictional studio · MIT</span>
+    <a href="#top">↑ TOP</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="massing.js"></script>
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

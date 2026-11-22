@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   06 · Cyber Security — design tokens (Tailwind v4 @theme)
+   ========================================================== */
+@theme {
+  --color-void: #05080d;
+  --color-panel: #0b121b;
+  --color-edge: #1a2633;
+  --color-text: #d7e3ee;
+  --color-dim: #7f93a6;
+  --color-cyan: #2de2e6;
+  --color-alert: #ff4d5e;
+  --color-warn: #ffb547;
+  --color-ok: #3ddc97;
+  --font-display: var(--font-tektur), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-void text-text antialiased; }
+  ::selection { @apply bg-cyan text-void; }
+  :focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 2px; }
+}
+
+/* blueprint grid + scan line */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--color-edge) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-edge) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+}
+.scanline { animation: scan 6s linear infinite; }
+@keyframes scan { from { transform: translateY(-100%); } to { transform: translateY(100vh); } }
+
+/* clipped corners — the "HUD panel" shape used everywhere */
+.cut { clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
+
+@keyframes feed { to { transform: translateY(-50%); } }
+.feed { animation: feed 40s linear infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.blink { animation: blink 1s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

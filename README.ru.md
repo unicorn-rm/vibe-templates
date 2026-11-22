@@ -41,7 +41,15 @@
 <td width="50%" valign="top"><a href="templates/02-terminal-portfolio/README.ru.md"><img src="templates/02-terminal-portfolio/preview.png" alt="Alex Kern" /></a><br /><b>02 · Alex Kern</b> — Ретро-терминал<br /><sub>HTML · CSS · Vanilla JS · <a href="https://unicorn-rm.github.io/vibe-templates/02-terminal-portfolio/">demo</a></sub></td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="templates/03-coffee-editorial/README.ru.md"><img src="templates/03-coffee-editorial/preview.png" alt="Paper Moon" /></a><br /><b>03 · Paper Moon</b> — Тёплая бумага, editorial<br /><sub>Astro 7 · Vanilla TS · <a href="https://unicorn-rm.github.io/vibe-templates/03-coffee-editorial/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/04-brutalist-architecture/README.ru.md"><img src="templates/04-brutalist-architecture/preview.png" alt="MASSA" /></a><br /><b>04 · MASSA</b> — Брутализм<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/04-brutalist-architecture/">demo</a></sub></td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="templates/05-neon-festival/README.ru.md"><img src="templates/05-neon-festival/preview.png" alt="Neon Bloom" /></a><br /><b>05 · Neon Bloom</b> — Неон Y2K, хром<br /><sub>React 19 · Vite · Motion · <a href="https://unicorn-rm.github.io/vibe-templates/05-neon-festival/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/06-cyber-security/README.ru.md"><img src="templates/06-cyber-security/preview.png" alt="Bastion" /></a><br /><b>06 · Bastion</b> — Тёмная сетка, циан<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/06-cyber-security/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/07-photographer/README.ru.md"><img src="templates/07-photographer/preview.png" alt="Ines Varo" /></a><br /><b>07 · Ines Varo</b> — Воздушный минимализм<br /><sub>SvelteKit 3 · Svelte 5 · <a href="https://unicorn-rm.github.io/vibe-templates/07-photographer/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/14-fine-dining/README.ru.md"><img src="templates/14-fine-dining/preview.png" alt="Ombre" /></a><br /><b>14 · Ombre</b> — Тёмная роскошь, свет свечи<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/14-fine-dining/">demo</a></sub></td>
 </tr>
 </table>
@@ -54,11 +62,11 @@
 |---|---|---|---|---|
 | 01 | [**Gridline** · Лендинг SaaS](templates/01-swiss-saas/README.ru.md) | Швейцарская сетка | Next.js 16, Tailwind CSS 4, TypeScript | Bento-сетка с живыми мини-демо (палитра команд с печатью, график сгорания, клавиши) + таймлайн изменений |
 | 02 | [**Alex Kern** · Портфолио разработчика](templates/02-terminal-portfolio/README.ru.md) | Ретро-терминал | HTML, CSS, Vanilla JS | Рабочая командная строка: help, projects, theme, lang, history, автодополнение по Tab |
-| 03 | Спешелти-кофейня <sub>скоро</sub> | Тёплая бумага, editorial | Astro | — |
-| 04 | Архитектурное бюро <sub>скоро</sub> | Брутализм | HTML, GSAP | — |
+| 03 | [**Paper Moon** · Спешелти-кофейня](templates/03-coffee-editorial/README.ru.md) | Тёплая бумага, editorial | Astro 7, Vanilla TS | Меню, строки которого рисуют линейную иллюстрацию при наведении, + рабочий таймер заваривания пуровера |
+| 04 | [**MASSA** · Архитектурное бюро](templates/04-brutalist-architecture/README.ru.md) | Брутализм | HTML, CSS, GSAP + ScrollTrigger | Закреплённая горизонтальная прокрутка проектов с генерируемыми изометрическими моделями зданий — без единой картинки |
 | 05 | [**Neon Bloom** · Музыкальный фестиваль](templates/05-neon-festival/README.ru.md) | Неон Y2K, хром | React 19, Vite, Motion | Живой визуализатор звука — маленький синтезатор на Web Audio, нарисованный радиальным спектром, без аудиофайлов |
-| 06 | ИБ-консалтинг <sub>скоро</sub> | Тёмная сетка, циан | Next.js, Tailwind CSS | — |
-| 07 | Фотограф <sub>скоро</sub> | Воздушный минимализм | SvelteKit | — |
+| 06 | [**Bastion** · ИБ-консалтинг](templates/06-cyber-security/README.ru.md) | Тёмная сетка, циан | Next.js 16, Tailwind CSS 4, TypeScript | Симуляция проверки периметра: вводите домен и смотрите, как шесть проверок получают PASS/WARN/FAIL и индекс открытости (без сетевых запросов) |
+| 07 | [**Ines Varo** · Фотограф](templates/07-photographer/README.ru.md) | Воздушный минимализм | SvelteKit 3, Svelte 5 | Masonry-галерея с фильтром серий и лайтбоксом (клавиатура/свайп) с данными EXIF |
 | 08 | Домашняя пекарня <sub>скоро</sub> | Рисованная пастель | Tailwind CSS, Alpine.js | — |
 | 09 | Киберспорт-клуб <sub>скоро</sub> | Игровой HUD | React, Three.js (R3F) | — |
 | 10 | Йога и велнес <sub>скоро</sub> | Мягкая органика | Astro, Tailwind CSS | — |

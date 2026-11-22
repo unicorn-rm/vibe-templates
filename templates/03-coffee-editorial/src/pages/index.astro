@@ -1,0 +1,185 @@
+---
+import "../styles/global.css";
+import T from "../components/T.astro";
+import Illo from "../components/Illo.astro";
+import { brew, foot, hero, masthead, menu, roast, story, visit } from "../content";
+
+const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+---
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paper Moon — Coffee Roasters</title>
+  <meta name="description" content="Warm editorial coffee shop template with hand-drawn menu illustrations and a pour-over brew timer. Built with Astro." />
+  <meta name="theme-color" content="#f3ead8" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%232a1d14'/%3E%3Ccircle cx='21' cy='13' r='9' fill='%23f3ead8'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,800;1,500;1,700&display=swap" rel="stylesheet" />
+  <script is:inline>
+    // pick language before paint: ?lang= → saved → en
+    (() => {
+      let l = new URLSearchParams(location.search).get("lang");
+      try { l = l || localStorage.getItem("vt-lang"); } catch {}
+      document.documentElement.dataset.lang = l === "ru" ? "ru" : "en";
+      document.documentElement.lang = document.documentElement.dataset.lang;
+    })();
+  </script>
+</head>
+<body>
+  <header class="mast">
+    <div class="mast__top wrap">
+      <span><T t={masthead.issue} /></span>
+      <span class="mast__city"><T t={masthead.city} /></span>
+      <button class="lang" id="lang" type="button" aria-label="Switch language"><span data-l="en">RU</span><span data-l="ru">EN</span></button>
+    </div>
+    <a class="mast__name wrap" href="#top">Paper&nbsp;<em>Moon</em></a>
+    <nav class="mast__nav wrap" aria-label="Primary">
+      {masthead.nav.map((n) => <a href={n.href}><T t={n.t} /></a>)}
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero__text">
+        <p class="kicker"><T t={hero.kicker} /></p>
+        <h1><T t={hero.title} /></h1>
+        <p class="hero__lead"><T t={hero.lead} /></p>
+      </div>
+      <figure class="hero__art"><Illo name="pourover" class="big hero-illo" /><figcaption>fig. 1 — V60, 94 °C</figcaption></figure>
+    </section>
+
+    <section class="roast wrap" id="roast">
+      <article class="label">
+        <header class="label__head"><T t={roast.label} /><span>№ 0214</span></header>
+        <h2 class="label__name">{roast.name}</h2>
+        <p class="label__origin"><T t={roast.origin} /></p>
+        <dl class="label__rows">
+          {roast.rows.map(([k, v]) => <div><dt><T t={k} /></dt><dd><T t={v} /></dd></div>)}
+        </dl>
+        <p class="label__notes"><T t={roast.notes} /></p>
+        <div class="label__level">
+          <span><T t={roast.levelLabel} /></span>
+          <span class="beans" aria-label={`${roast.level} / 5`}>{[1, 2, 3, 4, 5].map((i) => <i class={i <= roast.level ? "on" : ""} />)}</span>
+        </div>
+      </article>
+      <div class="roast__story">
+        <blockquote class="pull"><T t={story.quote} /><cite><T t={story.by} /></cite></blockquote>
+        <div class="cols">
+          <p class="drop"><T t={story.p1} /></p>
+          <p><T t={story.p2} /></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu wrap" id="menu">
+      <h2 class="sec-title"><span>Nº&nbsp;2</span><T t={{ en: "The menu", ru: "Меню" }} /></h2>
+      <div class="menu__grid">
+        <div class="menu__lists">
+          {menu.map((group) => (
+            <div class="menu__group">
+              <h3><T t={group.cat} /></h3>
+              <ul>
+                {group.items.map((it) => (
+                  <li data-icon={it.icon} tabindex="0">
+                    <span class="menu__name"><T t={it.n} /></span>
+                    <span class="menu__dots" aria-hidden="true"></span>
+                    <span class="menu__price">€{it.p}</span>
+                    <span class="menu__desc"><T t={it.d} /></span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <aside class="menu__frame" aria-hidden="true">
+          {["pourover", "cup", "bean", "croissant", "cake", "leaf"].map((n) => <Illo name={n} class={`frame-illo${n === "pourover" ? " is-drawn" : ""}`} />)}
+          <span class="menu__hint"><T t={{ en: "hover a line ↖", ru: "наведите на строку ↖" }} /></span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="brew wrap" id="brew">
+      <h2 class="sec-title"><span>Nº&nbsp;3</span><T t={brew.title} /></h2>
+      <p class="brew__sub"><T t={brew.sub} /></p>
+      <div class="brew__box" data-total={brew.total}>
+        <div class="brew__clock"><span id="clock">0:00</span><span class="brew__of">/ {fmt(brew.total)}</span></div>
+        <div class="brew__bar"><span id="bar"></span></div>
+        <ol class="brew__steps">
+          {brew.steps.map((s) => (
+            <li data-at={s.s}><span class="brew__at">{fmt(s.s)}</span><strong><T t={s.t} /></strong><span><T t={s.d} /></span></li>
+          ))}
+        </ol>
+        <div class="brew__btns">
+          <button class="btn" id="start" type="button"><T t={brew.start} /></button>
+          <button class="btn btn--ghost" id="reset" type="button"><T t={brew.reset} /></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit wrap" id="visit">
+      <h2 class="sec-title"><span>Nº&nbsp;4</span><T t={visit.title} /></h2>
+      <div class="visit__grid">
+        <p class="visit__addr"><T t={visit.addr} /></p>
+        <table class="hours"><tbody>{visit.hours.map(([d, h]) => <tr><th><T t={d} /></th><td>{h}</td></tr>)}</tbody></table>
+        <p class="visit__note"><T t={visit.note} /></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <span class="foot__name">Paper <em>Moon</em></span>
+    <span><T t={foot} /></span>
+    <a href="#top">↑</a>
+  </footer>
+
+  <script>
+    // draw the hero illustration once the page is painted
+    requestAnimationFrame(() => setTimeout(() => document.querySelector(".hero-illo")?.classList.add("is-drawn"), 150));
+
+    // language toggle
+    const root = document.documentElement;
+    document.getElementById("lang")!.addEventListener("click", () => {
+      const l = root.dataset.lang === "en" ? "ru" : "en";
+      root.dataset.lang = l; root.lang = l;
+      try { localStorage.setItem("vt-lang", l); } catch {}
+    });
+
+    // menu hover → draw the matching illustration in the frame
+    const frame = document.querySelectorAll<SVGElement>(".frame-illo");
+    const names = ["pourover", "cup", "bean", "croissant", "cake", "leaf"];
+    const show = (icon: string) => frame.forEach((el, i) => el.classList.toggle("is-drawn", names[i] === icon));
+    document.querySelectorAll<HTMLElement>(".menu li").forEach((li) => {
+      const on = () => show(li.dataset.icon!);
+      li.addEventListener("pointerenter", on); li.addEventListener("focus", on);
+    });
+
+    // brew timer
+    const box = document.querySelector<HTMLElement>(".brew__box")!;
+    const total = Number(box.dataset.total);
+    const steps = [...box.querySelectorAll<HTMLElement>(".brew__steps li")];
+    const clock = document.getElementById("clock")!, bar = document.getElementById("bar")!;
+    let t0 = 0, raf = 0, running = false;
+    const paint = (s: number) => {
+      clock.textContent = `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+      bar.style.width = `${Math.min(100, (s / total) * 100)}%`;
+      steps.forEach((li, i) => {
+        const at = Number(li.dataset.at), next = Number(steps[i + 1]?.dataset.at ?? total);
+        li.classList.toggle("is-now", s >= at && s < next && s < total);
+        li.classList.toggle("is-done", s >= next);
+      });
+    };
+    const loop = () => {
+      const s = (performance.now() - t0) / 1000;
+      paint(s);
+      if (s < total) raf = requestAnimationFrame(loop); else running = false;
+    };
+    document.getElementById("start")!.addEventListener("click", () => {
+      if (running) return; running = true; t0 = performance.now(); loop();
+    });
+    document.getElementById("reset")!.addEventListener("click", () => { cancelAnimationFrame(raf); running = false; paint(0); });
+  </script>
+</body>
+</html>
