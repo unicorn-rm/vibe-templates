@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ombre — Fire &amp; Shadow Kitchen</title>
+  <meta name="description" content="Dark luxury fine-dining restaurant template with a pinned tasting menu, parallax gallery and GSAP scroll animations." />
+  <meta name="theme-color" content="#0e0b08" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e0b08'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23c8a46a' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Yeseva+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <nav class="nav__side" aria-label="Primary">
+      <a href="#menu" data-i18n="nav.menu">Menu</a>
+      <a href="#chef" data-i18n="nav.chef">Chef</a>
+    </nav>
+    <a class="nav__logo" href="#top" aria-label="Ombre, home">Ombre<small>MMXIX</small></a>
+    <nav class="nav__side nav__side--r" aria-label="Secondary">
+      <a href="#cellar" data-i18n="nav.cellar">Cellar</a>
+      <a href="#visit" data-i18n="nav.visit">Visit</a>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">RU</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=2000&q=80&auto=format" alt="" fetchpriority="high" />
+      </div>
+      <p class="hero__est" data-i18n="hero.est">Wood fire · Twenty seats · Since 2019</p>
+      <h1 class="hero__title">
+        <span class="line"><span data-i18n="hero.l1">Cooking with</span></span>
+        <span class="line line--i"><em data-i18n="hero.l2">fire &amp; shadow</em></span>
+      </h1>
+      <p class="hero__lead" data-i18n="hero.lead">A seven-course evening built around a single hearth, the northern seasons and very little light.</p>
+      <a class="hero__cue" href="#story"><span data-i18n="hero.cue">Descend</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <!-- STORY -->
+    <section class="story" id="story">
+      <p class="eyebrow" data-i18n="story.eyebrow">I · The idea</p>
+      <blockquote class="story__quote" data-split data-i18n="story.quote">We cook the way our grandparents lit a room: one flame, held close, so you notice everything it touches.</blockquote>
+      <div class="story__cols">
+        <p data-i18n="story.p1">Ombre is a twenty-seat dining room with no gas line. Every plate passes through the hearth, the smoke cupboard or the ember bed before it reaches you.</p>
+        <p data-i18n="story.p2">The menu changes with what the forest, the lake and two small farms give us that week. We write it on Tuesday and burn the draft on Sunday.</p>
+      </div>
+    </section>
+
+    <!-- TASTING MENU (pinned) -->
+    <section class="menu" id="menu" aria-labelledby="menuTitle">
+      <div class="menu__pin">
+        <div class="menu__visual" aria-hidden="true">
+          <div class="menu__num" id="menuNum">I</div>
+          <div class="menu__imgs" id="menuImgs"></div>
+        </div>
+        <div class="menu__list">
+          <p class="eyebrow" data-i18n="menu.eyebrow">II · Tasting menu</p>
+          <h2 id="menuTitle" class="h2" data-i18n="menu.title">Seven courses, one fire</h2>
+          <ol class="courses" id="courses"></ol>
+          <p class="menu__note" data-i18n="menu.note">Vegetarian sequence on request. Menu shown is an example and changes weekly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHEF -->
+    <section class="chef" id="chef">
+      <figure class="chef__img">
+        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=1200&q=80&auto=format" alt="Chef plating a dish under copper lamps" loading="lazy" />
+      </figure>
+      <div class="chef__text">
+        <p class="eyebrow" data-i18n="chef.eyebrow">III · The hand</p>
+        <h2 class="h2" data-i18n="chef.title">Ilya Varga</h2>
+        <p data-i18n="chef.p1">Trained in Copenhagen and Lyon, Ilya came home to cook with the things he grew up foraging. He believes a menu should feel like a walk, not a lecture.</p>
+        <p data-i18n="chef.p2">Before Ombre he spent four years cooking on open fire in a mountain lodge with no electricity after nine in the evening. It shows.</p>
+        <p class="chef__sign">Ilya&nbsp;V.</p>
+      </div>
+    </section>
+
+    <!-- CELLAR stats -->
+    <section class="cellar" id="cellar">
+      <p class="eyebrow" data-i18n="cellar.eyebrow">IV · The cellar</p>
+      <h2 class="h2" data-i18n="cellar.title">Wines that taste of somewhere</h2>
+      <dl class="stats">
+        <div><dt data-count="1240">0</dt><dd data-i18n="cellar.s1">labels, mostly small growers</dd></div>
+        <div><dt data-count="38">0</dt><dd data-i18n="cellar.s2">wines open by the glass</dd></div>
+        <div><dt data-count="7">0</dt><dd data-i18n="cellar.s3">pairings, one per course</dd></div>
+        <div><dt data-count="12">0</dt><dd data-i18n="cellar.s4">alcohol-free ferments</dd></div>
+      </dl>
+    </section>
+
+    <!-- GALLERY parallax -->
+    <section class="gallery" aria-label="Gallery">
+      <figure class="g g--1" data-speed="-12"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&q=80&auto=format" alt="Dark dining room with low lights" loading="lazy" /></figure>
+      <figure class="g g--2" data-speed="10"><img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=1000&q=80&auto=format" alt="Flames rising from a pan in the kitchen" loading="lazy" /></figure>
+      <figure class="g g--3" data-speed="-6"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1000&q=80&auto=format" alt="Hands chopping herbs on a board" loading="lazy" /></figure>
+      <p class="gallery__cap" data-i18n="gallery.cap">The room seats twenty. The kitchen is the room.</p>
+    </section>
+
+    <!-- PRESS -->
+    <section class="press" aria-label="Press">
+      <figure class="press__item">
+        <blockquote data-i18n="press.q1">“The most quietly confident cooking in the north.”</blockquote>
+        <figcaption>The Ember Guide · 2026</figcaption>
+      </figure>
+      <figure class="press__item">
+        <blockquote data-i18n="press.q2">“You leave smelling faintly of birch smoke and wanting to come back.”</blockquote>
+        <figcaption>Northern Table Magazine</figcaption>
+      </figure>
+      <figure class="press__item">
+        <blockquote data-i18n="press.q3">“A dining room that trusts darkness.”</blockquote>
+        <figcaption>City Food Weekly</figcaption>
+      </figure>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" id="visit">
+      <div>
+        <p class="eyebrow" data-i18n="visit.eyebrow">V · Visit</p>
+        <h2 class="h2" data-i18n="visit.title">Find the lantern</h2>
+        <address data-i18n="visit.addr">14 Ember Lane, Old Harbour<br />Look for the iron lantern above a black door.</address>
+        <p><a class="link" href="tel:+10000000000">+1 000 000 00 00</a><br /><a class="link" href="mailto:table@example.com">table@example.com</a></p>
+      </div>
+      <table class="hours">
+        <caption class="sr" data-i18n="visit.hours">Opening hours</caption>
+        <tbody>
+          <tr><th data-i18n="visit.d1">Wednesday — Saturday</th><td>18:30 — 23:00</td></tr>
+          <tr><th data-i18n="visit.d2">Sunday lunch</th><td>12:30 — 16:00</td></tr>
+          <tr><th data-i18n="visit.d3">Monday, Tuesday</th><td data-i18n="visit.closed">Hearth rests</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span class="foot__logo">Ombre</span>
+    <span data-i18n="foot.note">Template · photos from Unsplash · replace with your own</span>
+    <a href="#top" data-i18n="foot.top">Back to the flame ↑</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

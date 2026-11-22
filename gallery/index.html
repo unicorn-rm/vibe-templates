@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>vibe-templates — 24 AI-ready website templates</title>
+  <meta name="description" content="Free, open-source website templates with distinct designs and stacks, built to be remixed by AI. HTML, React, Next.js, Tailwind, Astro, Vue, Svelte, Three.js." />
+  <meta property="og:title" content="vibe-templates" />
+  <meta property="og:description" content="24 free, AI-ready website templates. Different styles, different stacks, EN + RU." />
+  <meta property="og:image" content="banner.png" />
+  <meta name="theme-color" content="#0c0c0c" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c0c0c'/%3E%3Cpath d='M8 9l8 15 8-15' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg: #0c0c0c; --card: #161616; --fg: #f3f3f0; --mute: #8d8d88; --line: #262626; --hi: #f3f3f0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.55 "Manrope", system-ui, sans-serif; }
+    a { color: inherit; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 16px; }
+    header { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 0; }
+    .logo { font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+    .sp { flex: 1; }
+    .btn { border: 1px solid var(--line); border-radius: 999px; padding: .45rem .95rem; background: none; color: var(--fg); font: inherit; font-size: .9rem; cursor: pointer; text-decoration: none; }
+    .btn:hover { border-color: var(--fg); }
+    .hero { padding: 4rem 0 3rem; }
+    h1 { font-size: clamp(2.6rem, 7vw, 6rem); line-height: .95; letter-spacing: -.045em; margin: 0; font-weight: 800; max-width: 14ch; }
+    .lead { color: var(--mute); font-size: 1.15rem; max-width: 52ch; margin: 1.5rem 0 0; }
+    .mono { font: 400 .78rem/1.4 "JetBrains Mono", monospace; color: var(--mute); }
+    .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 2.5rem 0 1.5rem; }
+    .filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; padding-bottom: 5rem; }
+    .card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; text-decoration: none; transition: transform .25s, border-color .25s; }
+    a.card:hover { transform: translateY(-4px); border-color: #555; }
+    .shot { aspect-ratio: 16 / 10; background: #1d1d1d center / cover no-repeat; display: grid; place-items: center; }
+    .shot span { font: 800 3.5rem/1 "Manrope"; color: #2a2a2a; }
+    .meta { padding: 1rem 1.1rem 1.2rem; display: grid; gap: .3rem; }
+    .meta b { font-size: 1.1rem; letter-spacing: -.01em; }
+    .soon { opacity: .55; }
+    .tag { justify-self: start; font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; border: 1px solid var(--line); border-radius: 999px; padding: .15rem .55rem; color: var(--mute); }
+    footer { border-top: 1px solid var(--line); padding: 2rem 0; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    :focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="./">vibe-templates</a>
+      <span class="sp"></span>
+      <button class="btn" id="lang" type="button">RU</button>
+      <a class="btn" href="https://github.com/unicorn-rm/vibe-templates">GitHub ★</a>
+    </header>
+    <section class="hero">
+      <p class="mono" data-t="kicker">open source · MIT · EN + RU</p>
+      <h1 data-t="title">Templates your AI won't flatten.</h1>
+      <p class="lead" data-t="lead">24 website templates with different styles and stacks. Each ships with DESIGN.md and AGENTS.md, so a coding agent keeps the look while making it yours.</p>
+      <div class="filters" id="filters"></div>
+    </section>
+    <main class="grid" id="grid" aria-live="polite"></main>
+    <footer class="mono"><span>© 2026 unicorn-rm · MIT</span><span data-t="foot">Fonts: Google Fonts (OFL). Demo photos: Unsplash.</span></footer>
+  </div>
+  <script>
+    const T = {
+      en: {}, ru: {
+        kicker: "open source · MIT · EN + RU",
+        title: "Шаблоны, которые ИИ не усреднит.",
+        lead: "24 шаблона сайтов с разными стилями и стеками. В каждом есть DESIGN.md и AGENTS.md — ИИ-агент сохранит вид, пока переделывает сайт под вас.",
+        foot: "Шрифты: Google Fonts (OFL). Демо-фото: Unsplash.",
+        all: "Все", ready: "Готовые", soon: "скоро",
+      },
+    };
+    document.querySelectorAll("[data-t]").forEach((el) => (T.en[el.dataset.t] = el.textContent));
+    Object.assign(T.en, { all: "All", ready: "Ready", soon: "soon" });
+    let lang = new URLSearchParams(location.search).get("lang") || (() => { try { return localStorage.getItem("vt-lang"); } catch { return null; } })() || "en";
+    if (!T[lang]) lang = "en";
+    let data = [], filter = "all", base = "./", src = "./";
+
+    async function load() {
+      // On GitHub Pages the gallery sits next to the built templates; locally it lives in /gallery/.
+      for (const [json, b, s] of [["templates.json", "./", "./"], ["../templates.json", "../templates/", "../templates/"]]) {
+        try { const r = await fetch(json); if (r.ok) { data = (await r.json()).templates; base = b; src = s; return; } } catch {}
+      }
+    }
+    function render() {
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = T[lang][el.dataset.t]));
+      document.getElementById("lang").textContent = lang === "en" ? "RU" : "EN";
+      const stacks = [...new Set(data.flatMap((t) => t.stack.map((s) => s.split(" ")[0])))].sort();
+      const f = document.getElementById("filters");
+      f.innerHTML = "";
+      ["all", "ready", ...stacks].forEach((k) => {
+        const b = document.createElement("button");
+        b.className = "btn"; b.type = "button"; b.textContent = T[lang][k] || k;
+        b.setAttribute("aria-pressed", String(filter === k));
+        b.onclick = () => { filter = k; render(); };
+        f.append(b);
+      });
+      const list = data.filter((t) => filter === "all" || (filter === "ready" ? t.status === "ready" : t.stack.some((s) => s.startsWith(filter))));
+      document.getElementById("grid").innerHTML = list.map((t) => {
+        const ready = t.status === "ready";
+        const n = t.id.slice(0, 2);
+        const shot = ready ? `<div class="shot" style="background-image:url('${src}${t.id}/preview.png')"></div>` : `<div class="shot"><span>${n}</span></div>`;
+        const body = `${shot}<div class="meta"><span class="mono">${n} · ${t.stack.join(" · ")}</span><b>${ready ? t.name + " — " : ""}${t.kind[lang]}</b><span class="mono">${t.style[lang]}</span>${ready ? "" : `<span class="tag">${T[lang].soon}</span>`}</div>`;
+        return ready ? `<a class="card" href="${base}${t.id}/${lang === "ru" ? "?lang=ru" : ""}">${body}</a>` : `<div class="card soon">${body}</div>`;
+      }).join("");
+    }
+    document.getElementById("lang").onclick = () => { lang = lang === "en" ? "ru" : "en"; try { localStorage.setItem("vt-lang", lang); } catch {} render(); };
+    load().then(render);
+  </script>
+</body>
+</html>

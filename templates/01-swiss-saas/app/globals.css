@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   01 · Swiss SaaS — design tokens (Tailwind v4 @theme)
+   bg-paper, text-ink, bg-signal, font-mono … are generated from these.
+   ========================================================== */
+@theme {
+  --color-paper: #f2f1ec;
+  --color-paper-2: #e8e6de;
+  --color-ink: #111111;
+  --color-ink-2: #55534d;
+  --color-rule: #d3d0c5;
+  --color-signal: #e8361c;
+  --font-sans: var(--font-onest), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --ease-swiss: cubic-bezier(.2, .8, .2, 1);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-paper text-ink antialiased; }
+  ::selection { @apply bg-signal text-paper; }
+  :focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+}
+
+/* the 12-column hairline grid that shows through the page */
+.grid-lines {
+  background-image: repeating-linear-gradient(to right, var(--color-rule) 0 1px, transparent 1px calc(100% / 12));
+  background-size: 100% 100%;
+}
+
+@keyframes caret { 50% { opacity: 0 } }
+.caret { animation: caret 1s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

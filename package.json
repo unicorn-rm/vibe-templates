@@ -1,0 +1,11 @@
+{
+  "name": "vibe-templates",
+  "private": true,
+  "description": "24 free, open-source, AI-ready website templates — HTML, React, Next.js, Tailwind, Astro, Vue, Svelte, Three.js.",
+  "license": "MIT",
+  "repository": "github:unicorn-rm/vibe-templates",
+  "scripts": {
+    "docs": "node scripts/build-docs.mjs",
+    "gallery": "python3 -m http.server 8402"
+  }
+}

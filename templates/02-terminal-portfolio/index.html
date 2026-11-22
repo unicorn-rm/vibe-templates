@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-theme="green">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alex Kern — Developer Portfolio</title>
+  <meta name="description" content="Retro terminal developer portfolio template with a working command line. Vanilla HTML, CSS and JS." />
+  <meta name="theme-color" content="#070a07" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23070a07'/%3E%3Cpath d='M7 10l6 6-6 6M15 22h10' stroke='%237dff6e' stroke-width='2.5' fill='none'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap&subset=cyrillic" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="bar">
+    <span class="bar__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="bar__title">alex@kern: ~</span>
+    <nav class="bar__nav" aria-label="Sections">
+      <a href="#about" data-i18n="nav.about">about</a>
+      <a href="#projects" data-i18n="nav.projects">projects</a>
+      <a href="#log" data-i18n="nav.log">log</a>
+      <a href="#skills" data-i18n="nav.skills">skills</a>
+      <a href="#contact" data-i18n="nav.contact">contact</a>
+    </nav>
+    <div class="bar__ctl">
+      <button class="chip" id="themeBtn" type="button" aria-label="Switch color theme">[green]</button>
+      <button class="chip" id="langBtn" type="button" aria-label="Switch language">[RU]</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: interactive terminal -->
+    <section class="term" id="term" aria-label="Interactive terminal">
+      <pre class="banner" aria-hidden="true"> _  _______ ____  _   _
+| |/ / ____|  _ \| \ | |
+| ' /|  _| | |_) |  \| |
+| . \| |___|  _ <| |\  |
+|_|\_\_____|_| \_\_| \_|</pre>
+      <div class="term__out" id="out" aria-live="polite"></div>
+      <form class="term__line" id="cmdForm" autocomplete="off">
+        <label for="cmd" class="prompt">alex@kern:~$</label>
+        <input id="cmd" name="cmd" spellcheck="false" autocapitalize="off" aria-label="Type a command" />
+        <span class="caret" aria-hidden="true"></span>
+      </form>
+      <p class="term__hint" data-i18n="hint">Type <kbd>help</kbd> and press Enter · <kbd>Tab</kbd> completes · <kbd>↑</kbd> history</p>
+    </section>
+
+    <!-- ABOUT: man page -->
+    <section class="sec" id="about">
+      <div class="man-head"><span>KERN(1)</span><span data-i18n="about.manual">User Commands</span><span>KERN(1)</span></div>
+      <h2 class="h"><span class="dim">##</span> <span data-i18n="about.name">NAME</span></h2>
+      <p class="ind" data-i18n="about.nameText">alex kern — backend &amp; tooling engineer, builds quiet systems that stay up</p>
+      <h2 class="h"><span class="dim">##</span> <span data-i18n="about.synopsis">SYNOPSIS</span></h2>
+      <p class="ind"><b>kern</b> [--go] [--rust] [--postgres] [--<span data-i18n="about.flag">coffee</span>=<u>double</u>]</p>
+      <h2 class="h"><span class="dim">##</span> <span data-i18n="about.desc">DESCRIPTION</span></h2>
+      <p class="ind" data-i18n="about.descText">Seven years writing services that move money, logs and packets. I like boring architecture, sharp tools and on-call rotations that nobody remembers. Currently building developer tooling and teaching the occasional workshop.</p>
+      <dl class="ind opts">
+        <dt>-l, --location</dt><dd data-i18n="about.loc">Berlin, UTC+1 · remote-friendly</dd>
+        <dt>-s, --status</dt><dd><span class="pulse" aria-hidden="true"></span> <span data-i18n="about.status">open to interesting problems</span></dd>
+        <dt>-v, --version</dt><dd>7.4.2 <span class="dim" data-i18n="about.years">(years in production)</span></dd>
+      </dl>
+    </section>
+
+    <!-- PROJECTS: ls -la -->
+    <section class="sec" id="projects">
+      <p class="cmdline"><span class="prompt">alex@kern:~$</span> ls -la ~/projects</p>
+      <p class="dim" data-i18n="projects.total">total 6 · click a row to read its README</p>
+      <div class="ls" role="list" id="lsList"></div>
+    </section>
+
+    <!-- LOG: git log --graph -->
+    <section class="sec" id="log">
+      <p class="cmdline"><span class="prompt">alex@kern:~$</span> git log --graph --oneline career</p>
+      <ol class="gitlog" id="gitlog"></ol>
+    </section>
+
+    <!-- SKILLS: htop -->
+    <section class="sec" id="skills">
+      <p class="cmdline"><span class="prompt">alex@kern:~$</span> htop --skills</p>
+      <div class="htop" id="htop"></div>
+      <p class="dim htop__foot"><span data-i18n="skills.load">Load average</span>: 0.42 0.37 0.31 · <span data-i18n="skills.tasks">Tasks</span>: 12, 1 running</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec" id="contact">
+      <p class="cmdline"><span class="prompt">alex@kern:~$</span> cat contact.txt</p>
+      <div class="contact">
+        <a class="key" href="mailto:hello@example.com"><span class="key__k">[m]</span> mail <span class="dim">hello@example.com</span></a>
+        <a class="key" href="https://github.com/" rel="noopener" target="_blank"><span class="key__k">[g]</span> github <span class="dim">@alexkern</span></a>
+        <a class="key" href="https://t.me/" rel="noopener" target="_blank"><span class="key__k">[t]</span> telegram <span class="dim">@alexkern</span></a>
+        <a class="key" href="#" id="cvLink"><span class="key__k">[c]</span> <span data-i18n="contact.cv">cv.pdf</span> <span class="dim" data-i18n="contact.cvNote">(replace with yours)</span></a>
+      </div>
+      <p class="dim" data-i18n="contact.keys">Tip: press the letter keys when the terminal is not focused.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>-- INSERT --</span>
+    <span id="uptime">up 00:00:00</span>
+    <span>utf-8 · <span id="footLang">en</span></span>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+/* ==========================================================
+   02 · Terminal Portfolio — design tokens
+   Change these to restyle the whole page.
+   ========================================================== */
+:root {
+  --bg: #070a07;
+  --bg-2: #0d130d;
+  --fg: #b6f5b0;         /* body text */
+  --hi: #7dff6e;         /* phosphor accent */
+  --dim: #4f7a4b;        /* comments, meta */
+  --line: #1c2a1b;
+  --glow: 0 0 6px rgb(125 255 110 / .45);
+  --font: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --fs: clamp(14px, 1.05vw + 8px, 16px);
+  --wrap: 980px;
+}
+[data-theme="amber"] {
+  --bg: #0b0803; --bg-2: #140f06; --fg: #ffd9a0; --hi: #ffb000; --dim: #8a6a33; --line: #2b2110;
+  --glow: 0 0 6px rgb(255 176 0 / .45);
+}
+[data-theme="ice"] {
+  --bg: #05080c; --bg-2: #0a1018; --fg: #cfe8ff; --hi: #6fd3ff; --dim: #4a6a86; --line: #16222f;
+  --glow: 0 0 6px rgb(111 211 255 / .45);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 400 var(--fs)/1.6 var(--font);
+  text-shadow: var(--glow);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--hi); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+::selection { background: var(--hi); color: var(--bg); text-shadow: none; }
+:focus-visible { outline: 1px dashed var(--hi); outline-offset: 3px; }
+.dim { color: var(--dim); text-shadow: none; }
+kbd { border: 1px solid var(--dim); padding: 0 .35em; font: inherit; }
+
+/* CRT overlay: scanlines + vignette + flicker */
+.crt {
+  position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  background:
+    repeating-linear-gradient(to bottom, rgb(0 0 0 / .22) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / .55) 100%);
+  animation: flicker 6s infinite steps(1);
+}
+@keyframes flicker { 0%,100% { opacity: 1 } 47% { opacity: .92 } 48% { opacity: 1 } }
+
+/* Title bar */
+.bar {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding: .6rem max(16px, calc((100vw - var(--wrap)) / 2));
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+.bar__dots { display: flex; gap: 6px; }
+.bar__dots i { width: 10px; height: 10px; border: 1px solid var(--dim); border-radius: 50%; }
+.bar__dots i:first-child { background: var(--hi); border-color: var(--hi); }
+.bar__title { color: var(--dim); text-shadow: none; }
+.bar__nav { display: flex; gap: 1rem; margin-left: auto; }
+.bar__nav a::before { content: "./"; color: var(--dim); text-shadow: none; }
+.bar__ctl { display: flex; gap: .5rem; }
+.chip {
+  font: inherit; color: var(--hi); background: none; border: 0; cursor: pointer; padding: 0;
+  text-shadow: inherit;
+}
+.chip:hover { background: var(--hi); color: var(--bg); text-shadow: none; }
+@media (max-width: 720px) { .bar__nav { order: 3; width: 100%; margin: 0; overflow-x: auto; } }
+
+main { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+
+/* Terminal hero */
+.term {
+  min-height: calc(100svh - 64px);
+  padding: 2.5rem 0 2rem;
+  display: flex; flex-direction: column;
+  cursor: text;
+}
+.banner { color: var(--hi); margin: 0 0 1.2rem; font-size: clamp(9px, 2.4vw, 16px); line-height: 1.15; }
+.term__out { white-space: pre-wrap; word-break: break-word; }
+.term__out .ln { margin: 0; min-height: 1.6em; }
+.term__out .ok { color: var(--hi); }
+.term__out .err { color: #ff6b6b; text-shadow: 0 0 6px rgb(255 107 107 / .4); }
+.term__out .cmd { color: var(--fg); }
+.term__out .cmd::before { content: "alex@kern:~$ "; color: var(--hi); }
+.term__line { display: flex; align-items: center; gap: .6ch; margin-top: .2rem; position: relative; }
+.prompt { color: var(--hi); white-space: nowrap; }
+#cmd {
+  flex: 1; min-width: 0; background: none; border: 0; outline: none; padding: 0;
+  font: inherit; color: var(--fg); text-shadow: inherit; caret-color: transparent;
+}
+.caret {
+  position: absolute; left: var(--caret-x, 0); width: .62em; height: 1.15em;
+  background: var(--hi); box-shadow: var(--glow); animation: blink 1.05s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0 } }
+.term__hint { margin-top: auto; padding-top: 2rem; color: var(--dim); text-shadow: none; }
+
+/* Sections */
+.sec { padding: 4.5rem 0 1rem; border-top: 1px dashed var(--line); }
+.cmdline { margin: 0 0 .8rem; }
+.man-head { display: flex; justify-content: space-between; color: var(--dim); text-shadow: none; margin-bottom: 1.5rem; }
+.h { font-size: 1em; font-weight: 700; margin: 1.4rem 0 .3rem; color: var(--hi); }
+.ind { margin: 0 0 0 4ch; max-width: 70ch; }
+.opts { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 2ch; margin-top: 1rem; }
+.opts dt { color: var(--hi); }
+.opts dd { margin: 0; }
+.pulse { display: inline-block; width: .6em; height: .6em; background: var(--hi); border-radius: 50%; animation: blink 1.4s infinite; }
+@media (max-width: 560px) { .ind { margin-left: 2ch; } .opts { grid-template-columns: 1fr; } .opts dd { margin-bottom: .5rem; } }
+
+/* ls -la */
+.ls { border-top: 1px solid var(--line); }
+.ls__row {
+  display: grid; grid-template-columns: 11ch 6ch 9ch 1fr; gap: 2ch; align-items: baseline;
+  width: 100%; padding: .55rem .5ch; text-align: left;
+  font: inherit; color: inherit; text-shadow: inherit;
+  background: none; border: 0; border-bottom: 1px solid var(--line); cursor: pointer;
+}
+.ls__row:hover, .ls__row[aria-expanded="true"] { background: var(--bg-2); }
+.ls__row:hover .ls__name { text-decoration: underline; }
+.ls__perm, .ls__date { color: var(--dim); text-shadow: none; }
+.ls__size { color: var(--fg); text-align: right; }
+.ls__name { color: var(--hi); }
+.ls__name::after { content: "/"; color: var(--dim); }
+.ls__readme {
+  padding: 1rem 2ch 1.4rem calc(11ch + 2ch + .5ch); border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.ls__readme p { margin: 0 0 .6rem; max-width: 64ch; }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem 1.2ch; color: var(--dim); text-shadow: none; }
+.tags span::before { content: "#"; }
+@media (max-width: 640px) {
+  .ls__row { grid-template-columns: 1fr auto; }
+  .ls__perm, .ls__date { display: none; }
+  .ls__readme { padding-left: 2ch; }
+}
+
+/* git log --graph */
+.gitlog { list-style: none; margin: 0; padding: 0; }
+.gitlog li { display: grid; grid-template-columns: 3ch 8ch 1fr; gap: 1ch; padding: .15rem 0; }
+.gitlog .g { color: var(--hi); }
+.gitlog .sha { color: #e0c46c; text-shadow: none; }
+[data-theme="amber"] .gitlog .sha { color: #ff7a3d; }
+.gitlog .ref { color: var(--bg); background: var(--hi); text-shadow: none; padding: 0 .5ch; margin-right: 1ch; }
+.gitlog .when { color: var(--dim); text-shadow: none; }
+.gitlog .pipe { color: var(--dim); }
+@media (max-width: 560px) { .gitlog li { grid-template-columns: 2ch 1fr; } .gitlog .sha { display: none; } }
+
+/* htop meters */
+.htop { display: grid; grid-template-columns: repeat(2, 1fr); gap: .35rem 4ch; }
+.meter { display: grid; grid-template-columns: 12ch 1fr 5ch; gap: 1ch; align-items: center; }
+.meter__name { color: var(--hi); }
+.meter__bar { color: var(--dim); white-space: nowrap; overflow: hidden; }
+.meter__bar b { color: var(--hi); font-weight: 400; }
+.meter__val { text-align: right; color: var(--dim); text-shadow: none; }
+.htop__foot { margin-top: 1rem; }
+@media (max-width: 720px) { .htop { grid-template-columns: 1fr; } }
+
+/* contact */
+.contact { display: grid; gap: .4rem; margin-bottom: 1.2rem; }
+.key { display: inline-flex; gap: 1.5ch; width: fit-content; }
+.key__k { color: var(--bg); background: var(--hi); padding: 0 .4ch; text-shadow: none; }
+
+.foot {
+  position: sticky; bottom: 0; z-index: 40; margin-top: 5rem;
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: .3rem max(16px, calc((100vw - var(--wrap)) / 2));
+  background: var(--hi); color: var(--bg); text-shadow: none; font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .crt, .caret, .pulse { animation: none; }
+}

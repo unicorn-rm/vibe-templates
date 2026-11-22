@@ -1,0 +1,25 @@
+{
+  "name": "vibe-01-swiss-saas",
+  "version": "1.0.0",
+  "description": "Swiss-grid SaaS landing template \u2014 Next.js, Tailwind CSS v4, TypeScript.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}

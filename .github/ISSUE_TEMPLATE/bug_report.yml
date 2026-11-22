@@ -1,0 +1,21 @@
+name: Bug report
+description: Something looks or works wrong in a template.
+labels: [bug]
+body:
+  - type: dropdown
+    id: template
+    attributes:
+      label: Template
+      options: [01-swiss-saas, 02-terminal-portfolio, 05-neon-festival, 14-fine-dining, other]
+    validations: { required: true }
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Steps, expected vs actual. Screenshots help a lot.
+    validations: { required: true }
+  - type: input
+    id: env
+    attributes:
+      label: Browser / OS / screen width
+      placeholder: Firefox 140, macOS, 390px

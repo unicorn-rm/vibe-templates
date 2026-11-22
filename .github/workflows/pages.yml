@@ -1,0 +1,65 @@
+name: Deploy gallery to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build every template into _site/<id>/
+        env:
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          cp -r gallery/. _site/
+          cp templates.json _site/
+          for dir in templates/*/; do
+            id=$(basename "$dir")
+            echo "::group::$id"
+            if [ -f "$dir/package.json" ]; then
+              (cd "$dir" && npm ci --no-audit --no-fund)
+              if ls "$dir"/next.config.* >/dev/null 2>&1; then
+                (cd "$dir" && BASE_PATH="/$REPO/$id" npm run build)
+                cp -r "$dir/out" "_site/$id"
+              else
+                (cd "$dir" && npm run build)
+                cp -r "$dir/dist" "_site/$id"
+              fi
+            else
+              mkdir -p "_site/$id"
+              cp -r "$dir"/. "_site/$id/"
+            fi
+            cp "$dir/preview.png" "_site/$id/preview.png" 2>/dev/null || true
+            echo "::endgroup::"
+          done
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

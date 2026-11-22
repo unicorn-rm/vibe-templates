@@ -1,0 +1,20 @@
+name: Template proposal
+description: Suggest a new template or style.
+labels: [template-proposal]
+body:
+  - type: input
+    id: niche
+    attributes: { label: Niche, placeholder: "e.g. tattoo studio, climbing gym" }
+    validations: { required: true }
+  - type: textarea
+    id: style
+    attributes:
+      label: Visual direction
+      description: Style, palette, fonts, references (links). How is it different from existing templates?
+    validations: { required: true }
+  - type: input
+    id: stack
+    attributes: { label: Preferred stack, placeholder: "Astro, SvelteKit, plain HTML…" }
+  - type: textarea
+    id: signature
+    attributes: { label: Signature block, description: The one interactive or visual block that makes it memorable. }

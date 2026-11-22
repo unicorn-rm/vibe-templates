@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories: ["/templates/*"]
+    schedule: { interval: monthly }
+    groups:
+      all: { patterns: ["*"] }
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: monthly }
