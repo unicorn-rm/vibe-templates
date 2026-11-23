@@ -1,0 +1,57 @@
+import Install from "../components/Install.astro";
+import RetryFigure from "../components/RetryFigure.astro";
+import Note from "../components/Note.astro";
+
+<h2 id="intro-ru">1 · Введение</h2>
+
+**Ferry** — HTTP-клиент на 2 кБ для браузера и Node. Он хорошо делает четыре вещи: тайм-ауты, повторы с паузами, типизированный JSON и отмену запросов. Перехватчиков, плагинов и магии нет.
+
+<Note>Ferry — обёртка над встроенным `fetch`. Всё, что принимает `fetch`, принимает и Ferry.</Note>
+
+<h2 id="install-ru">2 · Установка</h2>
+
+<Install />
+
+У Ferry нет зависимостей, есть сборки ESM и CommonJS.
+
+<h2 id="start-ru">3 · Быстрый старт</h2>
+
+```ts
+import { ferry } from "ferry-http";
+
+const api = ferry({ base: "https://api.example.com", timeout: 5000 });
+
+const user = await api.get<User>("/users/42");
+await api.post("/orders", { json: { sku: "A-17", qty: 2 } });
+```
+
+Ошибки — это значения, а не сюрпризы: каждый неудачный запрос бросает `FerryError` со `status`, `attempt` и разобранным телом ответа.
+
+<h2 id="retries-ru">4 · Повторы</h2>
+
+По умолчанию Ferry повторяет **идемпотентные** запросы (`GET`, `HEAD`, `PUT`, `DELETE`) при сетевых ошибках и кодах `408, 429, 500, 502, 503, 504`. Пауза каждый раз удваивается, заголовок `Retry-After` учитывается.
+
+<RetryFigure caption="Рис. 4-1 — три неудачные попытки, затем успех. Паузы: 1 с, 2 с, 4 с." />
+
+```ts
+const api = ferry({ retry: { limit: 3, backoff: (n) => 2 ** (n - 1) * 1000 } });
+```
+
+<Note kind="warning">`POST` не повторяется, если не передан заголовок `Idempotency-Key`.</Note>
+
+<h2 id="api-ru">5 · Справочник API</h2>
+
+| Параметр | Тип | По умолчанию | Значение |
+|---|---|---|---|
+| `base` | `string` | `""` | Префикс для каждого пути |
+| `timeout` | `number` | `10000` | Миллисекунды до отмены |
+| `retry.limit` | `number` | `2` | Доп. попытки после первой |
+| `retry.backoff` | `(n) => ms` | `2ⁿ⁻¹ × 1000` | Пауза перед попыткой *n* |
+| `headers` | `HeadersInit` | `{}` | Отправляются с каждым запросом |
+| `signal` | `AbortSignal` | — | Отмена извне |
+
+<h2 id="changelog-ru">6 · Изменения</h2>
+
+- **3.2.0** — `Retry-After` в виде даты тоже разбирается.
+- **3.1.0** — `api.extend()` для клиентов с общими настройками.
+- **3.0.0** — убран Node 16, ошибки содержат разобранное тело.

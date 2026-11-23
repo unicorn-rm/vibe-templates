@@ -58,7 +58,15 @@
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="templates/11-online-course/README.ru.md"><img src="templates/11-online-course/preview.png" alt="SQL in 30 Evenings" /></a><br /><b>11 · SQL in 30 Evenings</b> — Тетрадь в клетку, красная ручка<br /><sub>Vue 3 · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/11-online-course/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/12-finance-app/README.ru.md"><img src="templates/12-finance-app/preview.png" alt="Tally" /></a><br /><b>12 · Tally</b> — Бухгалтерская книга<br /><sub>React 19 · Tailwind CSS 4 · Recharts · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/12-finance-app/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/13-fashion-lookbook/README.ru.md"><img src="templates/13-fashion-lookbook/preview.png" alt="OSTEN" /></a><br /><b>13 · OSTEN</b> — Контактный лист 35 мм на световом столе<br /><sub>Next.js 16 · TypeScript · plain CSS · <a href="https://unicorn-rm.github.io/vibe-templates/13-fashion-lookbook/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/14-fine-dining/README.ru.md"><img src="templates/14-fine-dining/preview.png" alt="Ombre" /></a><br /><b>14 · Ombre</b> — Тёмная роскошь, свет свечи<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/14-fine-dining/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/15-eco-nonprofit/README.ru.md"><img src="templates/15-eco-nonprofit/preview.png" alt="Second Growth" /></a><br /><b>15 · Second Growth</b> — Полевой дневник<br /><sub>Astro 7 · <a href="https://unicorn-rm.github.io/vibe-templates/15-eco-nonprofit/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/16-oss-docs/README.ru.md"><img src="templates/16-oss-docs/preview.png" alt="Ferry" /></a><br /><b>16 · Ferry</b> — Печатный справочник 1980-х<br /><sub>Astro 7 · MDX · <a href="https://unicorn-rm.github.io/vibe-templates/16-oss-docs/">demo</a></sub></td>
 </tr>
 </table>
 <!-- gallery:end -->
@@ -79,11 +87,11 @@
 | 09 | [**NOVA E.C.** · Киберспорт-клуб](templates/09-esports-club/README.ru.md) | Программка футбольного матча | React 19, Three.js (R3F), Vite | 3D-эмалевый герб клуба из выдавленных фигур (без файлов моделей) + кликабельная сетка кубка |
 | 10 | [**Hold Studio** · Йога и велнес](templates/10-yoga-wellness/README.ru.md) | Гимнастическая брошюра 1960-х | Astro 7, Tailwind CSS 4 | Схема-человечек, плавно перетекающий между шестью позами, + дыхательный счётчик 4-4-6 |
 | 11 | [**SQL in 30 Evenings** · Онлайн-курс](templates/11-online-course/README.ru.md) | Тетрадь в клетку, красная ручка | Vue 3, Vite | Квиз, который проверяет красная ручка учителя: галочки, крестики, обведённый верный ответ и оценка в кружке |
-| 12 | Приложение финансов <sub>скоро</sub> | Тёмное стекло | React, Tailwind CSS, Recharts | — |
-| 13 | Модный бренд <sub>скоро</sub> | Журнальный лукбук | Next.js | — |
+| 12 | [**Tally** · Приложение финансов](templates/12-finance-app/README.ru.md) | Бухгалтерская книга | React 19, Tailwind CSS 4, Recharts, Vite | Калькулятор накоплений, который вписывает каждый год строкой в книгу и чертит кривую, как пером на миллиметровке |
+| 13 | [**OSTEN** · Модный бренд](templates/13-fashion-lookbook/README.ru.md) | Контактный лист 35 мм на световом столе | Next.js 16, TypeScript, plain CSS | Лукбук как контактные листы плёнки: чёрно-белые кадры, круги жирным карандашом на отобранных, крестики на отбракованных и круглая лупа, показывающая кадр в цвете |
 | 14 | [**Ombre** · Ресторан высокой кухни](templates/14-fine-dining/README.ru.md) | Тёмная роскошь, свет свечи | HTML, CSS, GSAP + ScrollTrigger | Закреплённое дегустационное меню: фото и римская цифра меняются на каждом блюде при прокрутке |
-| 15 | Эко-НКО <sub>скоро</sub> | Земляные тона, крафт | Astro | — |
-| 16 | Open-source библиотека <sub>скоро</sub> | Чистая документация | Astro, MDX | — |
+| 15 | [**Second Growth** · Эко-НКО](templates/15-eco-nonprofit/README.ru.md) | Полевой дневник | Astro 7 | Годовые кольца как отчёт: одно кольцо на год, ширина — число посаженных деревьев, нажмите на кольцо, чтобы увидеть цифры |
+| 16 | [**Ferry** · Open-source библиотека](templates/16-oss-docs/README.ru.md) | Печатный справочник 1980-х | Astro 7, MDX | Вырубные закладки-индексы по краю страницы, отслеживающие текущую главу, + поиск по ⌘K |
 | 17 | Подкаст <sub>скоро</sub> | Крупные цветные плашки | SvelteKit | — |
 | 18 | Музей космоса <sub>скоро</sub> | WebGL, звёздное небо | HTML, Three.js | — |
 | 19 | Барбершоп / тату <sub>скоро</sub> | Винтажный плакат | Tailwind CSS, Alpine.js | — |

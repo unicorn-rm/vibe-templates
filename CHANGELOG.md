@@ -17,4 +17,8 @@ All notable changes to this project are documented here. Format: [Keep a Changel
 - `09-esports-club` — NOVA E.C., esports club as a matchday programme with a 3D crest (React, R3F).
 - `10-yoga-wellness` — Hold Studio, 1960s exercise booklet with morphing pose diagrams (Astro 7, Tailwind 4).
 - `11-online-course` — SQL in 30 Evenings, squared exercise book graded in red pen (Vue 3).
+- `12-finance-app` — Tally, money app as an accountant's ledger with a savings calculator (React, Tailwind 4, Recharts).
+- `13-fashion-lookbook` — OSTEN, lookbook as 35mm contact sheets with a loupe (Next.js 16).
+- `15-eco-nonprofit` — Second Growth, field-survey reforestation site with a tree-ring chart (Astro 7).
+- `16-oss-docs` — Ferry, library docs as a 1980s reference manual with thumb-index tabs (Astro 7 + MDX).
 - Catalog (`templates.json`), docs generator, GitHub Pages gallery and deploy workflow.

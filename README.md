@@ -58,7 +58,15 @@ Most template packs look like the same landing page in different colors. And whe
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="templates/11-online-course/README.md"><img src="templates/11-online-course/preview.png" alt="SQL in 30 Evenings" /></a><br /><b>11 · SQL in 30 Evenings</b> — Squared exercise book, red pen<br /><sub>Vue 3 · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/11-online-course/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/12-finance-app/README.md"><img src="templates/12-finance-app/preview.png" alt="Tally" /></a><br /><b>12 · Tally</b> — Accountant's ledger<br /><sub>React 19 · Tailwind CSS 4 · Recharts · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/12-finance-app/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/13-fashion-lookbook/README.md"><img src="templates/13-fashion-lookbook/preview.png" alt="OSTEN" /></a><br /><b>13 · OSTEN</b> — 35mm contact sheet on a light table<br /><sub>Next.js 16 · TypeScript · plain CSS · <a href="https://unicorn-rm.github.io/vibe-templates/13-fashion-lookbook/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/14-fine-dining/README.md"><img src="templates/14-fine-dining/preview.png" alt="Ombre" /></a><br /><b>14 · Ombre</b> — Dark luxury, candlelight<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/14-fine-dining/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/15-eco-nonprofit/README.md"><img src="templates/15-eco-nonprofit/preview.png" alt="Second Growth" /></a><br /><b>15 · Second Growth</b> — Field survey notebook<br /><sub>Astro 7 · <a href="https://unicorn-rm.github.io/vibe-templates/15-eco-nonprofit/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/16-oss-docs/README.md"><img src="templates/16-oss-docs/preview.png" alt="Ferry" /></a><br /><b>16 · Ferry</b> — 1980s printed reference manual<br /><sub>Astro 7 · MDX · <a href="https://unicorn-rm.github.io/vibe-templates/16-oss-docs/">demo</a></sub></td>
 </tr>
 </table>
 <!-- gallery:end -->
@@ -79,11 +87,11 @@ Most template packs look like the same landing page in different colors. And whe
 | 09 | [**NOVA E.C.** · Esports club](templates/09-esports-club/README.md) | Football matchday programme | React 19, Three.js (R3F), Vite | 3D enamel club crest built from extruded shapes (no model files) + clickable cup bracket |
 | 10 | [**Hold Studio** · Yoga & wellness](templates/10-yoga-wellness/README.md) | 1960s exercise booklet | Astro 7, Tailwind CSS 4 | Stick-figure pose diagram that morphs between six poses + a 4-4-6 breath counter |
 | 11 | [**SQL in 30 Evenings** · Online course](templates/11-online-course/README.md) | Squared exercise book, red pen | Vue 3, Vite | A quiz graded by the teacher's red pen: ticks, crosses, ringed right answers and a circled school mark |
-| 12 | Personal finance app <sub>soon</sub> | Dark glass | React, Tailwind CSS, Recharts | — |
-| 13 | Fashion brand <sub>soon</sub> | Magazine lookbook | Next.js | — |
+| 12 | [**Tally** · Personal finance app](templates/12-finance-app/README.md) | Accountant's ledger | React 19, Tailwind CSS 4, Recharts, Vite | Savings calculator that writes each year into ledger rows and plots the curve like pen on graph paper |
+| 13 | [**OSTEN** · Fashion brand](templates/13-fashion-lookbook/README.md) | 35mm contact sheet on a light table | Next.js 16, TypeScript, plain CSS | Lookbook as film contact sheets: black-and-white frames, grease-pencil circles on selects, crosses on rejects, a round loupe that shows the frame in colour |
 | 14 | [**Ombre** · Fine-dining restaurant](templates/14-fine-dining/README.md) | Dark luxury, candlelight | HTML, CSS, GSAP + ScrollTrigger | Pinned tasting menu: a sticky photo and roman numeral change with every course you scroll past |
-| 15 | Eco nonprofit <sub>soon</sub> | Earthy craft | Astro | — |
-| 16 | Open-source library <sub>soon</sub> | Clean docs | Astro, MDX | — |
+| 15 | [**Second Growth** · Eco nonprofit](templates/15-eco-nonprofit/README.md) | Field survey notebook | Astro 7 | Tree-ring impact chart: one ring per year, width = trees planted, tap a ring for the numbers |
+| 16 | [**Ferry** · Open-source library](templates/16-oss-docs/README.md) | 1980s printed reference manual | Astro 7, MDX | Thumb-index tabs on the page edge that track the chapter you're reading + ⌘K search over the manual |
 | 17 | Podcast <sub>soon</sub> | Bold color blocks | SvelteKit | — |
 | 18 | Space museum <sub>soon</sub> | WebGL starfield | HTML, Three.js | — |
 | 19 | Barbershop / tattoo <sub>soon</sub> | Vintage poster | Tailwind CSS, Alpine.js | — |

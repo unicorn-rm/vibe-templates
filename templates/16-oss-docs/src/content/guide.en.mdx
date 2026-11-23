@@ -1,0 +1,57 @@
+import Install from "../components/Install.astro";
+import RetryFigure from "../components/RetryFigure.astro";
+import Note from "../components/Note.astro";
+
+<h2 id="intro">1 · Introduction</h2>
+
+**Ferry** is a 2 kB HTTP client for the browser and Node. It does four things well: timeouts, retries with backoff, typed JSON, and cancellation. It does not do interceptors, plugins or magic.
+
+<Note>Ferry wraps the native `fetch`. Anything `fetch` accepts, Ferry accepts.</Note>
+
+<h2 id="install">2 · Installation</h2>
+
+<Install />
+
+Ferry has zero dependencies and ships ESM and CommonJS builds.
+
+<h2 id="start">3 · Quick start</h2>
+
+```ts
+import { ferry } from "ferry-http";
+
+const api = ferry({ base: "https://api.example.com", timeout: 5000 });
+
+const user = await api.get<User>("/users/42");
+await api.post("/orders", { json: { sku: "A-17", qty: 2 } });
+```
+
+Errors are values, not surprises: every failed request throws a `FerryError` with `status`, `attempt` and the parsed body.
+
+<h2 id="retries">4 · Retries</h2>
+
+By default Ferry retries **idempotent** requests (`GET`, `HEAD`, `PUT`, `DELETE`) on network errors and on `408, 429, 500, 502, 503, 504`. The delay doubles each time and honours `Retry-After`.
+
+<RetryFigure caption="Fig. 4-1 — three failed attempts, then success. Delays: 1 s, 2 s, 4 s." />
+
+```ts
+const api = ferry({ retry: { limit: 3, backoff: (n) => 2 ** (n - 1) * 1000 } });
+```
+
+<Note kind="warning">`POST` is never retried unless you pass an `Idempotency-Key` header.</Note>
+
+<h2 id="api">5 · API reference</h2>
+
+| Option | Type | Default | Meaning |
+|---|---|---|---|
+| `base` | `string` | `""` | Prefix for every path |
+| `timeout` | `number` | `10000` | Milliseconds before abort |
+| `retry.limit` | `number` | `2` | Extra attempts after the first |
+| `retry.backoff` | `(n) => ms` | `2ⁿ⁻¹ × 1000` | Delay before attempt *n* |
+| `headers` | `HeadersInit` | `{}` | Sent with every request |
+| `signal` | `AbortSignal` | — | Cancel from outside |
+
+<h2 id="changelog">6 · Changelog</h2>
+
+- **3.2.0** — `Retry-After` dates are parsed, not only seconds.
+- **3.1.0** — `api.extend()` for scoped clients.
+- **3.0.0** — dropped Node 16, errors carry the parsed body.

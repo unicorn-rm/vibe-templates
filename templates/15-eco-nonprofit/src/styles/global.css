@@ -1,0 +1,113 @@
+/* ==========================================================
+   15 · Second Growth — field-survey tokens
+   Survey-map paper, dark forest ink, and fluorescent flagging tape
+   (the orange ribbon foresters tie to trees) as the only accent.
+   ========================================================== */
+:root {
+  --paper: #ecefe7;
+  --paper-2: #e2e7dc;
+  --ink: #173b2f;          /* forest */
+  --ink-2: #4e6a5e;
+  --contour: #b9a27a;      /* map brown */
+  --tape: #ff6b2c;         /* flagging tape */
+  --serif: "Literata", Georgia, serif;
+  --sans: "Golos Text", system-ui, sans-serif;
+  --pad: clamp(16px, 4vw, 56px);
+}
+
+html[data-lang="en"] [data-l="ru"], html[data-lang="ru"] [data-l="en"] { display: none; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--sans); }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+::selection { background: var(--tape); color: #fff; }
+:focus-visible { outline: 2px solid var(--tape); outline-offset: 3px; }
+h2 { margin: 0 0 1.4rem; font: 700 clamp(2rem, 4.4vw, 3.4rem)/1.05 var(--serif); }
+
+/* flagging tape: a strip of ribbon with a soft fold */
+.tape { display: inline-block; padding: .2rem .8rem .25rem; background: var(--tape); color: #fff; font: 700 1rem/1.2 var(--sans); letter-spacing: .04em; clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%); }
+
+/* ---------- top ---------- */
+.top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 2rem; padding: .7rem var(--pad); background: color-mix(in srgb, var(--paper) 94%, transparent); border-bottom: 1px solid var(--ink); }
+.logo { text-decoration: none; }
+.top nav { display: flex; gap: 1.5rem; margin-left: auto; font-weight: 500; }
+.top nav a { text-decoration: none; }
+.top nav a:hover { color: var(--tape); }
+.lang { border: 1px solid var(--ink); background: none; padding: .15rem .6rem; font-weight: 700; }
+@media (max-width: 700px) { .top nav { display: none; } .lang { margin-left: auto; } }
+
+/* ---------- hero over a contour map ---------- */
+.hero { position: relative; min-height: 86svh; display: grid; align-content: end; padding: 3rem var(--pad) 3.4rem; overflow: hidden; border-bottom: 1px solid var(--ink); }
+.topo, .map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.topo path, .map path { fill: none; stroke: var(--contour); stroke-width: 1; opacity: .7; }
+.topo path.major, .map path.major { stroke-width: 2; opacity: .9; }
+.hero__text { position: relative; max-width: 880px; }
+.survey { display: inline-block; margin: 0 0 1.2rem; padding: .1rem .5rem; background: var(--paper); border: 1px solid var(--ink); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
+.hero h1 { margin: 0; font: 700 clamp(2.8rem, 6.6vw, 6rem)/1 var(--serif); letter-spacing: -.02em; text-wrap: balance; }
+.lead { max-width: 56ch; margin: 1.6rem 0 0; padding: .6rem .8rem; background: color-mix(in srgb, var(--paper) 88%, transparent); font-size: 1.1rem; }
+.coords { position: absolute; right: var(--pad); top: 1.4rem; margin: 0; font: 400 .85rem var(--sans); letter-spacing: .08em; }
+
+.sec { padding: clamp(3.5rem, 9vh, 6rem) var(--pad); border-bottom: 1px solid var(--ink); }
+
+/* ---------- tree rings ---------- */
+.rings { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; background: var(--paper-2); }
+.hint { color: var(--ink-2); max-width: 40ch; }
+.ring-info { display: grid; grid-template-columns: repeat(3, auto); gap: 2rem; margin: 2rem 0; }
+.ring-info dt { font: 700 clamp(2rem, 4vw, 3rem)/1 var(--serif); font-variant-numeric: tabular-nums; }
+.ring-info dd { margin: .3rem 0 0; font-size: .85rem; color: var(--ink-2); max-width: 14ch; }
+.total { margin: 0; padding-top: 1rem; border-top: 1px solid var(--ink); }
+.total b { font-family: var(--serif); font-size: 1.3rem; }
+.trunk { width: 100%; max-width: 560px; justify-self: center; overflow: visible; }
+.ring { cursor: pointer; outline: none; }
+.ring__band { fill: #d9c49c; transition: fill .25s; }
+.ring__band.odd { fill: #cdb486; }
+.ring__line { fill: none; stroke: #7a5f3a; stroke-width: 1.4; }
+.ring__y { font: 700 9px var(--sans); fill: #5d4628; text-anchor: middle; pointer-events: none; }
+.ring:hover .ring__band, .ring:focus-visible .ring__band, .ring.is-on .ring__band { fill: var(--tape); }
+.ring.is-on .ring__y { fill: #fff; }
+.pith { fill: #7a5f3a; }
+.crack { stroke: #7a5f3a; stroke-width: 1.2; stroke-dasharray: 3 4; opacity: .7; }
+@media (max-width: 860px) { .rings { grid-template-columns: 1fr; } .ring-info { grid-template-columns: 1fr 1fr 1fr; gap: 1rem; } }
+
+/* ---------- plots ---------- */
+.plots__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; }
+.map { position: relative; aspect-ratio: 10 / 7; border: 1px solid var(--ink); background: #f3f4ee; overflow: hidden; }
+.map .stream { stroke: #5b8fb0; stroke-width: 3; opacity: .8; }
+.flag { position: absolute; translate: -50% -100%; padding: .1rem .55rem .1rem .45rem; border: 0; background: var(--tape); color: #fff; font-weight: 700; clip-path: polygon(0 0, 100% 0, 82% 50%, 100% 100%, 0 100%); transition: transform .2s; }
+.flag::after { content: ""; position: absolute; left: 0; top: 100%; width: 2px; height: 18px; background: var(--ink); }
+.flag.is-on { transform: scale(1.25); }
+.flag--static { position: static; translate: none; display: inline-block; margin-right: .6rem; }
+.flag--static::after { display: none; }
+.plot-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.plot-list li { display: flex; gap: .2rem; padding: .9rem .4rem; border-bottom: 1px solid color-mix(in srgb, var(--ink) 30%, transparent); cursor: default; transition: background .2s; }
+.plot-list li.is-on { background: color-mix(in srgb, var(--tape) 12%, transparent); }
+.plot-list p { margin: .2rem 0 0; color: var(--ink-2); }
+@media (max-width: 860px) { .plots__grid { grid-template-columns: 1fr; } }
+
+/* ---------- specimen tags ---------- */
+.tags { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; }
+.tag {
+  position: relative; padding: 2.4rem 1.2rem 1.2rem; background: #fbf8ee; border: 1px solid #a89470; rotate: var(--r);
+  clip-path: polygon(14% 0, 86% 0, 100% 12%, 100% 100%, 0 100%, 0 12%); box-shadow: 0 10px 18px -14px rgb(0 0 0 / .5);
+}
+.tag__hole { position: absolute; top: .7rem; left: 50%; width: 14px; height: 14px; translate: -50% 0; border-radius: 50%; border: 3px solid var(--tape); background: var(--paper); }
+.tag__latin { margin: 0; font: italic 400 1rem var(--serif); color: var(--ink-2); }
+.tag h3 { margin: .1rem 0 .6rem; font: 700 1.35rem/1.1 var(--serif); }
+.tag__count { margin: 0; font: 700 1.6rem var(--serif); color: var(--tape); }
+.tag__why { margin: .3rem 0 0; font-size: .9rem; }
+@media (max-width: 960px) { .tags { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .tags { grid-template-columns: 1fr; } }
+
+/* ---------- field log ---------- */
+.log ol { list-style: none; margin: 0; padding: 0; max-width: 760px; }
+.log li { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; padding: .9rem 0; border-bottom: 1px dashed color-mix(in srgb, var(--ink) 40%, transparent); }
+.log time { font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.log li p { margin: 0; font-family: var(--serif); }
+.join { max-width: 60ch; margin: 2.4rem 0 0; padding-left: 1rem; border-left: 4px solid var(--tape); font-size: 1.1rem; }
+@media (max-width: 600px) { .log li { grid-template-columns: 1fr; gap: .2rem; } }
+
+.foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.2rem var(--pad); font-size: .85rem; color: var(--ink-2); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .flag, .ring__band { transition: none; } }

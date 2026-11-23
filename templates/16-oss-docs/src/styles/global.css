@@ -1,0 +1,128 @@
+/* ==========================================================
+   16 · Ferry — printed reference-manual tokens
+   Bright manual paper, black type, one petrol-blue spot colour
+   (the stripe on old computer manuals), thumb-index tabs in greys.
+   ========================================================== */
+:root {
+  --paper: #f7f6f1;
+  --ink: #111111;
+  --ink-2: #5c5b56;
+  --rule: #d6d4cc;
+  --spot: #005f73;          /* petrol blue */
+  --code-bg: #efeee8;
+  --sans: "Geologica", "Helvetica Neue", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --tab-w: 118px;
+}
+
+html[data-lang="en"] [data-l="ru"], html[data-lang="ru"] [data-l="en"] { display: none !important; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 300 17px/1.65 var(--sans); }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+::selection { background: var(--spot); color: #fff; }
+:focus-visible { outline: 2px solid var(--spot); outline-offset: 2px; }
+code, kbd, pre { font-family: var(--mono); }
+
+/* ---------- top bar: black band like a manual spine ---------- */
+.bar { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 1.4rem; padding: .7rem 1.4rem; background: var(--ink); color: var(--paper); font-size: .9rem; }
+.bar__title { text-decoration: none; }
+.bar__title b { font-weight: 800; letter-spacing: .2em; }
+.bar__title span { color: #b9b7ae; }
+.bar__ver { margin-left: auto; font: 400 .78rem var(--mono); color: #b9b7ae; }
+.bar__search { display: flex; gap: .6rem; align-items: center; border: 1px solid #55534d; background: none; padding: .25rem .6rem; color: var(--paper); }
+.bar__search kbd { padding: 0 .3rem; border: 1px solid #77756e; font-size: .75rem; }
+.bar__lang { border: 0; background: var(--spot); color: #fff; padding: .25rem .7rem; font-weight: 600; }
+@media (max-width: 720px) { .bar__ver, .bar__title span { display: none; } .bar__search { margin-left: auto; } }
+
+/* ---------- thumb index ---------- */
+.thumbs { position: fixed; right: 0; top: 90px; z-index: 20; display: flex; flex-direction: column; }
+.thumb {
+  display: flex; align-items: center; gap: .6rem; width: var(--tab-w); height: 54px; margin-bottom: 4px; padding: 0 .8rem;
+  background: hsl(0 0% calc(30% + var(--i) * 9%)); color: #fff; text-decoration: none;
+  transform: translateX(calc(var(--tab-w) - 34px)); transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+  border-radius: 6px 0 0 6px;
+}
+.thumb__n { width: 18px; font: 800 1rem var(--sans); text-align: center; }
+.thumb__l { font-size: .85rem; white-space: nowrap; }
+.thumb:hover, .thumb:focus-visible { transform: translateX(0); }
+.thumb.is-on { background: var(--spot); transform: translateX(calc(var(--tab-w) - 46px)); }
+.thumb.is-on:hover { transform: translateX(0); }
+@media (max-width: 900px) { .thumbs { display: none; } }
+
+/* ---------- manual pages ---------- */
+.manual { max-width: 1000px; margin: 0 auto; padding: 0 calc(var(--tab-w) - 20px) 4rem 24px; }
+.cover { padding: 5rem 0 3rem; border-bottom: 3px solid var(--ink); position: relative; }
+.cover::before { content: ""; position: absolute; left: 0; top: 2.6rem; width: 120px; height: 10px; background: var(--spot); }
+.cover__part { margin: 0 0 1.4rem; font: 400 .8rem var(--mono); color: var(--ink-2); }
+.cover h1 { margin: 0; font: 800 clamp(4rem, 12vw, 9rem)/.88 var(--sans); letter-spacing: -.04em; }
+.cover h1 span { font-weight: 300; letter-spacing: -.02em; font-size: .45em; }
+.cover__lead { max-width: 40ch; margin: 1.6rem 0 2rem; font-size: 1.3rem; }
+.cover__specs { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 0 2.4rem; margin: 0; }
+.cover__specs dt { font: 400 .72rem var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--ink-2); }
+.cover__specs dd { margin: 0; font-weight: 600; }
+@media (max-width: 720px) { .manual { padding-right: 24px; } .cover__specs { grid-template-columns: 1fr 1fr; gap: 1rem; } }
+
+/* chapters: number in the margin, hairline under the heading */
+.doc { counter-reset: fig; }
+.doc h2 { margin: 4rem 0 1.2rem; padding-bottom: .5rem; border-bottom: 1px solid var(--ink); font: 800 2rem/1.1 var(--sans); letter-spacing: -.02em; }
+.doc p, .doc li { max-width: 66ch; }
+.doc strong { font-weight: 600; }
+.doc :not(pre) > code { padding: .05em .3em; background: var(--code-bg); border: 1px solid var(--rule); font-size: .88em; }
+.doc ul { padding-left: 1.2rem; }
+.doc li::marker { color: var(--spot); }
+.doc pre, .tabs__panel { position: relative; margin: 1.2rem 0; padding: 1rem 1.2rem; background: var(--code-bg) !important; border-left: 4px solid var(--ink); overflow-x: auto; font-size: .9rem; line-height: 1.55; }
+.copy { position: absolute; top: .5rem; right: .5rem; padding: .1rem .5rem; border: 1px solid var(--rule); background: var(--paper); font: 400 .75rem var(--mono); }
+.copy:hover { border-color: var(--ink); }
+.doc table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.doc th { text-align: left; padding: .5rem .6rem; background: var(--ink); color: var(--paper); font-weight: 600; }
+.doc td { padding: .55rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.doc tr:nth-child(even) td { background: rgb(0 0 0 / .025); }
+.flash { animation: flash 1.4s; }
+@keyframes flash { 0%, 40% { background: rgb(0 95 115 / .18); } }
+
+/* install tabs */
+.tabs { margin: 1.2rem 0; }
+.tabs__bar { display: flex; }
+.tabs__bar button { padding: .35rem .9rem; border: 1px solid var(--ink); border-bottom: 0; margin-right: -1px; background: var(--paper); font: 400 .85rem var(--mono); }
+.tabs__bar button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+.tabs__panel { margin-top: 0; }
+
+/* notes: boxed like a manual's NOTE / CAUTION */
+.note { margin: 1.4rem 0; padding: .9rem 1.1rem .9rem 5.6rem; border: 2px solid var(--ink); position: relative; max-width: 66ch; }
+.note::before { content: "NOTE"; position: absolute; left: 0; top: 0; bottom: 0; width: 4.6rem; display: grid; place-items: center; background: var(--ink); color: var(--paper); font: 800 .8rem var(--sans); letter-spacing: .14em; }
+.note--warning { border-color: var(--spot); }
+.note--warning::before { content: "CAUTION"; background: var(--spot); font-size: .7rem; }
+html[lang="ru"] .note::before { content: "ВАЖНО"; }
+html[lang="ru"] .note--warning::before { content: "ОСТОРОЖНО"; font-size: .6rem; }
+.note p { margin: 0; }
+
+/* figure */
+.fig { margin: 1.6rem 0; padding: 1rem 1rem .6rem; border: 1px solid var(--rule); background: #fff; }
+.fig svg { width: 100%; height: auto; }
+.fig .axis { stroke: var(--ink); stroke-width: 1.2; }
+.fig .tick { font: 400 11px var(--mono); fill: var(--ink-2); text-anchor: middle; }
+.fig .fail { fill: #fff; stroke: var(--ink); stroke-width: 1.5; }
+.fig .ok { fill: var(--spot); stroke: var(--spot); }
+.fig .lbl { font: 600 10px var(--mono); text-anchor: middle; fill: var(--ink); }
+.fig .ok + .lbl { fill: #fff; }
+.fig .arc { fill: none; stroke: var(--ink-2); stroke-width: 1; stroke-dasharray: 3 3; }
+.fig figcaption { margin-top: .4rem; font: 400 .85rem var(--sans); font-style: italic; color: var(--ink-2); }
+
+/* search dialog */
+.search { width: min(640px, 92vw); padding: 0; border: 2px solid var(--ink); background: var(--paper); }
+.search::backdrop { background: rgb(17 17 17 / .55); }
+.search__form { display: grid; }
+.search input { padding: 1rem 1.2rem; border: 0; border-bottom: 2px solid var(--ink); background: none; font: 400 1.1rem var(--sans); outline: none; }
+.search__results { list-style: none; margin: 0; padding: .4rem; max-height: 50vh; overflow: auto; }
+.search__results li { display: grid; padding: .5rem .8rem; cursor: pointer; }
+.search__results li small { font: 400 .72rem var(--mono); color: var(--ink-2); }
+.search__results li.is-sel { background: var(--ink); color: var(--paper); }
+.search__results li.is-sel small { color: #b9b7ae; }
+.search__hint { margin: 0; padding: .4rem 1.2rem; border-top: 1px solid var(--rule); font: 400 .75rem var(--mono); color: var(--ink-2); }
+
+.foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.2rem 24px; border-top: 3px solid var(--ink); font: 400 .8rem var(--mono); color: var(--ink-2); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .thumb { transition: none; } .flash { animation: none; } }

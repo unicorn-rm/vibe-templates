@@ -1,0 +1,183 @@
+---
+import "../styles/global.css";
+import T from "../components/T.astro";
+import { LOG, PLOTS, RINGS, SPECIES, T as C } from "../content";
+
+/* contour lines: wobbly closed curves around a few "hills", generated at build time */
+function contour(cx: number, cy: number, r: number, seed: number) {
+  const pts = [];
+  for (let i = 0; i <= 64; i++) {
+    const a = (i / 64) * Math.PI * 2;
+    const k = 1 + 0.16 * Math.sin(3 * a + seed) + 0.08 * Math.sin(5 * a + seed * 2) + 0.05 * Math.cos(7 * a - seed);
+    pts.push(`${(cx + Math.cos(a) * r * k).toFixed(1)},${(cy + Math.sin(a) * r * k * 0.72).toFixed(1)}`);
+  }
+  return `M${pts.join(" L")}Z`;
+}
+const HILLS = [[260, 190, 1.2], [700, 150, 2.1], [820, 520, 3.4], [330, 560, 4.6]];
+const lines = HILLS.flatMap(([cx, cy, s]) => Array.from({ length: 9 }, (_, i) => ({ d: contour(cx, cy, 30 + i * 32, s + i * 0.18), major: i % 4 === 0 })));
+
+/* tree rings: radius grows with cumulative trees (sqrt keeps area honest) */
+const total = RINGS.reduce((a, r) => a + r.trees, 0);
+let acc = 0;
+const rings = RINGS.map((r, i) => {
+  const inner = 18 + Math.sqrt(acc / total) * 172;
+  acc += r.trees;
+  const outer = 18 + Math.sqrt(acc / total) * 172;
+  return { ...r, i, inner, outer };
+});
+const ringPath = (r: number, seed: number) => {
+  const pts = [];
+  for (let i = 0; i <= 90; i++) {
+    const a = (i / 90) * Math.PI * 2;
+    const k = 1 + 0.025 * Math.sin(4 * a + seed) + 0.015 * Math.sin(9 * a + seed * 3);
+    pts.push(`${(200 + Math.cos(a) * r * k).toFixed(2)},${(200 + Math.sin(a) * r * k).toFixed(2)}`);
+  }
+  return `M${pts.join(" L")}Z`;
+};
+const fmt = (n: number, l: "en" | "ru") => n.toLocaleString(l === "ru" ? "ru-RU" : "en-GB");
+---
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Second Growth — we plant forests and count them</title>
+  <meta name="description" content="Reforestation nonprofit template styled as a field survey notebook: tree-ring impact chart, generated contour map with plots, specimen tags, field log. Built with Astro." />
+  <meta name="theme-color" content="#ecefe7" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ecefe7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='none' stroke='%23173b2f' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23173b2f' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23ff6b2c' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,700;1,7..72,400&display=swap" rel="stylesheet" />
+  <script is:inline>
+    (() => {
+      let l = new URLSearchParams(location.search).get("lang");
+      try { l = l || localStorage.getItem("vt-lang"); } catch {}
+      document.documentElement.dataset.lang = l === "ru" ? "ru" : "en";
+      document.documentElement.lang = document.documentElement.dataset.lang;
+    })();
+  </script>
+</head>
+<body>
+  <header class="top">
+    <a href="#top" class="logo"><span class="tape">Second Growth</span></a>
+    <nav aria-label="Primary">{C.nav.map(([h, t]) => <a href={h}><T t={t} /></a>)}</nav>
+    <button id="lang" class="lang" type="button" aria-label="Switch language"><span data-l="en">RU</span><span data-l="ru">EN</span></button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <svg class="topo" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        {lines.map((l) => <path d={l.d} class={l.major ? "major" : ""} />)}
+      </svg>
+      <div class="hero__text">
+        <p class="survey"><T t={C.survey} /></p>
+        <h1><T t={C.title} /></h1>
+        <p class="lead"><T t={C.lead} /></p>
+      </div>
+      <p class="coords">61°47′ N · 29°31′ E · ↑ 214 m</p>
+    </section>
+
+    <!-- signature: tree rings -->
+    <section id="rings" class="sec rings">
+      <div>
+        <h2><T t={C.ringsTitle} /></h2>
+        <p class="hint"><T t={C.ringsHint} /></p>
+        <dl class="ring-info" aria-live="polite">
+          <div><dt id="riYear">{RINGS.at(-1)!.y}</dt><dd>&nbsp;</dd></div>
+          <div><dt id="riTrees" data-en={fmt(RINGS.at(-1)!.trees, "en")} data-ru={fmt(RINGS.at(-1)!.trees, "ru")}>{fmt(RINGS.at(-1)!.trees, "en")}</dt><dd><T t={C.planted} /></dd></div>
+          <div><dt id="riSurv">{RINGS.at(-1)!.survival}%</dt><dd><T t={C.survived} /></dd></div>
+        </dl>
+        <p class="total"><b>{fmt(total, "en")}</b> <T t={C.planted} /> <T t={C.total} /></p>
+      </div>
+      <svg class="trunk" viewBox="0 0 400 400" role="img" aria-label="Tree-ring chart of trees planted per year">
+        {rings.slice().reverse().map((r) => (
+          <g class="ring" data-i={r.i} data-y={r.y} data-trees-en={fmt(r.trees, "en")} data-trees-ru={fmt(r.trees, "ru")} data-s={r.survival} tabindex="0">
+            <path d={ringPath(r.outer, r.i)} class={`ring__band${r.i % 2 ? " odd" : ""}`} />
+            <path d={ringPath(r.outer, r.i)} class="ring__line" />
+            <text x={200} y={200 - (r.inner + r.outer) / 2 + 4} class="ring__y">{String(r.y).slice(2)}</text>
+          </g>
+        ))}
+        <circle cx="200" cy="200" r="18" class="pith" />
+        <path d="M200 200 L370 120" class="crack" />
+      </svg>
+    </section>
+
+    <section id="plots" class="sec plots">
+      <h2><T t={C.plotsTitle} /></h2>
+      <div class="plots__grid">
+        <div class="map">
+          <svg viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">{lines.map((l) => <path d={l.d} class={l.major ? "major" : ""} />)}<path class="stream" d="M560 0 C540 120 620 200 590 320 C560 440 660 520 640 700" /></svg>
+          {PLOTS.map((p) => <button class="flag" style={`left:${p.x}%;top:${p.y}%`} data-plot={p.id} type="button" aria-label={p.name.en}>{p.id}</button>)}
+        </div>
+        <ol class="plot-list">
+          {PLOTS.map((p) => (
+            <li data-plot={p.id}>
+              <span class="flag flag--static">{p.id}</span>
+              <div><b><T t={p.name} /></b> · {p.ha} <T t={C.ha} /><p><T t={p.note} /></p></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section id="species" class="sec">
+      <h2><T t={C.speciesTitle} /></h2>
+      <div class="tags">
+        {SPECIES.map((s, i) => (
+          <article class="tag" style={`--r:${[-2, 1.5, -1, 2.5][i]}deg`}>
+            <span class="tag__hole" aria-hidden="true"></span>
+            <p class="tag__latin">{s.latin}</p>
+            <h3><T t={s.name} /></h3>
+            <p class="tag__count">× {fmt(s.count, "en")}</p>
+            <p class="tag__why"><T t={s.why} /></p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="log" class="sec log">
+      <h2><T t={C.logTitle} /></h2>
+      <ol>{LOG.map((e) => <li><time datetime={e.d}>{e.d}</time><p><T t={e.t} /></p></li>)}</ol>
+      <p class="join"><T t={C.join} /></p>
+    </section>
+  </main>
+
+  <footer class="foot"><span>Second Growth · 2018—2026</span><span><T t={C.foot} /></span></footer>
+
+  <script>
+    const root = document.documentElement;
+    document.getElementById("lang")!.addEventListener("click", () => {
+      const l = root.dataset.lang === "en" ? "ru" : "en";
+      root.dataset.lang = l; root.lang = l;
+      try { localStorage.setItem("vt-lang", l); } catch {}
+      pick(current);
+    });
+
+    // tree rings → info panel
+    const rings = [...document.querySelectorAll<SVGGElement>(".ring")];
+    const year = document.getElementById("riYear")!, trees = document.getElementById("riTrees")!, surv = document.getElementById("riSurv")!;
+    let current: SVGGElement = rings[0];
+    function pick(g: SVGGElement) {
+      current = g;
+      rings.forEach((r) => r.classList.toggle("is-on", r === g));
+      year.textContent = g.dataset.y!;
+      trees.textContent = root.dataset.lang === "ru" ? g.dataset.treesRu! : g.dataset.treesEn!;
+      surv.textContent = `${g.dataset.s}%`;
+    }
+    rings.forEach((g) => {
+      g.addEventListener("pointerenter", () => pick(g));
+      g.addEventListener("focus", () => pick(g));
+      g.addEventListener("click", () => pick(g));
+    });
+    pick(rings[0]);
+
+    // map flags ↔ list
+    const sync = (id: string) => document.querySelectorAll<HTMLElement>("[data-plot]").forEach((el) => el.classList.toggle("is-on", el.dataset.plot === id));
+    document.querySelectorAll<HTMLElement>(".map .flag, .plot-list li").forEach((el) => {
+      el.addEventListener("pointerenter", () => sync(el.dataset.plot!));
+      el.addEventListener("click", () => sync(el.dataset.plot!));
+    });
+    sync("A");
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+---
+// Package-manager tabs. Switching and copying are handled by the page script.
+const pkg = "ferry-http";
+const cmds = [["npm", `npm install ${pkg}`], ["pnpm", `pnpm add ${pkg}`], ["yarn", `yarn add ${pkg}`], ["bun", `bun add ${pkg}`]];
+---
+<div class="tabs" data-tabs>
+  <div class="tabs__bar" role="tablist">
+    {cmds.map(([name], i) => <button type="button" role="tab" aria-selected={i === 0 ? "true" : "false"} data-tab={i}>{name}</button>)}
+  </div>
+  {cmds.map(([, cmd], i) => <pre class="tabs__panel" data-panel={i} hidden={i !== 0}><code>{cmd}</code></pre>)}
+</div>

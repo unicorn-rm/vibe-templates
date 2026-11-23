@@ -1,0 +1,22 @@
+---
+// Figure: request attempts on a time axis with exponential backoff.
+interface Props { caption: string }
+const { caption } = Astro.props;
+const attempts = [{ t: 0, ok: false }, { t: 1, ok: false }, { t: 3, ok: false }, { t: 7, ok: true }];
+const x = (t: number) => 40 + t * 70;
+---
+<figure class="fig">
+  <svg viewBox="0 0 620 150" role="img" aria-label={caption}>
+    <line x1="30" y1="100" x2="600" y2="100" class="axis" />
+    {[0, 1, 2, 3, 4, 5, 6, 7].map((s) => <g><line x1={x(s)} y1="96" x2={x(s)} y2="104" class="axis" /><text x={x(s)} y="122" class="tick">{s}s</text></g>)}
+    {attempts.map((a, i) => (
+      <g>
+        <rect x={x(a.t) - 14} y="62" width="28" height="28" class={a.ok ? "ok" : "fail"} />
+        <text x={x(a.t)} y="81" class="lbl">{a.ok ? "200" : "503"}</text>
+        {i > 0 && <path d={`M${x(attempts[i - 1].t) + 14} 50 Q${(x(attempts[i - 1].t) + x(a.t)) / 2} 18 ${x(a.t) - 14} 50`} class="arc" />}
+        {i > 0 && <text x={(x(attempts[i - 1].t) + x(a.t)) / 2} y="26" class="tick">{a.t - attempts[i - 1].t}s</text>}
+      </g>
+    ))}
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>

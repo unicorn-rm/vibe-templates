@@ -1,0 +1,19 @@
+{
+  "name": "vibe-15-eco-nonprofit",
+  "version": "1.0.0",
+  "description": "Reforestation nonprofit template styled as a field survey notebook: tree-ring impact chart, contour map with plots, specimen tags. Astro 7.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^7.4.13"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  }
+}

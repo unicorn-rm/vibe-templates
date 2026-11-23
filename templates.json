@@ -818,43 +818,150 @@
     },
     {
       "id": "12-finance-app",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Tally",
       "kind": {
         "en": "Personal finance app",
         "ru": "Приложение финансов"
       },
       "style": {
-        "en": "Dark glass",
-        "ru": "Тёмное стекло"
+        "en": "Accountant's ledger",
+        "ru": "Бухгалтерская книга"
       },
       "stack": [
-        "React",
-        "Tailwind CSS",
-        "Recharts"
+        "React 19",
+        "Tailwind CSS 4",
+        "Recharts",
+        "Vite"
       ],
       "fonts": [
-        "Manrope"
+        "Alegreya",
+        "Ubuntu Mono"
+      ],
+      "palette": {
+        "paper": "#eef2e4",
+        "ink": "#3a3226",
+        "red": "#c8473d",
+        "rule-blue": "#8fb3cf"
+      },
+      "signature": {
+        "en": "Savings calculator that writes each year into ledger rows and plots the curve like pen on graph paper",
+        "ru": "Калькулятор накоплений, который вписывает каждый год строкой в книгу и чертит кривую, как пером на миллиметровке"
+      },
+      "blocks": [
+        "ledger-page hero with rubber stamp",
+        "ruler sliders",
+        "ledger table of projections",
+        "graph-paper chart (Recharts)",
+        "budget envelopes",
+        "feature list with dotted leaders",
+        "FAQ",
+        "double-rule footer"
+      ],
+      "idea": {
+        "en": "A calm money app presented as an old accountant's ledger: blue ruling, red money columns, brown-black ink, a 'Balanced' stamp. The opposite of a dark fintech dashboard.",
+        "ru": "Спокойное приложение для денег в образе старой бухгалтерской книги: голубая линовка, красные денежные графы, коричнево-чёрные чернила, штамп «Сведено». Противоположность тёмному финтех-дашборду."
+      },
+      "rules": {
+        "en": [
+          "Red means money going out or a warning — nothing else.",
+          "Numbers are always monospace and right-aligned in ruled columns.",
+          "Charts are thin pen lines on graph paper: no gradients, no area fills.",
+          "Sliders look like rulers; envelopes look like paper.",
+          "Never give investment advice in copy; keep the disclaimer."
+        ],
+        "ru": [
+          "Красный — расход или предупреждение, больше ничего.",
+          "Числа всегда моноширинные и выровнены вправо в разлинованных графах.",
+          "Графики — тонкие линии пером на миллиметровке: без градиентов и заливок.",
+          "Ползунки похожи на линейки, конверты — на бумагу.",
+          "Никаких инвестиционных советов в тексте; дисклеймер сохраняйте."
+        ]
+      },
+      "files": {
+        "src/content.js": "envelopes, ledger entries, all copy (EN + RU)",
+        "src/App.jsx": "page sections and the calculator",
+        "src/index.css": "tokens in Tailwind `@theme` + ledger, stamp, graph-paper utilities"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {
       "id": "13-fashion-lookbook",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "OSTEN",
       "kind": {
         "en": "Fashion brand",
         "ru": "Модный бренд"
       },
       "style": {
-        "en": "Magazine lookbook",
-        "ru": "Журнальный лукбук"
+        "en": "35mm contact sheet on a light table",
+        "ru": "Контактный лист 35 мм на световом столе"
       },
       "stack": [
-        "Next.js"
+        "Next.js 16",
+        "TypeScript",
+        "plain CSS"
       ],
       "fonts": [
         "Prata",
         "Tenor Sans"
+      ],
+      "palette": {
+        "table": "#f2f1ec",
+        "ink": "#1d1b19",
+        "film": "#1a1614",
+        "edge": "#e3913a",
+        "grease": "#e0332b"
+      },
+      "signature": {
+        "en": "Lookbook as film contact sheets: black-and-white frames, grease-pencil circles on selects, crosses on rejects, a round loupe that shows the frame in colour",
+        "ru": "Лукбук как контактные листы плёнки: чёрно-белые кадры, круги жирным карандашом на отобранных, крестики на отбракованных и круглая лупа, показывающая кадр в цвете"
+      },
+      "blocks": [
+        "thin masthead",
+        "headline + print laid on the table",
+        "film strips with sprocket holes and edge print",
+        "grease-pencil marks",
+        "loupe modal (keyboard)",
+        "pieces table linked to frames",
+        "founder note",
+        "showroom",
+        "footer"
+      ],
+      "idea": {
+        "en": "Instead of a glossy grid, show the editing table: two rolls of film, marked up by hand. The process is the aesthetic.",
+        "ru": "Вместо глянцевой сетки — стол редактора: две плёнки, размеченные от руки. Процесс и есть эстетика."
+      },
+      "rules": {
+        "en": [
+          "Frames are grayscale on the sheet and colour only on hover or in the loupe.",
+          "Red is only grease pencil; orange is only film edge print.",
+          "Prata for titles and looks, Tenor Sans in spaced capitals for UI.",
+          "Marks are SVG paths; selects and rejects are data flags in content.ts.",
+          "No prices, no cart — it's a lookbook."
+        ],
+        "ru": [
+          "Кадры на листе чёрно-белые, цвет — только при наведении и в лупе.",
+          "Красный — только жирный карандаш; оранжевый — только надписи на плёнке.",
+          "Prata для заголовков и образов, Tenor Sans разреженными капителями для интерфейса.",
+          "Отметки — SVG-линии; отбор и брак — флаги в content.ts.",
+          "Без цен и корзины — это лукбук."
+        ]
+      },
+      "files": {
+        "lib/content.ts": "rolls, frames (Unsplash ids, select/reject), all copy (EN + RU)",
+        "app/page.tsx": "page, contact strips, loupe",
+        "app/globals.css": "tokens and film/loupe styles",
+        "app/layout.tsx": "fonts and metadata"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # static export to ./out"
       ]
     },
     {
@@ -933,43 +1040,147 @@
     },
     {
       "id": "15-eco-nonprofit",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Second Growth",
       "kind": {
         "en": "Eco nonprofit",
         "ru": "Эко-НКО"
       },
       "style": {
-        "en": "Earthy craft",
-        "ru": "Земляные тона, крафт"
+        "en": "Field survey notebook",
+        "ru": "Полевой дневник"
       },
       "stack": [
-        "Astro"
+        "Astro 7"
       ],
       "fonts": [
         "Literata",
         "Golos Text"
+      ],
+      "palette": {
+        "paper": "#ecefe7",
+        "ink": "#173b2f",
+        "contour": "#b9a27a",
+        "tape": "#ff6b2c"
+      },
+      "signature": {
+        "en": "Tree-ring impact chart: one ring per year, width = trees planted, tap a ring for the numbers",
+        "ru": "Годовые кольца как отчёт: одно кольцо на год, ширина — число посаженных деревьев, нажмите на кольцо, чтобы увидеть цифры"
+      },
+      "blocks": [
+        "flagging-tape logo",
+        "hero over a generated contour map",
+        "tree-ring chart with info panel",
+        "plot map with flags + synced list",
+        "specimen tags",
+        "field log",
+        "volunteer note",
+        "footer"
+      ],
+      "idea": {
+        "en": "A reforestation charity that shows its work like a field survey: topo map lines, flagging tape, specimen tags and a tree's own rings as the annual report.",
+        "ru": "Благотворительная организация по восстановлению леса, которая показывает работу как полевое обследование: горизонтали топокарты, маркировочная лента, бирки образцов и годовые кольца дерева вместо годового отчёта."
+      },
+      "rules": {
+        "en": [
+          "Orange flagging tape is the only accent — plots, flags, the active ring.",
+          "Contour lines are generated at build time; tweak HILLS to reshape the land.",
+          "Literata for headings and field notes, Golos Text for UI.",
+          "Numbers are real-looking and honest: show survival, not just planted.",
+          "No leaf icons, no green gradients."
+        ],
+        "ru": [
+          "Оранжевая маркировочная лента — единственный акцент: участки, флажки, активное кольцо.",
+          "Горизонтали генерируются при сборке; меняйте HILLS, чтобы изменить рельеф.",
+          "Literata для заголовков и записей, Golos Text для интерфейса.",
+          "Цифры правдоподобные и честные: показывайте выживаемость, а не только посадки.",
+          "Никаких иконок-листиков и зелёных градиентов."
+        ]
+      },
+      "files": {
+        "src/content.ts": "rings (per-year data), plots, species, log, all copy (EN + RU)",
+        "src/pages/index.astro": "contour + ring generators, markup, client script",
+        "src/styles/global.css": "tokens at the top",
+        "src/components/T.astro": "bilingual text helper"
+      },
+      "run": [
+        "npm install          # Node 22.23+ (Astro 7)",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {
       "id": "16-oss-docs",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Ferry",
       "kind": {
         "en": "Open-source library",
         "ru": "Open-source библиотека"
       },
       "style": {
-        "en": "Clean docs",
-        "ru": "Чистая документация"
+        "en": "1980s printed reference manual",
+        "ru": "Печатный справочник 1980-х"
       },
       "stack": [
-        "Astro",
+        "Astro 7",
         "MDX"
       ],
       "fonts": [
-        "Inter",
-        "Fira Code"
+        "Geologica",
+        "JetBrains Mono"
+      ],
+      "palette": {
+        "paper": "#f7f6f1",
+        "ink": "#111111",
+        "spot": "#005f73",
+        "code": "#efeee8"
+      },
+      "signature": {
+        "en": "Thumb-index tabs on the page edge that track the chapter you're reading + ⌘K search over the manual",
+        "ru": "Вырубные закладки-индексы по краю страницы, отслеживающие текущую главу, + поиск по ⌘K"
+      },
+      "blocks": [
+        "black spine bar",
+        "manual cover with part number and specs",
+        "MDX chapters (EN + RU files)",
+        "install tabs with copy",
+        "NOTE / CAUTION boxes",
+        "SVG retry-timeline figure",
+        "API table",
+        "changelog",
+        "⌘K search dialog"
+      ],
+      "idea": {
+        "en": "Docs for a tiny library, styled like the reference manuals that came in the box with 1980s computers: a black spine, a petrol-blue stripe, numbered chapters and stepped index tabs.",
+        "ru": "Документация маленькой библиотеки в стиле справочников, которые клали в коробку к компьютерам 1980-х: чёрный корешок, полоса цвета петроль, нумерованные главы и ступенчатые закладки-индексы."
+      },
+      "rules": {
+        "en": [
+          "One spot colour (petrol blue) for the active tab, CAUTION and highlights.",
+          "Chapters are numbered `N · Title` with a full-width rule.",
+          "Content lives in MDX: guide.en.mdx and guide.ru.mdx — keep heading ids in sync (`-ru` suffix).",
+          "Code blocks are flat with a black left rule; every block gets a copy button.",
+          "Figures are inline SVG components with numbered captions."
+        ],
+        "ru": [
+          "Один акцентный цвет (петроль) — для активной закладки, CAUTION и подсветки.",
+          "Главы нумеруются как `N · Заголовок` с линией на всю ширину.",
+          "Текст в MDX: guide.en.mdx и guide.ru.mdx — id заголовков синхронны (суффикс `-ru`).",
+          "Блоки кода плоские с чёрной линией слева; у каждого кнопка копирования.",
+          "Рисунки — встроенные SVG-компоненты с нумерованными подписями."
+        ]
+      },
+      "files": {
+        "src/content/guide.en.mdx": "English chapters",
+        "src/content/guide.ru.mdx": "Russian chapters",
+        "src/pages/index.astro": "layout, thumb tabs, search and copy script",
+        "src/components/": "Install tabs, RetryFigure, Note",
+        "src/styles/global.css": "tokens at the top"
+      },
+      "run": [
+        "npm install          # Node 22.23+ (Astro 7)",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {

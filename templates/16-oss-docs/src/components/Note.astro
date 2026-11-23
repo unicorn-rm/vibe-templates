@@ -1,0 +1,5 @@
+---
+interface Props { kind?: "note" | "warning" }
+const { kind = "note" } = Astro.props;
+---
+<aside class={`note note--${kind}`}><slot /></aside>
