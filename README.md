@@ -25,7 +25,7 @@ Most template packs look like the same landing page in different colors. And whe
 
 **vibe-templates** fixes both:
 
-- **Really different designs.** Swiss grid, CRT terminal, Y2K chrome, candle-lit luxury, brutalism, Japandi, 8-bit… Each template has its own palette, font pair, graphics and at least one **signature block** you will not find in the others.
+- **Really different designs.** A risograph gig poster, a declassified pentest file, a Braun radio you tune, a 19th-century star atlas, an arXiv paper, a split-flap departures board, an 8-bit cartridge box… Each template has its own palette, font pair, graphics and at least one **signature block** you will not find in the others.
 - **Different stacks.** Plain HTML, React, Next.js, Vite, Tailwind CSS, Astro, Vue/Nuxt, SvelteKit, Three.js. Pick the one you know, or learn from one you don't.
 - **AI-ready by design.** Every template ships with `DESIGN.md` (the visual rules) and `AGENTS.md` (instructions for coding agents), plus a copy-paste prompt. Claude Code, Cursor, Copilot or Codex keep the style instead of flattening it.
 - **Tokens, not hard-coded values.** Colors, fonts, radii and spacing live in one place at the top of the styles.

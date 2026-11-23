@@ -7,7 +7,7 @@ Rules for AI coding agents working anywhere in this repository.
 - `templates.json` is the catalog. Template READMEs, DESIGN.md and AGENTS.md are generated from it by `npm run docs` — edit the JSON, not the generated files.
 
 ## Adding a template
-1. Pick a style that no existing template uses (palette, font pair, graphic language, signature block).
+1. Pick a style that no existing template uses (palette, font pair, graphic language, signature block). Start from a **real-world reference** (a printed object, signage system, document type, product) — not from "dark background + neon accent", glassmorphism, gradient blobs or "cream + serif + terracotta". Those read as AI defaults and are rejected.
 2. Fonts must support Cyrillic (check Google Fonts "Language: Cyrillic").
 3. All copy lives in one content file with `en` and `ru`. English is default; support `?lang=ru` and a toggle; remember choice in `localStorage` under `vt-lang` (wrap storage in try/catch).
 4. Tokens (colors, fonts, radii) at the top of the styles.
