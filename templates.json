@@ -673,44 +673,147 @@
     },
     {
       "id": "10-yoga-wellness",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Hold Studio",
       "kind": {
         "en": "Yoga & wellness",
         "ru": "Йога и велнес"
       },
       "style": {
-        "en": "Soft organic",
-        "ru": "Мягкая органика"
+        "en": "1960s exercise booklet",
+        "ru": "Гимнастическая брошюра 1960-х"
       },
       "stack": [
-        "Astro",
-        "Tailwind CSS"
+        "Astro 7",
+        "Tailwind CSS 4"
       ],
       "fonts": [
-        "Lora",
-        "Raleway"
+        "Sofia Sans Condensed",
+        "Piazzolla"
+      ],
+      "palette": {
+        "paper": "#e6eae9",
+        "ink": "#14314a",
+        "mustard": "#e0a526",
+        "sun": "#e8b84a"
+      },
+      "signature": {
+        "en": "Stick-figure pose diagram that morphs between six poses + a 4-4-6 breath counter",
+        "ru": "Схема-человечек, плавно перетекающий между шестью позами, + дыхательный счётчик 4-4-6"
+      },
+      "blocks": [
+        "condensed booklet header",
+        "cover with figure on a printed sun",
+        "morphing pose diagram with numbered list and cues",
+        "breath circle with phases",
+        "timetable with level filter",
+        "teacher cards",
+        "footer"
+      ],
+      "idea": {
+        "en": "A yoga studio explained like a 1960s gymnastics manual: blue-grey offset paper, one navy ink, a mustard spot colour and clear numbered diagrams instead of soft stock photos.",
+        "ru": "Студия йоги, объяснённая как пособие по гимнастике 1960-х: серо-голубая офсетная бумага, тёмно-синие чернила, горчичная плашка и понятные пронумерованные схемы вместо мягких стоковых фото."
+      },
+      "rules": {
+        "en": [
+          "No photos of people — poses are joint coordinates drawn as diagrams.",
+          "One ink (navy) + one spot colour (mustard). No sage green, no soft blobs.",
+          "Condensed caps for headings and labels, a bookish serif for reading.",
+          "Every section is numbered like a booklet chapter.",
+          "Motion only explains: the figure morphs, the breath disc grows and shrinks."
+        ],
+        "ru": [
+          "Без фото людей — позы задаются координатами суставов и рисуются схемой.",
+          "Одна краска (тёмно-синяя) + одна плашка (горчичная). Никакого шалфейного зелёного и мягких пятен.",
+          "Узкие капители для заголовков и подписей, книжная антиква для чтения.",
+          "Каждая секция пронумерована, как глава брошюры.",
+          "Движение только объясняет: фигурка перетекает, круг дыхания растёт и сжимается."
+        ]
+      },
+      "files": {
+        "src/content.ts": "poses (joint coordinates), breath phases, timetable, teachers, all copy (EN + RU)",
+        "src/pages/index.astro": "page markup + client script (morph, breath, filter)",
+        "src/styles/global.css": "tokens in Tailwind `@theme` + diagram styles",
+        "src/components/T.astro": "bilingual text helper"
+      },
+      "run": [
+        "npm install          # Node 22.23+ (Astro 7)",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {
       "id": "11-online-course",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "SQL in 30 Evenings",
       "kind": {
         "en": "Online course",
         "ru": "Онлайн-курс"
       },
       "style": {
-        "en": "Playful blocks",
-        "ru": "Игровые блоки"
+        "en": "Squared exercise book, red pen",
+        "ru": "Тетрадь в клетку, красная ручка"
       },
       "stack": [
         "Vue 3",
         "Vite"
       ],
       "fonts": [
-        "Comfortaa",
-        "Nunito"
+        "Kurale",
+        "Marck Script",
+        "PT Mono"
+      ],
+      "palette": {
+        "paper": "#fbfbf6",
+        "grid": "#c9dbe9",
+        "margin": "#e5484d",
+        "ink": "#1f2a5a",
+        "pen": "#d62828",
+        "cover": "#2f6d6a"
+      },
+      "signature": {
+        "en": "A quiz graded by the teacher's red pen: ticks, crosses, ringed right answers and a circled school mark",
+        "ru": "Квиз, который проверяет красная ручка учителя: галочки, крестики, обведённый верный ответ и оценка в кружке"
+      },
+      "blocks": [
+        "notebook cover with a name label you can fill",
+        "first page with margin date",
+        "contents with dotted leaders",
+        "red-pen graded quiz",
+        "teacher's handwritten note",
+        "stats",
+        "FAQ (details)",
+        "footer"
+      ],
+      "idea": {
+        "en": "A course that feels like your school exercise book: green cover with a name label, 5 mm squares, a red margin, ballpoint-blue text and a teacher who marks in red.",
+        "ru": "Курс, который ощущается как школьная тетрадь: зелёная обложка с ярлыком для имени, клетка 5 мм, красное поле, синяя шариковая ручка и учитель, который проверяет красным."
+      },
+      "rules": {
+        "en": [
+          "Text sits on the grid: line-heights are multiples of the 20px cell.",
+          "Red is only the teacher's pen and the margin. Students write in blue.",
+          "Kurale for print, Marck Script only for handwriting, PT Mono for code and page numbers.",
+          "Pen marks are SVG paths drawn once with stroke-dashoffset.",
+          "The name on the cover is stored only in this browser."
+        ],
+        "ru": [
+          "Текст стоит на сетке: межстрочные — кратны клетке 20px.",
+          "Красный — только ручка учителя и поле. Ученик пишет синим.",
+          "Kurale для печатного, Marck Script только для рукописного, PT Mono для кода и номеров страниц.",
+          "Пометки ручкой — SVG-линии, прорисованные один раз через stroke-dashoffset.",
+          "Имя на обложке хранится только в этом браузере."
+        ]
+      },
+      "files": {
+        "src/content.js": "syllabus, quiz questions and answers, all copy (EN + RU)",
+        "src/App.vue": "whole page: cover, contents, graded quiz",
+        "src/style.css": "tokens at the top, grid paper and pen marks"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {

@@ -1,19 +1,20 @@
 {
-  "name": "11-online-course",
+  "name": "vibe-11-online-course",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Online course template styled as a squared school exercise book graded in red pen \u2014 Vue 3, Vite.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "vue": "^3.5.46"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.11",
     "vite": "^8.3.8"
-  }
+  },
+  "private": true,
+  "type": "module"
 }

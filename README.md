@@ -54,6 +54,10 @@ Most template packs look like the same landing page in different colors. And whe
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="templates/09-esports-club/README.md"><img src="templates/09-esports-club/preview.png" alt="NOVA E.C." /></a><br /><b>09 · NOVA E.C.</b> — Football matchday programme<br /><sub>React 19 · Three.js (R3F) · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/09-esports-club/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/10-yoga-wellness/README.md"><img src="templates/10-yoga-wellness/preview.png" alt="Hold Studio" /></a><br /><b>10 · Hold Studio</b> — 1960s exercise booklet<br /><sub>Astro 7 · Tailwind CSS 4 · <a href="https://unicorn-rm.github.io/vibe-templates/10-yoga-wellness/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/11-online-course/README.md"><img src="templates/11-online-course/preview.png" alt="SQL in 30 Evenings" /></a><br /><b>11 · SQL in 30 Evenings</b> — Squared exercise book, red pen<br /><sub>Vue 3 · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/11-online-course/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/14-fine-dining/README.md"><img src="templates/14-fine-dining/preview.png" alt="Ombre" /></a><br /><b>14 · Ombre</b> — Dark luxury, candlelight<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/14-fine-dining/">demo</a></sub></td>
 </tr>
 </table>
@@ -73,8 +77,8 @@ Most template packs look like the same landing page in different colors. And whe
 | 07 | [**Ines Varo** · Photographer](templates/07-photographer/README.md) | Airy minimal | SvelteKit 3, Svelte 5 | Masonry gallery with series filter and a keyboard/swipe lightbox showing EXIF |
 | 08 | [**Crumb & Co.** · Home bakery](templates/08-bakery/README.md) | Hand-drawn pastel | Tailwind CSS 4, Alpine.js, Vite | Chalkboard of today's bake with a live countdown to the next batch + allergen filters |
 | 09 | [**NOVA E.C.** · Esports club](templates/09-esports-club/README.md) | Football matchday programme | React 19, Three.js (R3F), Vite | 3D enamel club crest built from extruded shapes (no model files) + clickable cup bracket |
-| 10 | Yoga & wellness <sub>soon</sub> | Soft organic | Astro, Tailwind CSS | — |
-| 11 | Online course <sub>soon</sub> | Playful blocks | Vue 3, Vite | — |
+| 10 | [**Hold Studio** · Yoga & wellness](templates/10-yoga-wellness/README.md) | 1960s exercise booklet | Astro 7, Tailwind CSS 4 | Stick-figure pose diagram that morphs between six poses + a 4-4-6 breath counter |
+| 11 | [**SQL in 30 Evenings** · Online course](templates/11-online-course/README.md) | Squared exercise book, red pen | Vue 3, Vite | A quiz graded by the teacher's red pen: ticks, crosses, ringed right answers and a circled school mark |
 | 12 | Personal finance app <sub>soon</sub> | Dark glass | React, Tailwind CSS, Recharts | — |
 | 13 | Fashion brand <sub>soon</sub> | Magazine lookbook | Next.js | — |
 | 14 | [**Ombre** · Fine-dining restaurant](templates/14-fine-dining/README.md) | Dark luxury, candlelight | HTML, CSS, GSAP + ScrollTrigger | Pinned tasting menu: a sticky photo and roman numeral change with every course you scroll past |

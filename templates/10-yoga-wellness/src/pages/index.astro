@@ -1,0 +1,249 @@
+---
+import "../styles/global.css";
+import T from "../components/T.astro";
+import { BREATH, CLASSES, DAYS, LEVELS, POSES, TEACHERS, TIMES, T as C } from "../content";
+
+const BONES = [["neck", "hip"], ["neck", "le"], ["le", "lh"], ["neck", "re"], ["re", "rh"], ["hip", "lk"], ["lk", "lf"], ["hip", "rk"], ["rk", "rf"]];
+const p0 = POSES[0].j as Record<string, [number, number]>;
+const cell = (d: number, t: number) => CLASSES.find((c) => c[0] === d && c[1] === t);
+---
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hold Studio — Yoga, one step at a time</title>
+  <meta name="description" content="Yoga studio template styled as a 1960s exercise booklet: morphing stick-figure pose diagrams, a breath counter and a filterable timetable. Astro + Tailwind CSS." />
+  <meta name="theme-color" content="#e6eae9" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e6eae9'/%3E%3Ccircle cx='16' cy='7' r='3' fill='none' stroke='%2314314a' stroke-width='2'/%3E%3Cpath d='M16 10v10M16 13l-6 3M16 13l6 3M16 20l-4 8M16 20l4 8' stroke='%2314314a' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,400;0,600;1,400&family=Sofia+Sans+Condensed:wght@500;800&display=swap" rel="stylesheet" />
+  <script is:inline>
+    (() => {
+      let l = new URLSearchParams(location.search).get("lang");
+      try { l = l || localStorage.getItem("vt-lang"); } catch {}
+      document.documentElement.dataset.lang = l === "ru" ? "ru" : "en";
+      document.documentElement.lang = document.documentElement.dataset.lang;
+    })();
+  </script>
+</head>
+<body class="bg-paper text-ink font-text antialiased">
+  <header class="border-b-2 border-ink">
+    <div class="wrap flex items-center gap-6 py-3">
+      <a href="#top" class="font-cond text-2xl font-extrabold uppercase tracking-wide">Hold<span class="text-mustard">.</span></a>
+      <nav class="ml-auto hidden gap-6 font-cond text-lg uppercase tracking-wider md:flex" aria-label="Primary">
+        {C.nav.map(([href, t]) => <a href={href} class="hover:text-mustard"><T t={t} /></a>)}
+      </nav>
+      <button id="lang" class="ml-auto border-2 border-ink px-2 font-cond text-lg font-extrabold uppercase hover:bg-ink hover:text-paper md:ml-0" type="button" aria-label="Switch language"><span data-l="en">RU</span><span data-l="ru">EN</span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- cover -->
+    <section class="wrap grid gap-10 py-12 md:grid-cols-[1.3fr_1fr] md:py-20">
+      <div class="flex flex-col justify-between">
+        <p class="font-cond text-lg uppercase tracking-[0.2em]"><T t={C.booklet} /></p>
+        <h1 class="mt-6 font-cond text-[clamp(3.6rem,9vw,8.4rem)] leading-[0.86] font-extrabold uppercase"><T t={C.title} /></h1>
+        <p class="mt-8 max-w-[46ch] text-xl leading-relaxed"><T t={C.lead} /></p>
+      </div>
+      <figure class="cover-fig relative aspect-square border-2 border-ink bg-sun">
+        <svg viewBox="0 0 100 100" class="figure absolute inset-[8%]" aria-hidden="true">
+          <line x1="8" y1="90" x2="92" y2="90" class="floor" />
+          {BONES.map(([a, b]) => <line class="bone" x1={p0[a][0]} y1={p0[a][1]} x2={p0[b][0]} y2={p0[b][1]} />)}
+          <circle class="head" cx={p0.head[0]} cy={p0.head[1]} r="5.5" />
+        </svg>
+        <figcaption class="absolute bottom-3 left-4 font-cond text-lg uppercase"><T t={C.fig} /> 1 — Tāḍāsana</figcaption>
+      </figure>
+    </section>
+
+    <!-- poses (signature) -->
+    <section id="poses" class="border-y-2 border-ink bg-paper2">
+      <div class="wrap py-16">
+        <h2 class="sec-title"><span>01</span><T t={C.posesTitle} /></h2>
+        <div class="grid gap-8 md:grid-cols-[1fr_1.1fr]">
+          <div class="relative aspect-square border-2 border-ink bg-paper">
+            <svg viewBox="0 0 100 100" class="figure absolute inset-[6%]" id="poseFig" aria-hidden="true">
+              <line x1="6" y1="90" x2="94" y2="90" class="floor" />
+              {BONES.map(([a, b]) => <line class="bone" data-a={a} data-b={b} x1={p0[a][0]} y1={p0[a][1]} x2={p0[b][0]} y2={p0[b][1]} />)}
+              {Object.entries(p0).filter(([k]) => k !== "head").map(([k, [x, y]]) => <circle class="joint" data-j={k} cx={x} cy={y} r="1.6" />)}
+              <circle class="head" data-j="head" cx={p0.head[0]} cy={p0.head[1]} r="5.5" />
+            </svg>
+            <span class="absolute top-3 right-4 font-cond text-6xl font-extrabold text-mustard" id="poseNo">1</span>
+          </div>
+          <div class="flex flex-col">
+            <ol class="pose-list" id="poseList">
+              {POSES.map((p, i) => (
+                <li data-i={i} class={i === 0 ? "is-on" : ""}>
+                  <button type="button"><span class="n">{i + 1}</span><span class="nm"><T t={p.name} /></span><span class="sk">{p.sk}</span></button>
+                  <div class="cue">
+                    <p><T t={p.cue} /></p>
+                    <p class="font-cond text-lg uppercase tracking-wider"><T t={C.hold} /> <b class="text-mustard-d">{p.breaths}</b> <T t={C.breaths} /></p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div class="mt-auto flex gap-3 pt-6">
+              <button id="prev" class="btn-ghost" type="button">← <T t={C.prev} /></button>
+              <button id="next" class="btn" type="button"><T t={C.next} /> →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- breath -->
+    <section id="breath" class="wrap grid items-center gap-10 py-16 md:grid-cols-2">
+      <div>
+        <h2 class="sec-title"><span>02</span><T t={C.breathTitle} /></h2>
+        <p class="max-w-[40ch] text-xl"><T t={C.breathLead} /></p>
+        <ol class="mt-6 flex gap-3 font-cond text-xl uppercase">
+          {BREATH.map((b) => <li class="border-2 border-ink px-3 py-1" data-phase={b.k}><T t={b.t} /> · {b.s}</li>)}
+        </ol>
+        <button id="breathBtn" class="btn mt-8" type="button"><span class="lbl-start"><T t={C.start} /></span><span class="lbl-stop hidden"><T t={C.stop} /></span></button>
+      </div>
+      <div class="relative mx-auto grid aspect-square w-full max-w-[420px] place-items-center">
+        <div class="absolute inset-0 rounded-full border-2 border-dashed border-ink/40"></div>
+        <div id="breathDisc" class="breath-disc"></div>
+        <div class="relative text-center">
+          <p id="breathWord" class="font-cond text-4xl font-extrabold uppercase"><T t={BREATH[0].t} /></p>
+          <p class="font-cond text-lg uppercase"><T t={C.round} /> <span id="breathRound">0</span> · <span id="breathCount">4</span></p>
+        </div>
+        {BREATH.map((b) => <template data-word={b.k}><T t={b.t} /></template>)}
+      </div>
+    </section>
+
+    <!-- timetable -->
+    <section id="timetable" class="border-y-2 border-ink bg-paper2">
+      <div class="wrap py-16">
+        <h2 class="sec-title"><span>03</span><T t={C.ttTitle} /></h2>
+        <div class="mb-6 flex flex-wrap gap-2" role="group" aria-label="Level">
+          {LEVELS.map((l, i) => <button class={`chip lvl-${l.id}`} data-level={l.id} aria-pressed={i === 0 ? "true" : "false"} type="button"><T t={l.t} /></button>)}
+        </div>
+        <div class="overflow-x-auto">
+          <table class="tt" id="tt">
+            <thead><tr><th></th>{DAYS.map((d) => <th><T t={d} /></th>)}</tr></thead>
+            <tbody>
+              {TIMES.map((time, ti) => (
+                <tr>
+                  <th>{time}</th>
+                  {DAYS.map((_, di) => {
+                    const c = cell(di, ti);
+                    return <td>{c && <div class={`cls lvl-${c[2]}`} data-level={c[2]}><T t={c[3]} /><span>{LEVELS.find((l) => l.id === c[2])!.t.en.slice(0, 1)}</span></div>}</td>;
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- teachers -->
+    <section id="teachers" class="wrap py-16">
+      <h2 class="sec-title"><span>04</span><T t={C.teachersTitle} /></h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {TEACHERS.map((t) => (
+          <article class="border-2 border-ink p-6">
+            <span class="grid size-16 place-items-center rounded-full border-2 border-ink font-cond text-2xl font-extrabold">{t.m}</span>
+            <h3 class="mt-4 font-cond text-3xl font-extrabold uppercase">{t.n}</h3>
+            <p class="text-ink/70"><T t={t.s} /></p>
+            <p class="mt-4 text-xl italic">“<T t={t.q} />”</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t-2 border-ink">
+    <div class="wrap flex flex-wrap justify-between gap-3 py-5 font-cond text-lg uppercase">
+      <span><T t={C.visit} /></span>
+      <span class="normal-case font-text text-sm"><T t={C.foot} /></span>
+    </div>
+  </footer>
+
+  <script>
+    import { BREATH, POSES } from "../content";
+
+    const root = document.documentElement;
+    document.getElementById("lang")!.addEventListener("click", () => {
+      const l = root.dataset.lang === "en" ? "ru" : "en";
+      root.dataset.lang = l; root.lang = l;
+      try { localStorage.setItem("vt-lang", l); } catch {}
+    });
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ease = (t: number) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+    /* ---- morphing pose figure ---- */
+    const fig = document.getElementById("poseFig")!;
+    const bones = [...fig.querySelectorAll<SVGLineElement>(".bone")];
+    const joints = [...fig.querySelectorAll<SVGCircleElement>("[data-j]")];
+    const items = [...document.querySelectorAll<HTMLLIElement>("#poseList li")];
+    let cur = POSES[0].j as Record<string, number[]>, idx = 0, raf = 0;
+
+    const paint = (j: Record<string, number[]>) => {
+      bones.forEach((b) => { const a = j[b.dataset.a!], c = j[b.dataset.b!]; b.setAttribute("x1", `${a[0]}`); b.setAttribute("y1", `${a[1]}`); b.setAttribute("x2", `${c[0]}`); b.setAttribute("y2", `${c[1]}`); });
+      joints.forEach((el) => { const p = j[el.dataset.j!]; el.setAttribute("cx", `${p[0]}`); el.setAttribute("cy", `${p[1]}`); });
+    };
+    const go = (i: number) => {
+      idx = (i + POSES.length) % POSES.length;
+      items.forEach((li, k) => li.classList.toggle("is-on", k === idx));
+      document.getElementById("poseNo")!.textContent = String(idx + 1);
+      const from = cur, to = POSES[idx].j as Record<string, number[]>;
+      cancelAnimationFrame(raf);
+      if (reduce) { cur = to; paint(to); return; }
+      const t0 = performance.now(), dur = 900;
+      const step = (now: number) => {
+        const k = ease(Math.min(1, (now - t0) / dur));
+        const mid: Record<string, number[]> = {};
+        for (const key in to) mid[key] = [from[key][0] + (to[key][0] - from[key][0]) * k, from[key][1] + (to[key][1] - from[key][1]) * k];
+        paint(mid);
+        if (k < 1) raf = requestAnimationFrame(step); else cur = to;
+      };
+      raf = requestAnimationFrame(step);
+    };
+    items.forEach((li, k) => li.querySelector("button")!.addEventListener("click", () => go(k)));
+    document.getElementById("next")!.addEventListener("click", () => go(idx + 1));
+    document.getElementById("prev")!.addEventListener("click", () => go(idx - 1));
+
+    /* ---- breath counter ---- */
+    const disc = document.getElementById("breathDisc")!, word = document.getElementById("breathWord")!;
+    const count = document.getElementById("breathCount")!, round = document.getElementById("breathRound")!;
+    const btn = document.getElementById("breathBtn")!;
+    const tpl = (k: string) => (document.querySelector(`template[data-word="${k}"]`) as HTMLTemplateElement).innerHTML;
+    let timer: ReturnType<typeof setInterval> | undefined;
+    const stop = () => {
+      clearInterval(timer); timer = undefined;
+      disc.style.transitionDuration = "1s"; disc.style.transform = "scale(.35)";
+      btn.querySelector(".lbl-start")!.classList.remove("hidden"); btn.querySelector(".lbl-stop")!.classList.add("hidden");
+      document.querySelectorAll("[data-phase]").forEach((el) => el.classList.remove("is-now"));
+    };
+    btn.addEventListener("click", () => {
+      if (timer) return stop();
+      btn.querySelector(".lbl-start")!.classList.add("hidden"); btn.querySelector(".lbl-stop")!.classList.remove("hidden");
+      let phase = -1, left = 0, r = 0;
+      const tick = () => {
+        if (left <= 0) {
+          phase = (phase + 1) % BREATH.length; if (phase === 0) round.textContent = String(++r);
+          const b = BREATH[phase]; left = b.s;
+          word.innerHTML = tpl(b.k);
+          document.querySelectorAll("[data-phase]").forEach((el) => el.classList.toggle("is-now", (el as HTMLElement).dataset.phase === b.k));
+          disc.style.transitionDuration = `${b.s}s`;
+          if (b.k === "in") disc.style.transform = "scale(1)";
+          if (b.k === "out") disc.style.transform = "scale(.35)";
+        }
+        count.textContent = String(left); left--;
+      };
+      tick(); timer = setInterval(tick, 1000);
+    });
+
+    /* ---- timetable filter ---- */
+    const chips = document.querySelectorAll<HTMLButtonElement>("[data-level].chip");
+    chips.forEach((c) => c.addEventListener("click", () => {
+      chips.forEach((x) => x.setAttribute("aria-pressed", String(x === c)));
+      const lvl = c.dataset.level;
+      document.querySelectorAll<HTMLElement>("#tt .cls").forEach((el) => el.classList.toggle("is-dim", lvl !== "all" && el.dataset.level !== lvl));
+    }));
+  </script>
+</body>
+</html>

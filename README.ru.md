@@ -54,6 +54,10 @@
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="templates/09-esports-club/README.ru.md"><img src="templates/09-esports-club/preview.png" alt="NOVA E.C." /></a><br /><b>09 · NOVA E.C.</b> — Программка футбольного матча<br /><sub>React 19 · Three.js (R3F) · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/09-esports-club/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/10-yoga-wellness/README.ru.md"><img src="templates/10-yoga-wellness/preview.png" alt="Hold Studio" /></a><br /><b>10 · Hold Studio</b> — Гимнастическая брошюра 1960-х<br /><sub>Astro 7 · Tailwind CSS 4 · <a href="https://unicorn-rm.github.io/vibe-templates/10-yoga-wellness/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/11-online-course/README.ru.md"><img src="templates/11-online-course/preview.png" alt="SQL in 30 Evenings" /></a><br /><b>11 · SQL in 30 Evenings</b> — Тетрадь в клетку, красная ручка<br /><sub>Vue 3 · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/11-online-course/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/14-fine-dining/README.ru.md"><img src="templates/14-fine-dining/preview.png" alt="Ombre" /></a><br /><b>14 · Ombre</b> — Тёмная роскошь, свет свечи<br /><sub>HTML · CSS · GSAP + ScrollTrigger · <a href="https://unicorn-rm.github.io/vibe-templates/14-fine-dining/">demo</a></sub></td>
 </tr>
 </table>
@@ -73,8 +77,8 @@
 | 07 | [**Ines Varo** · Фотограф](templates/07-photographer/README.ru.md) | Воздушный минимализм | SvelteKit 3, Svelte 5 | Masonry-галерея с фильтром серий и лайтбоксом (клавиатура/свайп) с данными EXIF |
 | 08 | [**Crumb & Co.** · Домашняя пекарня](templates/08-bakery/README.ru.md) | Рисованная пастель | Tailwind CSS 4, Alpine.js, Vite | Меловая доска «сегодня в печи» с живым отсчётом до следующей партии + фильтр по аллергенам |
 | 09 | [**NOVA E.C.** · Киберспорт-клуб](templates/09-esports-club/README.ru.md) | Программка футбольного матча | React 19, Three.js (R3F), Vite | 3D-эмалевый герб клуба из выдавленных фигур (без файлов моделей) + кликабельная сетка кубка |
-| 10 | Йога и велнес <sub>скоро</sub> | Мягкая органика | Astro, Tailwind CSS | — |
-| 11 | Онлайн-курс <sub>скоро</sub> | Игровые блоки | Vue 3, Vite | — |
+| 10 | [**Hold Studio** · Йога и велнес](templates/10-yoga-wellness/README.ru.md) | Гимнастическая брошюра 1960-х | Astro 7, Tailwind CSS 4 | Схема-человечек, плавно перетекающий между шестью позами, + дыхательный счётчик 4-4-6 |
+| 11 | [**SQL in 30 Evenings** · Онлайн-курс](templates/11-online-course/README.ru.md) | Тетрадь в клетку, красная ручка | Vue 3, Vite | Квиз, который проверяет красная ручка учителя: галочки, крестики, обведённый верный ответ и оценка в кружке |
 | 12 | Приложение финансов <sub>скоро</sub> | Тёмное стекло | React, Tailwind CSS, Recharts | — |
 | 13 | Модный бренд <sub>скоро</sub> | Журнальный лукбук | Next.js | — |
 | 14 | [**Ombre** · Ресторан высокой кухни](templates/14-fine-dining/README.ru.md) | Тёмная роскошь, свет свечи | HTML, CSS, GSAP + ScrollTrigger | Закреплённое дегустационное меню: фото и римская цифра меняются на каждом блюде при прокрутке |

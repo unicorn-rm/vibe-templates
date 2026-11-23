@@ -1,0 +1,7 @@
+---
+// Renders a bilingual string. CSS shows the one matching <html data-lang>.
+import type { L } from "../content";
+interface Props { t: L }
+const { t } = Astro.props;
+---
+<span data-l="en">{t.en}</span><span data-l="ru" lang="ru">{t.ru}</span>

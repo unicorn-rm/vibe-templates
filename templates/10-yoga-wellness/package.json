@@ -1,17 +1,21 @@
 {
-  "name": "10-yoga-wellness",
+  "name": "vibe-10-yoga-wellness",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Yoga studio template styled as a 1960s exercise booklet: morphing pose diagrams, breath counter, timetable. Astro 7 + Tailwind CSS 4.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.13",
     "tailwindcss": "^4.3.5"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
   }
 }

@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   10 · Hold Studio — 1960s exercise-booklet tokens
+   Blue-grey offset paper, one dark ink, one mustard spot colour.
+   ========================================================== */
+@theme {
+  --color-paper: #e6eae9;
+  --color-paper2: #dce1df;
+  --color-ink: #14314a;
+  --color-mustard: #e0a526;
+  --color-mustard-d: #a8740a;   /* text-safe mustard on paper */
+  --color-sun: #e8b84a;
+  --font-cond: "Sofia Sans Condensed", "Arial Narrow", sans-serif;
+  --font-text: "Piazzolla", Georgia, serif;
+}
+
+/* bilingual switch: <T> renders both languages */
+html[data-lang="en"] [data-l="ru"], html[data-lang="ru"] [data-l="en"] { display: none; }
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  ::selection { background: var(--color-mustard); color: var(--color-ink); }
+  :focus-visible { outline: 3px solid var(--color-mustard); outline-offset: 2px; }
+}
+
+.wrap { max-width: 1200px; margin-inline: auto; padding-inline: 20px; }
+
+/* section titles: number tab + condensed caps */
+.sec-title { display: flex; align-items: baseline; gap: .9rem; margin: 0 0 2rem; font: 800 clamp(2.4rem, 5vw, 4rem)/.95 var(--font-cond); text-transform: uppercase; }
+.sec-title > span:first-child { padding: .1em .35em; background: var(--color-ink); color: var(--color-paper); font-size: .45em; }
+
+/* stick-figure diagrams */
+.figure { width: 88%; height: 88%; overflow: visible; }
+.figure .bone { stroke: var(--color-ink); stroke-width: 3.2; stroke-linecap: round; }
+.figure .head { fill: var(--color-paper); stroke: var(--color-ink); stroke-width: 3; }
+.figure .joint { fill: var(--color-mustard); stroke: var(--color-ink); stroke-width: 1; }
+.figure .floor { stroke: var(--color-ink); stroke-width: 1.4; stroke-dasharray: 2 2; }
+.cover-fig .head { fill: var(--color-sun); }
+/* the cover: printed sun disc behind the figure */
+.cover-fig::before { content: ""; position: absolute; inset: 18% 18% 30%; border-radius: 50%; background: var(--color-paper); opacity: .55; }
+
+/* pose list */
+.pose-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--color-ink); }
+.pose-list li { border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 35%, transparent); }
+.pose-list button { display: grid; grid-template-columns: 2.4rem 1fr auto; align-items: baseline; gap: .6rem; width: 100%; padding: .7rem 0; background: none; border: 0; text-align: left; cursor: pointer; color: inherit; }
+.pose-list .n { font: 800 1.4rem var(--font-cond); }
+.pose-list .nm { font: 800 1.7rem/1 var(--font-cond); text-transform: uppercase; }
+.pose-list .sk { font-style: italic; opacity: .7; }
+.pose-list .cue { display: none; padding: 0 0 1rem 3rem; font-size: 1.1rem; }
+.pose-list li.is-on .cue { display: block; }
+.pose-list li.is-on .n { color: var(--color-mustard-d); }
+.pose-list li.is-on .nm { text-decoration: underline; text-decoration-color: var(--color-mustard); text-decoration-thickness: 4px; text-underline-offset: 4px; }
+
+.btn { padding: .7rem 1.3rem; background: var(--color-ink); color: var(--color-paper); border: 2px solid var(--color-ink); font: 800 1.2rem var(--font-cond); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+.btn:hover { background: var(--color-mustard); color: var(--color-ink); }
+.btn-ghost { padding: .7rem 1.3rem; background: none; border: 2px solid var(--color-ink); font: 800 1.2rem var(--font-cond); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; color: inherit; }
+.btn-ghost:hover { background: var(--color-paper); }
+
+/* breath disc grows and shrinks with CSS transitions driven by JS */
+.breath-disc { position: absolute; inset: 0; border-radius: 50%; background: var(--color-sun); transform: scale(.35); transition: transform 1s cubic-bezier(.45, 0, .55, 1); }
+[data-phase].is-now { background: var(--color-ink); color: var(--color-paper); }
+
+/* timetable */
+.chip { padding: .25rem .8rem; border: 2px solid var(--color-ink); background: none; font: 800 1.1rem var(--font-cond); text-transform: uppercase; cursor: pointer; color: inherit; }
+.chip[aria-pressed="true"] { background: var(--color-ink); color: var(--color-paper); }
+.tt { width: 100%; min-width: 720px; border-collapse: collapse; table-layout: fixed; }
+.tt th { padding: .5rem; font: 800 1.1rem var(--font-cond); text-transform: uppercase; text-align: left; border-bottom: 2px solid var(--color-ink); }
+.tt tbody th { border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 30%, transparent); width: 5rem; }
+.tt td { height: 74px; padding: 4px; border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 30%, transparent); border-left: 1px dashed color-mix(in srgb, var(--color-ink) 30%, transparent); vertical-align: top; }
+.cls { position: relative; height: 100%; padding: .4rem 1.5rem .4rem .5rem; border: 2px solid var(--color-ink); background: var(--color-paper); font: 600 .95rem/1.15 var(--font-text); transition: opacity .3s; }
+.cls > span:last-child { position: absolute; right: .35rem; top: .25rem; font: 800 1rem var(--font-cond); }
+.cls.lvl-b { background: var(--color-paper); }
+.cls.lvl-o { background: var(--color-sun); }
+.cls.lvl-a { background: var(--color-ink); color: var(--color-paper); }
+.cls.is-dim { opacity: .15; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .breath-disc, .cls { transition: none; }
+}
