@@ -68,6 +68,14 @@ Most template packs look like the same landing page in different colors. And whe
 <td width="50%" valign="top"><a href="templates/15-eco-nonprofit/README.md"><img src="templates/15-eco-nonprofit/preview.png" alt="Second Growth" /></a><br /><b>15 · Second Growth</b> — Field survey notebook<br /><sub>Astro 7 · <a href="https://unicorn-rm.github.io/vibe-templates/15-eco-nonprofit/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/16-oss-docs/README.md"><img src="templates/16-oss-docs/preview.png" alt="Ferry" /></a><br /><b>16 · Ferry</b> — 1980s printed reference manual<br /><sub>Astro 7 · MDX · <a href="https://unicorn-rm.github.io/vibe-templates/16-oss-docs/">demo</a></sub></td>
 </tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/17-podcast/README.md"><img src="templates/17-podcast/preview.png" alt="Long Wave" /></a><br /><b>17 · Long Wave</b> — Braun-era radio receiver<br /><sub>SvelteKit 3 · Svelte 5 · Web Audio · <a href="https://unicorn-rm.github.io/vibe-templates/17-podcast/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/18-space-museum/README.md"><img src="templates/18-space-museum/preview.png" alt="Kepler Hall" /></a><br /><b>18 · Kepler Hall</b> — Printed star atlas<br /><sub>Vanilla JS · Three.js · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/18-space-museum/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/19-barbershop/README.md"><img src="templates/19-barbershop/preview.png" alt="Sharp & Sons" /></a><br /><b>19 · Sharp & Sons</b> — Wood-type letterpress broadside<br /><sub>Tailwind CSS 4 · Alpine.js · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/19-barbershop/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/20-ai-startup/README.md"><img src="templates/20-ai-startup/preview.png" alt="Tern" /></a><br /><b>20 · Tern</b> — arXiv research paper<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/20-ai-startup/">demo</a></sub></td>
+</tr>
 </table>
 <!-- gallery:end -->
 
@@ -92,10 +100,10 @@ Most template packs look like the same landing page in different colors. And whe
 | 14 | [**Ombre** · Fine-dining restaurant](templates/14-fine-dining/README.md) | Dark luxury, candlelight | HTML, CSS, GSAP + ScrollTrigger | Pinned tasting menu: a sticky photo and roman numeral change with every course you scroll past |
 | 15 | [**Second Growth** · Eco nonprofit](templates/15-eco-nonprofit/README.md) | Field survey notebook | Astro 7 | Tree-ring impact chart: one ring per year, width = trees planted, tap a ring for the numbers |
 | 16 | [**Ferry** · Open-source library](templates/16-oss-docs/README.md) | 1980s printed reference manual | Astro 7, MDX | Thumb-index tabs on the page edge that track the chapter you're reading + ⌘K search over the manual |
-| 17 | Podcast <sub>soon</sub> | Bold color blocks | SvelteKit | — |
-| 18 | Space museum <sub>soon</sub> | WebGL starfield | HTML, Three.js | — |
-| 19 | Barbershop / tattoo <sub>soon</sub> | Vintage poster | Tailwind CSS, Alpine.js | — |
-| 20 | AI startup <sub>soon</sub> | Shader gradient | Next.js, Tailwind CSS | — |
+| 17 | [**Long Wave** · Podcast](templates/17-podcast/README.md) | Braun-era radio receiver | SvelteKit 3, Svelte 5, Web Audio | Episodes are stations on a frequency scale: drag the tuning knob (or use arrow keys) — static between stations, a tone when tuned |
+| 18 | [**Kepler Hall** · Space museum](templates/18-space-museum/README.md) | Printed star atlas | Vanilla JS, Three.js, Vite | Draggable 3D celestial sphere drawn as an atlas plate — RA/Dec grid, real constellations; pick one and the sky turns to it |
+| 19 | [**Sharp & Sons** · Barbershop / tattoo](templates/19-barbershop/README.md) | Wood-type letterpress broadside | Tailwind CSS 4, Alpine.js, Vite | Woodcut before/after: drag the razor across two hand-drawn profiles (shaggy vs. fresh cut) |
+| 20 | [**Tern** · AI startup](templates/20-ai-startup/README.md) | arXiv research paper | Next.js 16, Tailwind CSS 4, TypeScript | Figure 1: the model's answer streams token by token, underlined by confidence; hover a token for alternatives — low confidence triggers an honest 'I don't know' |
 | 21 | Tech conference <sub>soon</sub> | Acid poster grid | React, Vite | — |
 | 22 | Interior studio <sub>soon</sub> | Japandi | Nuxt 3 | — |
 | 23 | Blog & newsletter <sub>soon</sub> | Reading-first | Astro, MDX | — |

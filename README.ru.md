@@ -68,6 +68,14 @@
 <td width="50%" valign="top"><a href="templates/15-eco-nonprofit/README.ru.md"><img src="templates/15-eco-nonprofit/preview.png" alt="Second Growth" /></a><br /><b>15 · Second Growth</b> — Полевой дневник<br /><sub>Astro 7 · <a href="https://unicorn-rm.github.io/vibe-templates/15-eco-nonprofit/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/16-oss-docs/README.ru.md"><img src="templates/16-oss-docs/preview.png" alt="Ferry" /></a><br /><b>16 · Ferry</b> — Печатный справочник 1980-х<br /><sub>Astro 7 · MDX · <a href="https://unicorn-rm.github.io/vibe-templates/16-oss-docs/">demo</a></sub></td>
 </tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/17-podcast/README.ru.md"><img src="templates/17-podcast/preview.png" alt="Long Wave" /></a><br /><b>17 · Long Wave</b> — Радиоприёмник эпохи Braun<br /><sub>SvelteKit 3 · Svelte 5 · Web Audio · <a href="https://unicorn-rm.github.io/vibe-templates/17-podcast/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/18-space-museum/README.ru.md"><img src="templates/18-space-museum/preview.png" alt="Kepler Hall" /></a><br /><b>18 · Kepler Hall</b> — Печатный звёздный атлас<br /><sub>Vanilla JS · Three.js · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/18-space-museum/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/19-barbershop/README.ru.md"><img src="templates/19-barbershop/preview.png" alt="Sharp & Sons" /></a><br /><b>19 · Sharp & Sons</b> — Афиша из деревянного шрифта<br /><sub>Tailwind CSS 4 · Alpine.js · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/19-barbershop/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/20-ai-startup/README.ru.md"><img src="templates/20-ai-startup/preview.png" alt="Tern" /></a><br /><b>20 · Tern</b> — Научная статья в духе arXiv<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/20-ai-startup/">demo</a></sub></td>
+</tr>
 </table>
 <!-- gallery:end -->
 
@@ -92,10 +100,10 @@
 | 14 | [**Ombre** · Ресторан высокой кухни](templates/14-fine-dining/README.ru.md) | Тёмная роскошь, свет свечи | HTML, CSS, GSAP + ScrollTrigger | Закреплённое дегустационное меню: фото и римская цифра меняются на каждом блюде при прокрутке |
 | 15 | [**Second Growth** · Эко-НКО](templates/15-eco-nonprofit/README.ru.md) | Полевой дневник | Astro 7 | Годовые кольца как отчёт: одно кольцо на год, ширина — число посаженных деревьев, нажмите на кольцо, чтобы увидеть цифры |
 | 16 | [**Ferry** · Open-source библиотека](templates/16-oss-docs/README.ru.md) | Печатный справочник 1980-х | Astro 7, MDX | Вырубные закладки-индексы по краю страницы, отслеживающие текущую главу, + поиск по ⌘K |
-| 17 | Подкаст <sub>скоро</sub> | Крупные цветные плашки | SvelteKit | — |
-| 18 | Музей космоса <sub>скоро</sub> | WebGL, звёздное небо | HTML, Three.js | — |
-| 19 | Барбершоп / тату <sub>скоро</sub> | Винтажный плакат | Tailwind CSS, Alpine.js | — |
-| 20 | ИИ-стартап <sub>скоро</sub> | Шейдерный градиент | Next.js, Tailwind CSS | — |
+| 17 | [**Long Wave** · Подкаст](templates/17-podcast/README.ru.md) | Радиоприёмник эпохи Braun | SvelteKit 3, Svelte 5, Web Audio | Выпуски — станции на шкале частот: крутите ручку настройки (или стрелками) — между станциями шум, на станции тон |
+| 18 | [**Kepler Hall** · Музей космоса](templates/18-space-museum/README.ru.md) | Печатный звёздный атлас | Vanilla JS, Three.js, Vite | Перетаскиваемая 3D-небесная сфера, нарисованная как лист атласа: сетка координат, настоящие созвездия; выберите созвездие — и небо повернётся к нему |
+| 19 | [**Sharp & Sons** · Барбершоп / тату](templates/19-barbershop/README.ru.md) | Афиша из деревянного шрифта | Tailwind CSS 4, Alpine.js, Vite | Гравюра «до и после»: тяните бритву по двум профилям (лохматый и после стрижки) |
+| 20 | [**Tern** · ИИ-стартап](templates/20-ai-startup/README.ru.md) | Научная статья в духе arXiv | Next.js 16, Tailwind CSS 4, TypeScript | Рисунок 1: ответ модели печатается по токенам с подчёркиванием по уверенности; при наведении — альтернативы, а низкая уверенность ведёт к честному «не знаю» |
 | 21 | IT-конференция <sub>скоро</sub> | Кислотная плакатная сетка | React, Vite | — |
 | 22 | Студия интерьеров <sub>скоро</sub> | Japandi | Nuxt 3 | — |
 | 23 | Блог и рассылка <sub>скоро</sub> | Для чтения | Astro, MDX | — |

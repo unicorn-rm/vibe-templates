@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kepler Hall — Planetarium &amp; Museum of Astronomy</title>
+  <meta name="description" content="Planetarium and space museum template styled as a printed star atlas: draggable 3D celestial sphere with real constellations, tonight's moon phase, exhibit catalogue. Vanilla JS + Three.js." />
+  <meta name="theme-color" content="#f0eee6" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%231e3561'/%3E%3Cpath d='M1 16h30M16 1v30' stroke='%237d9bd0'/%3E%3Ccircle cx='11' cy='11' r='1.6' fill='%23fff'/%3E%3Ccircle cx='21' cy='19' r='1.2' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="top">
+    <a href="#top" class="logo">Kepler Hall</a>
+    <nav aria-label="Primary">
+      <a href="#atlas" data-t="nav.atlas">Atlas</a><a href="#halls" data-t="nav.halls">Exhibits</a><a href="#shows" data-t="nav.shows">Dome</a><a href="#visit" data-t="nav.visit">Visit</a>
+    </nav>
+    <button id="lang" class="lang" type="button" aria-label="Switch language">RU</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1><span data-t="title.0">Look up.</span> <em data-t="title.1">Then come</em> <span data-t="title.2">inside.</span></h1>
+      <p class="lead" data-t="lead"></p>
+    </section>
+
+    <!-- SIGNATURE: the atlas plate -->
+    <section id="atlas" class="plate-wrap">
+      <figure class="plate">
+        <p class="plate__head" data-t="plate"></p>
+        <canvas id="sky" aria-label="Interactive celestial sphere"></canvas>
+        <figcaption class="plate__foot"><span data-t="drag"></span><span id="picked">—</span></figcaption>
+      </figure>
+      <aside class="plate-side">
+        <ol class="consts" id="consts"></ol>
+        <div class="legend">
+          <p class="small" data-t="legend"></p>
+          <p class="mags"><i class="m0"></i> 0–1 <i class="m1"></i> 1–2 <i class="m2"></i> 2–3.5</p>
+        </div>
+        <div class="moon">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" class="moon__dark" /><path id="moonLit" class="moon__lit" /></svg>
+          <div><p class="small" data-t="moon"></p><p id="moonName" class="moon__name"></p><p id="moonPct" class="small"></p></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="halls" class="sec">
+      <h2 data-t="exhibits.title"></h2>
+      <table class="cat"><thead><tr id="catHead"></tr></thead><tbody id="catBody"></tbody></table>
+    </section>
+
+    <section id="shows" class="sec">
+      <h2 data-t="shows.title"></h2>
+      <ol class="shows" id="shows-list"></ol>
+    </section>
+
+    <section id="visit" class="sec visit">
+      <h2 data-t="visit.title"></h2>
+      <p data-t="visit.text"></p>
+      <p class="small" data-t="visit.free"></p>
+    </section>
+  </main>
+
+  <footer class="foot"><span>Kepler Hall · 1891</span><span data-t="foot"></span></footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

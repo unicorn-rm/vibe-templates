@@ -1185,85 +1185,296 @@
     },
     {
       "id": "17-podcast",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Long Wave",
       "kind": {
         "en": "Podcast",
         "ru": "Подкаст"
       },
       "style": {
-        "en": "Bold color blocks",
-        "ru": "Крупные цветные плашки"
+        "en": "Braun-era radio receiver",
+        "ru": "Радиоприёмник эпохи Braun"
       },
       "stack": [
-        "SvelteKit"
+        "SvelteKit 3",
+        "Svelte 5",
+        "Web Audio"
       ],
       "fonts": [
-        "Unbounded",
-        "Manrope"
+        "Commissioner"
+      ],
+      "palette": {
+        "body": "#e4e2dc",
+        "face": "#efeee9",
+        "ink": "#2b2b2b",
+        "signal": "#ef7d00"
+      },
+      "signature": {
+        "en": "Episodes are stations on a frequency scale: drag the tuning knob (or use arrow keys) — static between stations, a tone when tuned",
+        "ru": "Выпуски — станции на шкале частот: крутите ручку настройки (или стрелками) — между станциями шум, на станции тон"
+      },
+      "blocks": [
+        "minimal header",
+        "big wordmark + tagline",
+        "radio: speaker grille, frequency scale, display, power, tuning knob",
+        "programme guide list",
+        "hosts",
+        "listen-on links",
+        "footer"
+      ],
+      "idea": {
+        "en": "A podcast about slow technology, presented as a 1960s Braun receiver: warm grey housing, charcoal controls, a single orange signal, and a dial you actually turn.",
+        "ru": "Подкаст о медленных технологиях в образе приёмника Braun 1960-х: тёплый серый корпус, графитовые ручки, один оранжевый сигнал и шкала, которую действительно крутишь."
+      },
+      "rules": {
+        "en": [
+          "One colour (orange) only for 'on air' things: lamp, needle, tuned station.",
+          "Rounded hardware shapes; no gradients except the knob's knurling.",
+          "Every control works with the keyboard; the knob is role=slider.",
+          "Sound is synthesised — never autoplay; Power starts audio.",
+          "Episodes are data with a frequency (88–108)."
+        ],
+        "ru": [
+          "Один цвет (оранжевый) — только для «в эфире»: лампа, стрелка, найденная станция.",
+          "Скруглённые «железные» формы; градиентов нет, кроме насечки ручки.",
+          "Все элементы работают с клавиатуры; ручка — role=slider.",
+          "Звук синтезируется — никакого автозапуска; звук включает кнопка питания.",
+          "Выпуски — данные с частотой (88–108)."
+        ]
+      },
+      "files": {
+        "src/lib/content.js": "episodes with frequencies, hosts, all copy (EN + RU)",
+        "src/routes/+page.svelte": "page, tuner logic, Web Audio",
+        "src/app.css": "tokens at the top",
+        "vite.config.js": "SvelteKit 3 config lives in the Vite plugin"
+      },
+      "run": [
+        "npm install          # Node 22.17+",
+        "npm run dev",
+        "npm run build   # ./build"
       ]
     },
     {
       "id": "18-space-museum",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Kepler Hall",
       "kind": {
         "en": "Space museum",
         "ru": "Музей космоса"
       },
       "style": {
-        "en": "WebGL starfield",
-        "ru": "WebGL, звёздное небо"
+        "en": "Printed star atlas",
+        "ru": "Печатный звёздный атлас"
       },
       "stack": [
-        "HTML",
-        "Three.js"
+        "Vanilla JS",
+        "Three.js",
+        "Vite"
       ],
       "fonts": [
-        "Exo 2",
+        "Old Standard TT",
         "PT Sans"
+      ],
+      "palette": {
+        "page": "#f0eee6",
+        "ink": "#1b1a17",
+        "plate": "#1e3561",
+        "grid": "#7d9bd0",
+        "gold": "#f3d27a"
+      },
+      "signature": {
+        "en": "Draggable 3D celestial sphere drawn as an atlas plate — RA/Dec grid, real constellations; pick one and the sky turns to it",
+        "ru": "Перетаскиваемая 3D-небесная сфера, нарисованная как лист атласа: сетка координат, настоящие созвездия; выберите созвездие — и небо повернётся к нему"
+      },
+      "blocks": [
+        "double-rule header",
+        "serif headline",
+        "atlas plate with 3D sphere",
+        "constellation index (Greek letters)",
+        "magnitude legend",
+        "tonight's moon phase (computed)",
+        "exhibit catalogue",
+        "dome show schedule",
+        "visit"
+      ],
+      "idea": {
+        "en": "A planetarium website that looks like a 19th-century star atlas: Prussian-blue plates, white stars, a fine coordinate grid and catalogue tables — not a neon galaxy wallpaper.",
+        "ru": "Сайт планетария в виде звёздного атласа XIX века: прусско-синие листы, белые звёзды, тонкая координатная сетка и каталожные таблицы — а не неоновые обои с галактикой."
+      },
+      "rules": {
+        "en": [
+          "Space is blue plates on paper, never a full-screen black void.",
+          "Star positions are real (J2000 approx.) — add stars with RA hours and Dec degrees in sky.js.",
+          "Gold marks only the selected constellation.",
+          "Old Standard TT for headings and captions, PT Sans for UI.",
+          "Three.js is lazy-loaded; the page works without WebGL."
+        ],
+        "ru": [
+          "Космос — синие листы на бумаге, а не чёрная пустота во весь экран.",
+          "Координаты звёзд настоящие (J2000, прибл.) — добавляйте звёзды в sky.js в часах RA и градусах Dec.",
+          "Золотой — только выбранное созвездие.",
+          "Old Standard TT для заголовков и подписей, PT Sans для интерфейса.",
+          "Three.js подгружается лениво; без WebGL страница работает."
+        ]
+      },
+      "files": {
+        "src/content.js": "constellations, exhibits, shows, all copy (EN + RU)",
+        "src/sky.js": "star coordinates, stick figures, moon phase",
+        "src/sphere.js": "Three.js celestial sphere",
+        "src/main.js": "rendering, language, moon",
+        "src/style.css": "tokens at the top"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {
       "id": "19-barbershop",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Sharp & Sons",
       "kind": {
         "en": "Barbershop / tattoo",
         "ru": "Барбершоп / тату"
       },
       "style": {
-        "en": "Vintage poster",
-        "ru": "Винтажный плакат"
+        "en": "Wood-type letterpress broadside",
+        "ru": "Афиша из деревянного шрифта"
       },
       "stack": [
-        "Tailwind CSS",
-        "Alpine.js"
+        "Tailwind CSS 4",
+        "Alpine.js",
+        "Vite"
       ],
       "fonts": [
         "Oswald",
-        "Old Standard TT"
+        "Rubik Dirt",
+        "PT Serif"
+      ],
+      "palette": {
+        "news": "#e9e5da",
+        "ink": "#161412",
+        "red": "#d1342b"
+      },
+      "signature": {
+        "en": "Woodcut before/after: drag the razor across two hand-drawn profiles (shaggy vs. fresh cut)",
+        "ru": "Гравюра «до и после»: тяните бритву по двум профилям (лохматый и после стрижки)"
+      },
+      "blocks": [
+        "double-rule header",
+        "live open/closed sign",
+        "broadside masthead",
+        "woodcut before/after slider",
+        "price list with leaders",
+        "walk-ins band",
+        "barber cards",
+        "hours with today highlighted",
+        "footer"
+      ],
+      "idea": {
+        "en": "A barbershop that looks like its own 1950s handbill: newsprint, black and red ink, chunky wood type, a woodcut portrait — and no booking widget, because they never took appointments.",
+        "ru": "Барбершоп в виде собственной листовки 1950-х: газетная бумага, чёрная и красная краска, крупный деревянный шрифт, гравюра — и никакой онлайн-записи, потому что её здесь никогда не было."
+      },
+      "rules": {
+        "en": [
+          "Two inks only: black and red, on newsprint.",
+          "Wood type (Oswald) for labels, distressed Rubik Dirt for big words, PT Serif for sentences.",
+          "Rules are thick and doubled like a printed sheet.",
+          "Illustrations are flat woodcut shapes with paper-coloured hatching.",
+          "The open/closed sign is computed from HOURS in main.js."
+        ],
+        "ru": [
+          "Только две краски: чёрная и красная на газетной бумаге.",
+          "Деревянный шрифт (Oswald) для подписей, потёртый Rubik Dirt для крупных слов, PT Serif для фраз.",
+          "Линейки толстые и двойные, как на печатном листе.",
+          "Иллюстрации — плоские гравюрные формы со штриховкой цвета бумаги.",
+          "Табличка «открыто/закрыто» считается по HOURS в main.js."
+        ]
+      },
+      "files": {
+        "src/main.js": "Alpine component: hours, services, all copy (EN + RU), slider",
+        "index.html": "markup and woodcut SVGs",
+        "src/style.css": "tokens in Tailwind `@theme` + print effects"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {
       "id": "20-ai-startup",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Tern",
       "kind": {
         "en": "AI startup",
         "ru": "ИИ-стартап"
       },
       "style": {
-        "en": "Shader gradient",
-        "ru": "Шейдерный градиент"
+        "en": "arXiv research paper",
+        "ru": "Научная статья в духе arXiv"
       },
       "stack": [
-        "Next.js",
-        "Tailwind CSS"
+        "Next.js 16",
+        "Tailwind CSS 4",
+        "TypeScript"
       ],
       "fonts": [
-        "Inter Tight",
-        "JetBrains Mono"
+        "PT Serif",
+        "Fira Code"
+      ],
+      "palette": {
+        "paper": "#fdfdfb",
+        "ink": "#111111",
+        "link": "#1f4bb8",
+        "flag": "#b3261e"
+      },
+      "signature": {
+        "en": "Figure 1: the model's answer streams token by token, underlined by confidence; hover a token for alternatives — low confidence triggers an honest 'I don't know'",
+        "ru": "Рисунок 1: ответ модели печатается по токенам с подчёркиванием по уверенности; при наведении — альтернативы, а низкая уверенность ведёт к честному «не знаю»"
+      },
+      "blocks": [
+        "arXiv side stamp",
+        "title, authors, affiliations",
+        "abstract",
+        "numbered sections",
+        "interactive token-confidence figure",
+        "MathML equation",
+        "booktabs results table",
+        "BibTeX with copy",
+        "references"
+      ],
+      "idea": {
+        "en": "An AI startup that skips the shader gradient and presents itself as what it is: research. The site is a typeset preprint — the most credible format in the field.",
+        "ru": "ИИ-стартап, который обходится без шейдерного градиента и подаёт себя тем, чем является: исследованием. Сайт свёрстан как препринт — самый убедительный формат в этой области."
+      },
+      "rules": {
+        "en": [
+          "It must read like a paper: centered title block, justified text, numbered sections, captions under figures and above tables.",
+          "Colour is functional only: blue links, red for low confidence.",
+          "Tables use three rules (booktabs), no vertical lines; best values in bold.",
+          "The demo is pre-recorded data — never call a model API from the page.",
+          "Equations are MathML, no image or JS math library."
+        ],
+        "ru": [
+          "Должно читаться как статья: заголовок по центру, выключка по ширине, нумерованные разделы, подписи под рисунками и над таблицами.",
+          "Цвет только функциональный: синие ссылки, красный для низкой уверенности.",
+          "Таблицы — три линейки (booktabs), без вертикальных линий; лучшие значения жирным.",
+          "Демо — записанные данные; со страницы никогда не вызывается API модели.",
+          "Формулы — MathML, без картинок и JS-библиотек."
+        ]
+      },
+      "files": {
+        "lib/content.ts": "paper copy (EN + RU), demo tokens with probabilities, results, BibTeX",
+        "app/page.tsx": "paper layout and the Figure component",
+        "app/globals.css": "tokens in Tailwind `@theme`, token underlines, booktabs",
+        "mathml.d.ts": "MathML element types for TSX"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # static export to ./out"
       ]
     },
     {

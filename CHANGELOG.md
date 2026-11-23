@@ -21,4 +21,8 @@ All notable changes to this project are documented here. Format: [Keep a Changel
 - `13-fashion-lookbook` — OSTEN, lookbook as 35mm contact sheets with a loupe (Next.js 16).
 - `15-eco-nonprofit` — Second Growth, field-survey reforestation site with a tree-ring chart (Astro 7).
 - `16-oss-docs` — Ferry, library docs as a 1980s reference manual with thumb-index tabs (Astro 7 + MDX).
+- `17-podcast` — Long Wave, podcast as a Braun-era radio with a tuning dial (SvelteKit 3).
+- `18-space-museum` — Kepler Hall, planetarium as a star atlas with a 3D celestial sphere (Three.js).
+- `19-barbershop` — Sharp & Sons, wood-type broadside with a woodcut before/after slider (Tailwind 4, Alpine.js).
+- `20-ai-startup` — Tern, AI startup typeset as an arXiv paper with a token-confidence figure (Next.js 16).
 - Catalog (`templates.json`), docs generator, GitHub Pages gallery and deploy workflow.

@@ -1,0 +1,25 @@
+{
+  "name": "vibe-20-ai-startup",
+  "version": "1.0.0",
+  "description": "AI startup site typeset as an arXiv research paper: interactive token-confidence figure, results table, MathML equation, BibTeX. Next.js + Tailwind CSS v4.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}

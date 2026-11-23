@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sharp &amp; Sons — Barbers since 1952</title>
+  <meta name="description" content="Barbershop template styled as a two-colour wood-type letterpress broadside: woodcut before/after slider, live open/closed sign, price list. Tailwind CSS + Alpine.js." />
+  <meta name="theme-color" content="#e9e5da" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e9e5da'/%3E%3Crect x='11' y='2' width='10' height='28' rx='5' fill='%23fff' stroke='%23161412' stroke-width='2'/%3E%3Cpath d='M11 8l10 5M11 16l10 5M11 24l10 4' stroke='%23d1342b' stroke-width='3'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Rubik+Dirt&display=swap" rel="stylesheet" />
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body x-data="shop" class="bg-news text-ink font-text">
+  <div class="sheet mx-auto max-w-5xl px-5 sm:px-10">
+    <!-- top rules + nav -->
+    <header class="flex flex-wrap items-center gap-x-6 gap-y-2 border-b-4 border-double border-ink py-3 font-wood text-sm uppercase tracking-[0.2em]">
+      <span x-text="t.est"></span>
+      <nav class="ml-auto hidden gap-5 md:flex" aria-label="Primary">
+        <a href="#cuts" class="hover:text-red" x-text="t.nav.cuts"></a>
+        <a href="#prices" class="hover:text-red" x-text="t.nav.prices"></a>
+        <a href="#barbers" class="hover:text-red" x-text="t.nav.barbers"></a>
+        <a href="#find" class="hover:text-red" x-text="t.nav.find"></a>
+      </nav>
+      <button class="ml-auto border-2 border-ink px-2 hover:bg-ink hover:text-news md:ml-0" @click="lang = lang === 'en' ? 'ru' : 'en'" aria-label="Switch language" x-text="lang === 'en' ? 'RU' : 'EN'"></button>
+    </header>
+
+    <main id="top">
+      <!-- broadside masthead -->
+      <section class="py-8 text-center">
+        <p class="sign" :class="status.open ? 'is-open' : ''" x-text="status.text" aria-live="polite"></p>
+        <h1 class="mt-6 leading-[0.8]">
+          <span class="block font-dirt text-[clamp(5rem,20vw,14rem)] text-ink" x-text="t.h1[0]"></span>
+          <span class="block font-wood text-[clamp(3rem,11vw,8rem)] font-bold uppercase text-red" x-text="t.h1[1]"></span>
+        </h1>
+        <p class="rule-text mt-4 font-wood text-2xl uppercase tracking-[0.5em]" x-text="t.sub"></p>
+        <p class="mx-auto mt-5 max-w-xl text-xl italic" x-text="t.tagline"></p>
+      </section>
+
+      <!-- SIGNATURE: woodcut before / after -->
+      <section id="cuts" class="border-t-4 border-ink py-10">
+        <div class="flex items-baseline justify-between">
+          <h2 class="font-wood text-5xl font-bold uppercase" x-text="t.ba.title"></h2>
+          <p class="font-wood uppercase tracking-widest text-red" x-text="t.ba.hint"></p>
+        </div>
+        <div class="ba mt-6" x-ref="ba" :style="`--split:${split}%`">
+          <!-- after (full) -->
+          <svg class="ba__img" viewBox="0 0 400 300" aria-hidden="true">
+            <use href="#head" />
+            <path class="hair" d="M166 96 C196 58 266 62 290 110 C276 100 252 96 228 100 C206 104 188 112 176 126 C168 132 160 118 166 96 Z" />
+            <path class="hatch" d="M176 104 L196 80 M194 98 L216 72 M214 96 L236 70 M236 96 L256 74 M256 98 L272 82" />
+            <path class="fade" d="M158 132 C154 150 154 170 160 188" />
+            <path class="hair" d="M248 236 C262 232 282 228 292 210 C296 200 290 196 286 204 C278 218 262 222 248 222 Z" />
+          </svg>
+          <!-- before (clipped) -->
+          <div class="ba__before">
+            <svg class="ba__img" viewBox="0 0 400 300" aria-hidden="true">
+              <use href="#head" />
+              <path class="hair" d="M150 250 C118 210 112 120 168 80 C210 50 280 62 296 116 C300 130 296 142 288 146 C284 124 268 104 238 100 C206 98 186 112 178 136 C172 156 176 190 186 226 C176 240 162 252 150 250 Z" />
+              <path class="hatch" d="M140 200 L156 120 M152 214 L168 104 M170 90 L190 66 M196 82 L220 58 M226 82 L250 62 M254 88 L276 74 M164 226 L176 160" />
+              <path class="hair" d="M236 196 C250 200 270 196 286 190 C300 210 300 240 280 262 C262 280 232 276 222 256 C214 240 222 214 236 196 Z" />
+              <path class="hatch" d="M240 220 L250 262 M256 214 L264 268 M272 210 L278 260" />
+            </svg>
+          </div>
+          <span class="ba__label ba__label--l" x-text="t.ba.before"></span>
+          <span class="ba__label ba__label--r" x-text="t.ba.after"></span>
+          <button class="ba__razor" type="button" aria-label="Before/after divider" @pointerdown.prevent="drag($event)" @keydown="key($event)"><span></span></button>
+        </div>
+        <!-- the shared head, drawn once -->
+        <svg width="0" height="0" class="absolute" aria-hidden="true">
+          <defs>
+            <g id="head" class="head">
+              <!-- side profile facing right -->
+              <path class="skin" d="M150 300 L152 236 C120 200 120 110 175 82 C215 60 270 72 288 112 C292 124 292 132 294 140 L312 164 L298 170 C302 176 302 182 296 186 C302 192 300 198 296 204 C298 214 292 224 280 226 C266 228 254 232 250 240 L254 300 Z" />
+              <path d="M206 140 C194 140 192 168 206 170 C214 170 214 160 208 156" />
+              <path d="M262 136 L276 136" />
+              <path d="M286 186 L278 186" />
+            </g>
+          </defs>
+        </svg>
+      </section>
+
+      <!-- price list as a broadside -->
+      <section id="prices" class="border-t-4 border-ink py-10">
+        <h2 class="text-center font-wood text-6xl font-bold uppercase" x-text="t.prices.title"></h2>
+        <ul class="mx-auto mt-8 max-w-3xl">
+          <template x-for="s in services" :key="s.en">
+            <li class="flex items-baseline gap-3 border-b border-ink/30 py-3">
+              <span class="font-wood text-2xl font-semibold uppercase" x-text="s[lang]"></span>
+              <span class="text-sm italic opacity-70" x-text="s.min + ' ' + t.prices.min"></span>
+              <span class="flex-1 translate-y-[-4px] border-b-2 border-dotted border-ink/50"></span>
+              <span class="font-dirt text-4xl text-red" x-text="'€' + s.p"></span>
+            </li>
+          </template>
+        </ul>
+      </section>
+
+      <section class="border-y-4 border-ink bg-red py-8 text-center text-news">
+        <p class="font-dirt text-[clamp(2.6rem,8vw,5.5rem)] leading-none" x-text="t.walk"></p>
+        <p class="mt-3 text-lg italic" x-text="t.walkSub"></p>
+      </section>
+
+      <section id="barbers" class="py-10">
+        <h2 class="font-wood text-5xl font-bold uppercase" x-text="t.barbers.title"></h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <template x-for="(b, i) in t.barbers.list" :key="i">
+            <article class="border-2 border-ink p-5 text-center">
+              <p class="font-wood text-sm uppercase tracking-[0.3em]" x-text="t.barbers.chair + ' № ' + (i + 1)"></p>
+              <p class="mt-2 font-dirt text-5xl" x-text="b[0]"></p>
+              <p class="mt-2 italic" x-text="b[1]"></p>
+            </article>
+          </template>
+        </div>
+      </section>
+
+      <section id="find" class="border-t-4 border-double border-ink py-10 text-center">
+        <p class="font-wood text-3xl uppercase" x-text="t.find"></p>
+        <table class="hours mx-auto mt-6">
+          <tbody>
+            <template x-for="d in [1, 2, 3, 4, 5, 6, 0]" :key="d">
+              <tr :class="d === now.getDay() ? 'is-today' : ''">
+                <th x-text="t.days[d]"></th>
+                <td x-text="hours[d] ? hours[d][0] + ':00 — ' + hours[d][1] + ':00' : '—'"></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="flex flex-wrap justify-between gap-3 border-t-4 border-double border-ink py-4 text-sm">
+      <span class="font-wood uppercase tracking-widest">Sharp &amp; Sons · 1952</span>
+      <span x-text="t.foot"></span>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "vibe-18-space-museum",
+  "version": "1.0.0",
+  "description": "Planetarium & space museum template styled as a printed star atlas: draggable 3D celestial sphere with real constellations, moon phase. Vanilla JS + Three.js.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  },
+  "private": true,
+  "type": "module"
+}

@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   19 · Sharp & Sons — letterpress broadside tokens
+   Newsprint, black ink, one red ink. Wood type + a distressed face.
+   ========================================================== */
+@theme {
+  --color-news: #e9e5da;
+  --color-ink: #161412;
+  --color-red: #d1342b;
+  --font-wood: "Oswald", "Arial Narrow", sans-serif;
+  --font-dirt: "Rubik Dirt", "Impact", sans-serif;
+  --font-text: "PT Serif", Georgia, serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-size: 18px; }
+  ::selection { background: var(--color-red); color: var(--color-news); }
+  :focus-visible { outline: 3px solid var(--color-red); outline-offset: 2px; }
+}
+
+/* ink that didn't quite fill the type: a speckled mask over the whole sheet */
+.sheet { position: relative; }
+.sheet::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; mix-blend-mode: screen; opacity: .35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 .91 0 0 0 0 .9 0 0 0 0 .85 0 0 0 -9 4.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* hand-painted OPEN / CLOSED sign */
+.sign { display: inline-block; padding: .3rem 1.1rem; border: 3px solid var(--color-ink); font: 600 1rem/1.3 var(--font-wood); letter-spacing: .2em; text-transform: uppercase; rotate: -2deg; }
+.sign::before { content: "●"; margin-right: .5rem; color: var(--color-ink); opacity: .4; }
+.sign.is-open { border-color: var(--color-red); color: var(--color-red); }
+.sign.is-open::before { color: var(--color-red); opacity: 1; }
+
+/* "— BARBERS —" with rules either side */
+.rule-text { display: flex; align-items: center; gap: 1rem; }
+.rule-text::before, .rule-text::after { content: ""; flex: 1; border-top: 3px solid var(--color-ink); }
+
+/* ---------- before / after woodcut ---------- */
+.ba { position: relative; aspect-ratio: 4 / 3; max-height: 70vh; margin-inline: auto; border: 3px solid var(--color-ink); background: var(--color-news); overflow: hidden; user-select: none; touch-action: none; }
+.ba__img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ba__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--split)) 0 0); background: #ddd8ca; }
+.head path { fill: none; stroke: var(--color-ink); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.head .skin { fill: #f4f1e8; }
+.fade { fill: none; stroke: var(--color-ink); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 2 5; opacity: .55; }
+.hair { fill: var(--color-ink); }
+.hatch { fill: none; stroke: var(--color-news); stroke-width: 2.4; stroke-linecap: round; }
+.ba__label { position: absolute; top: .8rem; padding: .1rem .6rem; background: var(--color-ink); color: var(--color-news); font: 600 .9rem var(--font-wood); letter-spacing: .2em; text-transform: uppercase; }
+.ba__label--l { left: .8rem; }
+.ba__label--r { right: .8rem; background: var(--color-red); }
+.ba__razor { position: absolute; top: 0; bottom: 0; left: var(--split); width: 44px; translate: -50% 0; border: 0; background: none; cursor: ew-resize; }
+.ba__razor::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; translate: -50% 0; background: var(--color-red); }
+.ba__razor span { position: absolute; top: 50%; left: 50%; width: 30px; height: 64px; translate: -50% -50%; border: 3px solid var(--color-ink); border-radius: 3px; background: var(--color-news); }
+.ba__razor span::after { content: ""; position: absolute; inset: 8px 9px; border-left: 3px solid var(--color-ink); border-right: 3px solid var(--color-ink); }
+
+/* opening hours */
+.hours { border-collapse: collapse; font-family: var(--font-wood); font-size: 1.2rem; text-transform: uppercase; letter-spacing: .1em; }
+.hours th, .hours td { padding: .35rem 1.2rem; border-bottom: 1px dotted var(--color-ink); text-align: left; font-weight: 400; }
+.hours tr.is-today { color: var(--color-red); font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

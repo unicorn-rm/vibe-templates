@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   20 · Tern — research-paper tokens
+   A typeset preprint: white page, black serif, blue links,
+   one red flag colour for low-confidence tokens.
+   ========================================================== */
+@theme {
+  --color-paper: #fdfdfb;
+  --color-ink: #111111;
+  --color-dim: #666460;
+  --color-rule: #cfcdc6;
+  --color-link: #1f4bb8;
+  --color-flag: #b3261e;
+  --font-serif: var(--font-paper), "Times New Roman", serif;
+  --font-code: var(--font-fira), ui-monospace, monospace;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-paper text-ink font-serif antialiased; font-size: 18px; }
+  ::selection { background: #dbe4ff; }
+  :focus-visible { outline: 2px solid var(--color-link); outline-offset: 2px; }
+}
+
+.h2 { margin-bottom: .6rem; font-size: 1.3rem; font-weight: 700; }
+.para { margin: 0 0 .8rem; text-align: justify; hyphens: auto; line-height: 1.65; text-indent: 1.5em; }
+.para:first-of-type { text-indent: 0; }
+
+/* arXiv side stamp, rotated in the left margin */
+.side-stamp {
+  position: fixed; left: 0; top: 50%; translate: -50% 0; rotate: -90deg; transform-origin: center; margin: 0 0 0 1.3rem;
+  font-family: "Times New Roman", serif; font-size: 1.5rem; color: #9a9893; white-space: nowrap; letter-spacing: .02em;
+}
+@media (max-width: 1000px) { .side-stamp { display: none; } }
+
+/* tokens: underline thickness and colour follow probability */
+.tok {
+  text-decoration: underline; text-underline-offset: 6px; cursor: help; border-radius: 2px;
+  text-decoration-thickness: calc(1px + var(--p) * 4px);
+  text-decoration-color: color-mix(in srgb, var(--color-ink) calc(var(--p) * 100%), transparent);
+  white-space: pre;
+}
+.tok--low { text-decoration-color: var(--color-flag); text-decoration-style: wavy; text-decoration-thickness: 1.5px; }
+.tok--on, .tok:hover { background: #e9edf9; }
+.caret { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* booktabs-style table: three rules, no verticals */
+.booktabs { width: 100%; border-collapse: collapse; font-size: 16px; font-variant-numeric: tabular-nums; }
+.booktabs caption { caption-side: top; text-align: left; padding-bottom: .5rem; font-size: 15px; }
+.booktabs thead tr { border-top: 2px solid var(--color-ink); border-bottom: 1px solid var(--color-ink); }
+.booktabs tbody tr:last-child { border-bottom: 2px solid var(--color-ink); }
+.booktabs th, .booktabs td { padding: .35rem .6rem; text-align: right; white-space: nowrap; }
+.booktabs th:first-child, .booktabs td:first-child { text-align: left; }
+.booktabs th { font-weight: 700; }
+
+math { font-family: var(--font-serif); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .caret { animation: none; } }
