@@ -1,0 +1,112 @@
+/* ==========================================================
+   21 · Gate 27 — airport wayfinding tokens
+   Concourse grey, sign black, wayfinding yellow, split-flap white.
+   ========================================================== */
+:root {
+  --concourse: #e8e9e7;
+  --sign: #141414;
+  --yellow: #ffcc00;         /* wayfinding yellow */
+  --flap: #1f1f1f;
+  --flap-ink: #f2efe6;
+  --green: #4cc26a;
+  --amber: #ffb000;
+  --red: #ff5a4a;
+  --sans: "Open Sans", "Frutiger", "Helvetica Neue", sans-serif;
+  --mono: "Roboto Mono", ui-monospace, monospace;
+  --pad: clamp(16px, 4vw, 56px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--concourse); color: var(--sign); font: 400 17px/1.55 var(--sans); }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+::selection { background: var(--yellow); color: var(--sign); }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.h2 { margin: 0 0 1.6rem; font: 800 clamp(2rem, 4vw, 3rem)/1 var(--sans); letter-spacing: -.01em; }
+
+/* ---------- overhead sign bar ---------- */
+.sign-bar { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 2rem; padding: .7rem var(--pad); background: var(--sign); color: var(--yellow); }
+.sign-bar__logo { display: flex; align-items: center; gap: .7rem; font-weight: 800; font-size: 1.2rem; text-decoration: none; }
+.pict { display: grid; place-items: center; width: 34px; height: 34px; background: var(--yellow); color: var(--sign); font: 800 1rem var(--sans); border-radius: 4px; }
+.pict--sm { width: 40px; height: 40px; font-size: 1.2rem; flex: none; }
+.sign-bar nav { display: flex; gap: 1.8rem; margin-left: auto; font-weight: 600; }
+.sign-bar nav a { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+.sign-bar nav i { display: grid; place-items: center; width: 24px; height: 24px; background: var(--yellow); color: var(--sign); font-style: normal; font-weight: 800; border-radius: 3px; }
+.sign-bar__lang { border: 2px solid var(--yellow); background: none; color: var(--yellow); padding: .1rem .6rem; font-weight: 800; }
+@media (max-width: 720px) { .sign-bar nav { display: none; } .sign-bar__lang { margin-left: auto; } }
+
+/* ---------- hero ---------- */
+.hero { padding: clamp(3rem, 8vh, 6rem) var(--pad) 3rem; }
+.hero__k { margin: 0 0 1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.hero h1 { margin: 0; }
+.hero__gate { display: block; font: 800 clamp(5rem, 17vw, 15rem)/.82 var(--sans); letter-spacing: -.05em; }
+.hero__sub { display: block; margin-top: 1rem; font: 600 clamp(1.4rem, 2.6vw, 2.2rem)/1.15 var(--sans); max-width: 22ch; }
+.hero__lead { max-width: 52ch; margin: 1.4rem 0 2rem; font-size: 1.15rem; }
+.wayfind { display: inline-flex; align-items: center; gap: 1rem; padding: .7rem 1rem .7rem .7rem; background: var(--yellow); color: var(--sign); text-decoration: none; font-weight: 800; font-size: 1.25rem; border-radius: 4px; transition: gap .2s; }
+.wayfind:hover { gap: 1.4rem; }
+.wayfind__arrow { display: grid; place-items: center; width: 44px; height: 44px; background: var(--sign); color: var(--yellow); border-radius: 3px; font-size: 1.6rem; }
+.wayfind__no { margin-left: .6rem; padding-left: 1rem; border-left: 2px solid var(--sign); font-family: var(--mono); }
+
+/* ---------- split-flap board ---------- */
+.board-wrap { padding: 0 var(--pad) clamp(3rem, 8vh, 5rem); }
+.board { background: #0c0c0c; color: var(--flap-ink); padding: clamp(.8rem, 2vw, 1.6rem); border-radius: 6px; box-shadow: 0 20px 40px -24px rgb(0 0 0 / .6); overflow-x: auto; }
+.board__top { display: flex; align-items: center; gap: 1rem 1.4rem; flex-wrap: wrap; padding-bottom: 1rem; border-bottom: 1px solid #2a2a2a; }
+.board__top h2 { margin: 0; font: 800 1.6rem var(--sans); color: var(--yellow); }
+.plane { display: inline-block; rotate: -45deg; }
+.board__tabs { display: flex; border: 1px solid #333; border-radius: 4px; overflow: hidden; }
+.board__tabs button { border: 0; background: none; color: #aaa; padding: .3rem .8rem; font-size: .85rem; font-weight: 600; }
+.board__tabs button[aria-selected="true"], .board__tabs button[aria-pressed="true"] { background: var(--yellow); color: var(--sign); }
+.board__clock { margin-left: auto; font: 700 1.3rem var(--mono); color: var(--yellow); font-variant-numeric: tabular-nums; }
+/* one grid for header + rows so columns always line up */
+.board__table { display: grid; grid-template-columns: repeat(5, max-content); column-gap: 1.1em; width: max-content; margin-inline: auto; }
+.board__head, .board__row { display: contents; }
+.board__head span { padding: .7rem 0 .4rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #8a8a8a; }
+.board__row > span { padding: .3rem 0; border-top: 1px solid #1c1c1c; }
+.flaps { display: inline-flex; gap: 1px; }
+.flap {
+  position: relative; display: inline-grid; place-items: center; width: 1em; height: 1.5em;
+  background: linear-gradient(#262626 0 49%, #0c0c0c 49% 51%, #1d1d1d 51%); border-radius: 2px;
+  font: 700 clamp(.72rem, 1.08vw, .95rem)/1 var(--mono); color: var(--flap-ink);
+}
+.st-ontime .status .flap { color: var(--green); }
+.st-boarding .status .flap { color: var(--yellow); }
+.st-delayed .status .flap, .st-final .status .flap { color: var(--amber); }
+.st-final .status .flaps { animation: blinkrow 1.2s steps(1) infinite; }
+.st-cancelled .status .flap { color: var(--red); }
+.st-cancelled span:nth-child(2) .flap { text-decoration: line-through; color: #8a8a8a; }
+@keyframes blinkrow { 50% { opacity: .35; } }
+
+/* ---------- boarding passes ---------- */
+.sec { padding: clamp(3rem, 8vh, 5rem) var(--pad); border-top: 2px solid var(--sign); }
+.passes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+.pass {
+  display: grid; grid-template-columns: 1fr 120px; background: #fff; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 12px 24px -18px rgb(0 0 0 / .45);
+  -webkit-mask: radial-gradient(circle 10px at calc(100% - 120px) 0, #0000 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle 10px at calc(100% - 120px) 100%, #0000 98%, #000) bottom / 100% 51% no-repeat;
+          mask: radial-gradient(circle 10px at calc(100% - 120px) 0, #0000 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle 10px at calc(100% - 120px) 100%, #0000 98%, #000) bottom / 100% 51% no-repeat;
+}
+.pass__main { padding: 1.2rem 1.4rem; }
+.pass__label { margin: 0; padding: .2rem .5rem; display: inline-block; background: var(--yellow); font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.pass h3 { margin: .7rem 0 0; font: 800 1.6rem/1.1 var(--sans); }
+.pass__role { margin: .1rem 0 1rem; color: #555; }
+.pass dl { display: flex; gap: 1.8rem; margin: 0; }
+.pass dt { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: #777; }
+.pass dd { margin: 0; font: 700 1.3rem var(--mono); }
+.pass__stub { display: grid; align-content: space-between; justify-items: center; padding: 1.2rem .6rem; border-left: 2px dashed #ccc; }
+.pass__seat { font: 800 2rem var(--mono); }
+.barcode { display: flex; gap: 1px; height: 54px; }
+.barcode i { display: block; height: 100%; background: var(--sign); }
+@media (max-width: 860px) { .passes { grid-template-columns: 1fr; } }
+
+/* ---------- information ---------- */
+.info ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+.info li { display: flex; gap: 1rem; }
+.info b { font-size: 1.15rem; }
+.info p { margin: .2rem 0 0; }
+@media (max-width: 860px) { .info ul { grid-template-columns: 1fr; } }
+
+.foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1rem var(--pad); background: var(--sign); color: #aaa; font-size: .85rem; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .st-final .status .flaps { animation: none; } .wayfind { transition: none; } }

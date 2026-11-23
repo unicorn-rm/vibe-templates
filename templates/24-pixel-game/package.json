@@ -1,0 +1,16 @@
+{
+  "name": "vibe-24-pixel-game",
+  "version": "1.0.0",
+  "description": "Indie game template styled as an 8-bit cartridge box and instruction manual, with a playable canvas game. Vanilla JS + Vite.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^8.3.8"
+  },
+  "private": true,
+  "type": "module"
+}

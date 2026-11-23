@@ -76,6 +76,14 @@ Most template packs look like the same landing page in different colors. And whe
 <td width="50%" valign="top"><a href="templates/19-barbershop/README.md"><img src="templates/19-barbershop/preview.png" alt="Sharp & Sons" /></a><br /><b>19 · Sharp & Sons</b> — Wood-type letterpress broadside<br /><sub>Tailwind CSS 4 · Alpine.js · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/19-barbershop/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/20-ai-startup/README.md"><img src="templates/20-ai-startup/preview.png" alt="Tern" /></a><br /><b>20 · Tern</b> — arXiv research paper<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/20-ai-startup/">demo</a></sub></td>
 </tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/21-tech-conference/README.md"><img src="templates/21-tech-conference/preview.png" alt="Gate 27" /></a><br /><b>21 · Gate 27</b> — Airport wayfinding<br /><sub>React 19 · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/21-tech-conference/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/22-interior-studio/README.md"><img src="templates/22-interior-studio/preview.png" alt="Atelier Hira" /></a><br /><b>22 · Atelier Hira</b> — Architect's material sample board<br /><sub>Nuxt 4 · Vue 3 · <a href="https://unicorn-rm.github.io/vibe-templates/22-interior-studio/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/23-blog-newsletter/README.md"><img src="templates/23-blog-newsletter/preview.png" alt="Marginalia" /></a><br /><b>23 · Marginalia</b> — Pocket paperback<br /><sub>Astro 7 · MDX · <a href="https://unicorn-rm.github.io/vibe-templates/23-blog-newsletter/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/24-pixel-game/README.md"><img src="templates/24-pixel-game/preview.png" alt="LAMPLIGHTER" /></a><br /><b>24 · LAMPLIGHTER</b> — 8-bit cartridge box & manual<br /><sub>Vanilla JS · Canvas · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/24-pixel-game/">demo</a></sub></td>
+</tr>
 </table>
 <!-- gallery:end -->
 
@@ -104,10 +112,10 @@ Most template packs look like the same landing page in different colors. And whe
 | 18 | [**Kepler Hall** · Space museum](templates/18-space-museum/README.md) | Printed star atlas | Vanilla JS, Three.js, Vite | Draggable 3D celestial sphere drawn as an atlas plate — RA/Dec grid, real constellations; pick one and the sky turns to it |
 | 19 | [**Sharp & Sons** · Barbershop / tattoo](templates/19-barbershop/README.md) | Wood-type letterpress broadside | Tailwind CSS 4, Alpine.js, Vite | Woodcut before/after: drag the razor across two hand-drawn profiles (shaggy vs. fresh cut) |
 | 20 | [**Tern** · AI startup](templates/20-ai-startup/README.md) | arXiv research paper | Next.js 16, Tailwind CSS 4, TypeScript | Figure 1: the model's answer streams token by token, underlined by confidence; hover a token for alternatives — low confidence triggers an honest 'I don't know' |
-| 21 | Tech conference <sub>soon</sub> | Acid poster grid | React, Vite | — |
-| 22 | Interior studio <sub>soon</sub> | Japandi | Nuxt 3 | — |
-| 23 | Blog & newsletter <sub>soon</sub> | Reading-first | Astro, MDX | — |
-| 24 | Indie game <sub>soon</sub> | 8-bit pixel | HTML, Canvas | — |
+| 21 | [**Gate 27** · Tech conference](templates/21-tech-conference/README.md) | Airport wayfinding | React 19, Vite | Schedule as a split-flap departures board: letters flip when you switch day or time zone; statuses like BOARDING and FINAL CALL |
+| 22 | [**Atelier Hira** · Interior studio](templates/22-interior-studio/README.md) | Architect's material sample board | Nuxt 4, Vue 3 | Room elevation re-dressed by material schemes: walls, floor, sofa, rug and lamp switch to textured swatches (oak, linen, terrazzo, plaster) |
+| 23 | [**Marginalia** · Blog & newsletter](templates/23-blog-newsletter/README.md) | Pocket paperback | Astro 7, MDX | Margin footnotes (sidenotes) that become tap-to-open notes on phones + a page counter ('p. 9 of 18') instead of a progress bar |
+| 24 | [**LAMPLIGHTER** · Indie game](templates/24-pixel-game/README.md) | 8-bit cartridge box & manual | Vanilla JS, Canvas, Vite | A playable one-screen 8-bit game on canvas (keyboard + touch pad): light lamps across the rooftops, dodge bats |
 <!-- catalog:end -->
 
 ## Quick start

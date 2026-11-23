@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LAMPLIGHTER — an 8-bit game you can play right here</title>
+  <meta name="description" content="Indie game template styled as an 8-bit cartridge box and instruction manual, with a playable canvas game, controls diagram and character sheet. Vanilla JS." />
+  <meta name="theme-color" content="#1b2a6b" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%230f0f1b'/%3E%3Crect x='2' y='1' width='3' height='2' fill='%23fcd34d'/%3E%3Crect x='3' y='3' width='1' height='4' fill='%23888'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="top">
+    <a href="#top" class="logo">LAMPLIGHTER</a>
+    <nav aria-label="Primary"><a href="#play" data-t="nav.play">Play</a><a href="#manual" data-t="nav.manual">Manual</a><a href="#cast" data-t="nav.cast">Characters</a></nav>
+    <button id="lang" class="lang" type="button" aria-label="Switch language">RU</button>
+  </header>
+
+  <main id="top">
+    <!-- the box front -->
+    <section class="box">
+      <div class="box__spine" aria-hidden="true"><span>LAMPLIGHTER</span><span>PX-024</span></div>
+      <div class="box__front">
+        <p class="box__seal"><span data-t="seal">Official seal of quality</span></p>
+        <h1><span>LAMP</span><span>LIGHTER</span></h1>
+        <p class="box__tag" data-t="tag"></p>
+        <div class="box__art" aria-hidden="true"><canvas id="art" width="160" height="120"></canvas></div>
+        <ul class="box__badges"><li data-t="b1"></li><li data-t="b2"></li><li data-t="b3"></li></ul>
+      </div>
+    </section>
+
+    <!-- the game -->
+    <section id="play" class="play">
+      <div class="screen">
+        <canvas id="game" tabindex="0" aria-label="Game screen. Arrow keys to move, Up or Space to jump."></canvas>
+        <div class="overlay" id="overlay">
+          <p class="overlay__title" id="ovTitle">PRESS START</p>
+          <button id="start" class="btn" type="button" data-t="start">Start</button>
+        </div>
+        <div class="hud"><span><span data-t="score">Score</span> <b id="score">0</b></span><span><span data-t="lives">Lives</span> <b id="lives">♥♥♥</b></span></div>
+      </div>
+      <!-- on-screen pad for touch -->
+      <div class="pad" aria-hidden="true">
+        <div class="dpad"><button data-k="ArrowLeft">◀</button><button data-k="ArrowRight">▶</button></div>
+        <div class="ab"><button data-k="ArrowUp">A</button></div>
+      </div>
+    </section>
+
+    <!-- instruction manual -->
+    <section id="manual" class="manual">
+      <div class="page">
+        <p class="page__no">— 2 —</p>
+        <h2 data-t="m.title"></h2>
+        <p data-t="m.story"></p>
+        <h3 data-t="m.controls"></h3>
+        <div class="controller" aria-hidden="true">
+          <div class="controller__dpad"><i></i><i></i><i></i><i></i></div>
+          <div class="controller__mid"><span>SELECT</span><span>START</span></div>
+          <div class="controller__ab"><b>B</b><b>A</b></div>
+        </div>
+        <ul class="keys">
+          <li><kbd>← →</kbd><span data-t="m.k1"></span></li>
+          <li><kbd>↑ / Space</kbd><span data-t="m.k2"></span></li>
+        </ul>
+      </div>
+      <div class="page">
+        <p class="page__no">— 3 —</p>
+        <h3 data-t="m.hints"></h3>
+        <ol class="hints"><li data-t="m.h1"></li><li data-t="m.h2"></li><li data-t="m.h3"></li></ol>
+        <p class="warning" data-t="m.warn"></p>
+      </div>
+    </section>
+
+    <section id="cast" class="cast">
+      <h2 data-t="cast.title"></h2>
+      <div class="sheet">
+        <figure><canvas class="sprite" data-spr="hero"></canvas><figcaption data-t="cast.hero"></figcaption></figure>
+        <figure><canvas class="sprite" data-spr="lampOn"></canvas><figcaption data-t="cast.lamp"></figcaption></figure>
+        <figure><canvas class="sprite" data-spr="bat"></canvas><figcaption data-t="cast.bat"></figcaption></figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot"><span>PX-024 · 1 PLAYER</span><span data-t="foot"></span></footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

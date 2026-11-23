@@ -1,0 +1,7 @@
+---
+// Footnote: a superscript number in the text + the note in the margin (or tap-to-open on small screens).
+interface Props { n: number; l?: string }
+const { n, l = "en" } = Astro.props;
+const id = `fn-${l}-${n}`;
+---
+<label class="fn" for={id}><sup>{n}</sup></label><input type="checkbox" id={id} class="fn-toggle" /><span class="sidenote"><sup>{n}</sup> <slot /></span>

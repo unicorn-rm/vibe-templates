@@ -1479,85 +1479,290 @@
     },
     {
       "id": "21-tech-conference",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Gate 27",
       "kind": {
         "en": "Tech conference",
         "ru": "IT-конференция"
       },
       "style": {
-        "en": "Acid poster grid",
-        "ru": "Кислотная плакатная сетка"
+        "en": "Airport wayfinding",
+        "ru": "Навигация аэропорта"
       },
       "stack": [
-        "React",
+        "React 19",
         "Vite"
       ],
       "fonts": [
-        "Montserrat Alternates",
-        "Inter"
+        "Open Sans",
+        "Roboto Mono"
+      ],
+      "palette": {
+        "concourse": "#e8e9e7",
+        "sign": "#141414",
+        "yellow": "#ffcc00",
+        "flap": "#f2efe6"
+      },
+      "signature": {
+        "en": "Schedule as a split-flap departures board: letters flip when you switch day or time zone; statuses like BOARDING and FINAL CALL",
+        "ru": "Расписание как табло вылетов с перекидными пластинками: буквы перещёлкиваются при смене дня или часового пояса; статусы «Посадка» и «Последний вызов»"
+      },
+      "blocks": [
+        "overhead sign bar with pictograms",
+        "giant gate number hero",
+        "wayfinding CTA",
+        "split-flap board with day + timezone switch",
+        "boarding-pass speaker cards",
+        "information pictograms",
+        "footer"
+      ],
+      "idea": {
+        "en": "A conference about shipping software, signposted like an airport: black-and-yellow wayfinding, a departures board for talks, boarding passes for speakers.",
+        "ru": "Конференция о выпуске софта, оформленная как аэропорт: чёрно-жёлтая навигация, табло вылетов вместо расписания и посадочные талоны для спикеров."
+      },
+      "rules": {
+        "en": [
+          "Yellow-on-black only for signage (bar, pictograms, CTAs); content sits on concourse grey.",
+          "Board text is uppercase mono on flaps; statuses use green/amber/red like a real FIDS.",
+          "Each column has a fixed flap count so rows align; change widths in Board.",
+          "Times are stored in venue time; 'Your time' converts in the browser.",
+          "Arrows and pictograms point somewhere real (an anchor)."
+        ],
+        "ru": [
+          "Жёлтый на чёрном — только для указателей (панель, пиктограммы, кнопки); контент — на сером фоне терминала.",
+          "Текст табло — моноширинные заглавные на пластинках; статусы зелёные, янтарные и красные, как на настоящем табло.",
+          "У каждой колонки фиксированное число пластинок, поэтому строки выровнены; ширины меняются в Board.",
+          "Время хранится по месту проведения; «Ваше время» пересчитывается в браузере.",
+          "Стрелки и пиктограммы ведут в реальные места (якоря)."
+        ]
+      },
+      "files": {
+        "src/content.js": "schedule, speakers, all copy (EN + RU)",
+        "src/App.jsx": "split-flap components, board, passes",
+        "src/styles.css": "tokens at the top"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {
       "id": "22-interior-studio",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Atelier Hira",
       "kind": {
         "en": "Interior studio",
         "ru": "Студия интерьеров"
       },
       "style": {
-        "en": "Japandi",
-        "ru": "Japandi"
+        "en": "Architect's material sample board",
+        "ru": "Планшет образцов архитектора"
       },
       "stack": [
-        "Nuxt 3"
+        "Nuxt 4",
+        "Vue 3"
       ],
       "fonts": [
-        "Cormorant",
-        "Manrope"
+        "Ysabeau",
+        "PT Mono"
+      ],
+      "palette": {
+        "board": "#d9d7d2",
+        "paper": "#fbfaf7",
+        "ink": "#2a2826",
+        "tape": "#efe3b8"
+      },
+      "signature": {
+        "en": "Room elevation re-dressed by material schemes: walls, floor, sofa, rug and lamp switch to textured swatches (oak, linen, terrazzo, plaster)",
+        "ru": "Развёртка комнаты, которая переодевается по схемам материалов: стены, пол, диван, ковёр и лампа получают фактуры образцов (дуб, лён, терраццо, штукатурка)"
+      },
+      "blocks": [
+        "quiet header",
+        "large light headline",
+        "scheme picker",
+        "SVG room elevation with textured patterns",
+        "pinned swatches with tape labels and spec codes",
+        "work list",
+        "four-step process",
+        "contact"
+      ],
+      "idea": {
+        "en": "An interior studio that shows its method, not glossy renders: a grey foam board with real-looking samples, masking-tape labels and a line-drawn room that changes with them.",
+        "ru": "Студия интерьеров, которая показывает метод, а не глянцевые рендеры: серый планшет с «настоящими» образцами, подписи на малярном скотче и комната в линиях, меняющаяся вместе с ними."
+      },
+      "rules": {
+        "en": [
+          "The interface has no accent colour — colour only comes from materials.",
+          "Materials are data (colour + texture kind) in content.ts; schemes assign them to surfaces.",
+          "Textures are SVG patterns, no image files.",
+          "Ysabeau Light for headlines, PT Mono for spec codes and labels.",
+          "Swatches may tilt; the drawing never does."
+        ],
+        "ru": [
+          "У интерфейса нет акцентного цвета — цвет дают только материалы.",
+          "Материалы — данные (цвет + тип фактуры) в content.ts; схемы назначают их поверхностям.",
+          "Фактуры — SVG-паттерны, без файлов изображений.",
+          "Ysabeau Light для заголовков, PT Mono для кодов спецификации и подписей.",
+          "Образцы могут быть наклонены, чертёж — никогда."
+        ]
+      },
+      "files": {
+        "app/content.ts": "materials, schemes, all copy (EN + RU)",
+        "app/app.vue": "whole page, room SVG and patterns",
+        "app/assets/main.css": "tokens at the top",
+        "nuxt.config.ts": "head, fonts, static generate"
+      },
+      "run": [
+        "npm install          # Node 22.22.3+ (Nuxt 4)",
+        "npm run dev",
+        "npm run build   # nuxt generate → ./dist"
       ]
     },
     {
       "id": "23-blog-newsletter",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "Marginalia",
       "kind": {
         "en": "Blog & newsletter",
         "ru": "Блог и рассылка"
       },
       "style": {
-        "en": "Reading-first",
-        "ru": "Для чтения"
+        "en": "Pocket paperback",
+        "ru": "Карманная книга в мягкой обложке"
       },
       "stack": [
-        "Astro",
+        "Astro 7",
         "MDX"
       ],
       "fonts": [
         "Literata",
-        "Inter"
+        "Alegreya Sans SC"
+      ],
+      "palette": {
+        "band": "#e8642a",
+        "paper": "#fbf8f0",
+        "ink": "#1f1c18",
+        "grey": "#77716a"
+      },
+      "signature": {
+        "en": "Margin footnotes (sidenotes) that become tap-to-open notes on phones + a page counter ('p. 9 of 18') instead of a progress bar",
+        "ru": "Сноски на полях, которые на телефоне раскрываются по нажатию, + счётчик «с. 9 из 18» вместо полосы прогресса"
+      },
+      "blocks": [
+        "tri-band paperback cover",
+        "sticky running head with page number",
+        "contents with dotted leaders",
+        "essay with drop cap and small-caps first line",
+        "sidenotes",
+        "dinkus",
+        "colophon with subscribe links",
+        "footer band"
+      ],
+      "idea": {
+        "en": "A newsletter about reading slowly that looks like the thing it praises: a pocket paperback with an orange-white-orange cover, running heads and notes in the margin.",
+        "ru": "Рассылка о медленном чтении, которая выглядит как то, что она хвалит: карманная книга с обложкой «оранжевый-белый-оранжевый», колонтитулами и пометками на полях."
+      },
+      "rules": {
+        "en": [
+          "One reading measure (~34rem); nothing competes with the text column.",
+          "Orange only on the cover bands, drop cap, footnote numbers and the page counter.",
+          "Posts are MDX; footnotes are <Fn n={…}> with the note as children.",
+          "Small caps (Alegreya Sans SC) for furniture: running heads, labels, contents numbers.",
+          "No tracking, no pop-up subscribe forms."
+        ],
+        "ru": [
+          "Одна ширина колонки для чтения (~34rem); ничто не спорит с текстом.",
+          "Оранжевый — только полосы обложки, буквица, номера сносок и счётчик страниц.",
+          "Посты — MDX; сноски — <Fn n={…}> с текстом сноски внутри.",
+          "Капитель (Alegreya Sans SC) для служебного: колонтитулы, подписи, номера в содержании.",
+          "Никакого трекинга и всплывающих форм подписки."
+        ]
+      },
+      "files": {
+        "src/content/essay.en.mdx": "English essay",
+        "src/content/essay.ru.mdx": "Russian essay",
+        "src/pages/index.astro": "cover, contents, page counter script",
+        "src/components/Fn.astro": "sidenote component",
+        "src/styles/global.css": "tokens at the top"
+      },
+      "run": [
+        "npm install          # Node 22.23+ (Astro 7)",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     },
     {
       "id": "24-pixel-game",
-      "status": "planned",
-      "name": "",
+      "status": "ready",
+      "name": "LAMPLIGHTER",
       "kind": {
         "en": "Indie game",
         "ru": "Инди-игра"
       },
       "style": {
-        "en": "8-bit pixel",
-        "ru": "Пиксель-арт, 8 бит"
+        "en": "8-bit cartridge box & manual",
+        "ru": "Коробка и инструкция 8-битного картриджа"
       },
       "stack": [
-        "HTML",
-        "Canvas"
+        "Vanilla JS",
+        "Canvas",
+        "Vite"
       ],
       "fonts": [
         "Press Start 2P",
         "Pixelify Sans"
+      ],
+      "palette": {
+        "box": "#1b2a6b",
+        "gold": "#fcd34d",
+        "red": "#e4572e",
+        "night": "#0f0f1b",
+        "manual": "#f1efe7"
+      },
+      "signature": {
+        "en": "A playable one-screen 8-bit game on canvas (keyboard + touch pad): light lamps across the rooftops, dodge bats",
+        "ru": "Играбельная 8-битная игра на одном экране (клавиатура + сенсорные кнопки): зажигайте фонари на крышах и уворачивайтесь от летучих мышей"
+      },
+      "blocks": [
+        "cartridge box front with spine and seal",
+        "box art rendered by the game engine",
+        "playable game screen with HUD",
+        "touch D-pad for phones",
+        "instruction manual pages with controller diagram",
+        "hints and warning",
+        "character sprite sheet"
+      ],
+      "idea": {
+        "en": "The indie game's site is its own physical edition: a cartridge box, a two-page instruction manual and the game itself, playable right on the page.",
+        "ru": "Сайт инди-игры — её собственное «коробочное» издание: коробка картриджа, инструкция на два разворота и сама игра, в которую можно поиграть прямо на странице."
+      },
+      "rules": {
+        "en": [
+          "Pixels stay crisp: canvases use image-rendering: pixelated, sprites are palette strings.",
+          "Press Start 2P only for short labels; Pixelify Sans for reading text.",
+          "Game palette is limited (9 colours) and defined once in game.js.",
+          "The page explains controls visually (controller diagram) before asking you to play.",
+          "No external assets: sprites, box art and sound-free gameplay are all code."
+        ],
+        "ru": [
+          "Пиксели остаются чёткими: canvas с image-rendering: pixelated, спрайты — строки индексов палитры.",
+          "Press Start 2P только для коротких подписей; Pixelify Sans для текста.",
+          "Палитра игры ограничена (9 цветов) и задаётся один раз в game.js.",
+          "Страница сначала показывает управление (схема геймпада), потом зовёт играть.",
+          "Никаких внешних файлов: спрайты, обложка и игровой процесс — всё в коде."
+        ]
+      },
+      "files": {
+        "src/game.js": "game engine, palette and sprites",
+        "src/main.js": "page logic, all copy (EN + RU), sprite sheet",
+        "index.html": "box, screen, manual markup",
+        "src/style.css": "tokens at the top"
+      },
+      "run": [
+        "npm install",
+        "npm run dev",
+        "npm run build   # ./dist"
       ]
     }
   ]

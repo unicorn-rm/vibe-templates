@@ -25,4 +25,8 @@ All notable changes to this project are documented here. Format: [Keep a Changel
 - `18-space-museum` — Kepler Hall, planetarium as a star atlas with a 3D celestial sphere (Three.js).
 - `19-barbershop` — Sharp & Sons, wood-type broadside with a woodcut before/after slider (Tailwind 4, Alpine.js).
 - `20-ai-startup` — Tern, AI startup typeset as an arXiv paper with a token-confidence figure (Next.js 16).
+- `21-tech-conference` — Gate 27, conference as airport wayfinding with a split-flap board (React, Vite).
+- `22-interior-studio` — Atelier Hira, material sample board that re-dresses a room (Nuxt 4).
+- `23-blog-newsletter` — Marginalia, newsletter as a pocket paperback with sidenotes (Astro 7 + MDX).
+- `24-pixel-game` — LAMPLIGHTER, cartridge box, manual and a playable canvas game (vanilla JS).
 - Catalog (`templates.json`), docs generator, GitHub Pages gallery and deploy workflow.

@@ -1,0 +1,101 @@
+/* ==========================================================
+   24 · LAMPLIGHTER — 8-bit cartridge box & manual tokens
+   Box blue, title yellow, manual newsprint, NES-like game palette.
+   ========================================================== */
+:root {
+  --box: #1b2a6b;
+  --box-2: #13205a;
+  --gold: #fcd34d;
+  --red: #e4572e;
+  --night: #0f0f1b;
+  --manual: #f1efe7;
+  --ink: #16151c;
+  --pixel: "Press Start 2P", monospace;
+  --text: "Pixelify Sans", system-ui, sans-serif;
+  --pad: clamp(16px, 4vw, 56px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--manual); color: var(--ink); font: 400 19px/1.55 var(--text); }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+canvas { image-rendering: pixelated; image-rendering: crisp-edges; }
+::selection { background: var(--gold); color: var(--ink); }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+h2 { margin: 0 0 1rem; font: 400 clamp(1rem, 2.4vw, 1.5rem)/1.4 var(--pixel); }
+h3 { margin: 1.6rem 0 .6rem; font: 400 .85rem/1.4 var(--pixel); color: var(--red); }
+
+.top { display: flex; align-items: center; gap: 1.6rem; padding: .8rem var(--pad); background: var(--night); color: var(--gold); font: 400 .7rem var(--pixel); }
+.logo { text-decoration: none; }
+.top nav { display: flex; gap: 1.4rem; margin-left: auto; }
+.top nav a { text-decoration: none; color: #ddd; }
+.top nav a:hover { color: var(--gold); }
+.lang { border: 2px solid var(--gold); background: none; color: var(--gold); padding: .3rem .5rem; font: 400 .65rem var(--pixel); }
+@media (max-width: 640px) { .top nav { display: none; } .lang { margin-left: auto; } }
+
+/* ---------- the box ---------- */
+.box { display: grid; grid-template-columns: 70px 1fr; max-width: 980px; margin: 2.4rem auto; box-shadow: 18px 18px 0 var(--ink); }
+.box__spine { display: flex; justify-content: space-between; writing-mode: vertical-rl; rotate: 180deg; padding: 1rem .6rem; background: var(--ink); color: var(--gold); font: 400 .8rem var(--pixel); }
+.box__front { position: relative; padding: 1.6rem clamp(1rem, 3vw, 2.4rem) 2rem; background: repeating-linear-gradient(135deg, var(--box) 0 14px, var(--box-2) 14px 28px); color: #fff; }
+.box__seal { position: absolute; top: 1.2rem; right: 1.2rem; display: grid; place-items: center; width: 96px; height: 96px; margin: 0; border: 3px solid var(--gold); border-radius: 50%; text-align: center; font: 400 .45rem/1.6 var(--pixel); color: var(--gold); padding: 10px; rotate: 12deg; }
+.box h1 { margin: 0; font: 400 clamp(2.2rem, 7.4vw, 4.6rem)/1.05 var(--pixel); color: var(--gold); text-shadow: 4px 4px 0 var(--red), 8px 8px 0 var(--ink); }
+.box h1 span { display: block; }
+.box h1 span:last-child { padding-left: .6em; }
+.box__tag { max-width: 34ch; margin: 1.2rem 0; font-size: 1.15rem; }
+.box__art { border: 6px solid var(--gold); background: var(--night); }
+.box__art canvas { display: block; width: 100%; height: auto; }
+.box__badges { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; margin: 1.2rem 0 0; padding: 0; }
+.box__badges li { padding: .4rem .6rem; background: var(--red); font: 400 .6rem var(--pixel); }
+@media (max-width: 640px) { .box { grid-template-columns: 1fr; margin: 1rem 12px 2rem; box-shadow: 8px 8px 0 var(--ink); } .box__spine { display: none; } .box__seal { width: 72px; height: 72px; font-size: .35rem; } }
+
+/* ---------- the game ---------- */
+.play { display: grid; justify-items: center; gap: 1rem; padding: 2rem var(--pad) 3rem; background: var(--ink); }
+.screen { position: relative; width: min(100%, 800px); aspect-ratio: 4 / 3; border: 10px solid #2c2b35; border-radius: 6px; background: var(--night); }
+#game { display: block; width: 100%; height: 100%; outline: none; }
+.overlay { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 1.4rem; background: rgb(15 15 27 / .7); color: var(--gold); }
+.overlay[hidden] { display: none; }
+.overlay__title { margin: 0; font: 400 clamp(.9rem, 2.6vw, 1.6rem) var(--pixel); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.btn { padding: .9rem 1.4rem; border: 0; background: var(--red); color: #fff; font: 400 .8rem var(--pixel); box-shadow: 0 6px 0 #8f2f15; }
+.btn:active { translate: 0 4px; box-shadow: 0 2px 0 #8f2f15; }
+.hud { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; padding: .6rem .8rem; color: #fff; font: 400 clamp(.5rem, 1.4vw, .75rem) var(--pixel); pointer-events: none; }
+.hud b { color: var(--gold); font-weight: 400; }
+.pad { display: none; width: min(100%, 800px); justify-content: space-between; }
+.pad button { width: 64px; height: 64px; border: 0; border-radius: 50%; background: #2c2b35; color: #fff; font: 400 1rem var(--pixel); touch-action: none; }
+.pad .ab button { background: var(--red); }
+.dpad { display: flex; gap: .8rem; }
+@media (pointer: coarse) { .pad { display: flex; } }
+
+/* ---------- manual ---------- */
+.manual { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1040px; margin: 0 auto; padding: 3rem var(--pad); }
+.page { position: relative; padding: 2rem; background: #fbfaf4; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+.page__no { position: absolute; bottom: .6rem; left: 0; right: 0; margin: 0; text-align: center; font: 400 .6rem var(--pixel); }
+.controller { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.2rem; margin: .8rem 0 1rem; padding: 1.2rem 1.4rem; background: #c9c6bd; border-radius: 10px; border: 2px solid var(--ink); }
+.controller__dpad { position: relative; width: 60px; height: 60px; }
+.controller__dpad::before, .controller__dpad::after { content: ""; position: absolute; background: var(--ink); }
+.controller__dpad::before { left: 20px; top: 0; width: 20px; height: 60px; }
+.controller__dpad::after { top: 20px; left: 0; width: 60px; height: 20px; }
+.controller__dpad i { display: none; }
+.controller__mid { display: flex; gap: .6rem; justify-content: center; font: 400 .4rem var(--pixel); }
+.controller__mid span { padding: .35rem .5rem; background: var(--ink); color: #c9c6bd; border-radius: 99px; }
+.controller__ab { display: flex; gap: .6rem; }
+.controller__ab b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--red); color: #fff; font: 400 .6rem var(--pixel); }
+.keys { list-style: none; margin: 0; padding: 0; }
+.keys li { display: flex; gap: 1rem; align-items: baseline; padding: .3rem 0; }
+.keys kbd { min-width: 7.5rem; font: 600 1rem var(--text); }  /* the pixel font has no arrow glyphs */
+.hints { padding-left: 1.4rem; }
+.hints li { margin: .4rem 0; }
+.warning { margin-top: 1.4rem; padding: .8rem; border: 2px dashed var(--red); font-size: .95rem; }
+@media (max-width: 760px) { .manual { grid-template-columns: 1fr; } }
+
+/* ---------- character sheet ---------- */
+.cast { max-width: 1040px; margin: 0 auto; padding: 1rem var(--pad) 4rem; }
+.sheet { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.sheet figure { margin: 0; padding: 1.2rem; background: var(--night); border: 4px solid var(--ink); text-align: center; color: #ddd; }
+.sprite { display: block; width: 50%; height: auto; margin: 0 auto 1rem; }
+.sheet figcaption { font: 400 .6rem/1.6 var(--pixel); color: var(--gold); }
+
+.foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1rem var(--pad); background: var(--night); color: #aaa; font: 400 .6rem/1.6 var(--pixel); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .overlay__title { animation: none; } }

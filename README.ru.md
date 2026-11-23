@@ -76,6 +76,14 @@
 <td width="50%" valign="top"><a href="templates/19-barbershop/README.ru.md"><img src="templates/19-barbershop/preview.png" alt="Sharp & Sons" /></a><br /><b>19 · Sharp & Sons</b> — Афиша из деревянного шрифта<br /><sub>Tailwind CSS 4 · Alpine.js · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/19-barbershop/">demo</a></sub></td>
 <td width="50%" valign="top"><a href="templates/20-ai-startup/README.ru.md"><img src="templates/20-ai-startup/preview.png" alt="Tern" /></a><br /><b>20 · Tern</b> — Научная статья в духе arXiv<br /><sub>Next.js 16 · Tailwind CSS 4 · TypeScript · <a href="https://unicorn-rm.github.io/vibe-templates/20-ai-startup/">demo</a></sub></td>
 </tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/21-tech-conference/README.ru.md"><img src="templates/21-tech-conference/preview.png" alt="Gate 27" /></a><br /><b>21 · Gate 27</b> — Навигация аэропорта<br /><sub>React 19 · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/21-tech-conference/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/22-interior-studio/README.ru.md"><img src="templates/22-interior-studio/preview.png" alt="Atelier Hira" /></a><br /><b>22 · Atelier Hira</b> — Планшет образцов архитектора<br /><sub>Nuxt 4 · Vue 3 · <a href="https://unicorn-rm.github.io/vibe-templates/22-interior-studio/">demo</a></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="templates/23-blog-newsletter/README.ru.md"><img src="templates/23-blog-newsletter/preview.png" alt="Marginalia" /></a><br /><b>23 · Marginalia</b> — Карманная книга в мягкой обложке<br /><sub>Astro 7 · MDX · <a href="https://unicorn-rm.github.io/vibe-templates/23-blog-newsletter/">demo</a></sub></td>
+<td width="50%" valign="top"><a href="templates/24-pixel-game/README.ru.md"><img src="templates/24-pixel-game/preview.png" alt="LAMPLIGHTER" /></a><br /><b>24 · LAMPLIGHTER</b> — Коробка и инструкция 8-битного картриджа<br /><sub>Vanilla JS · Canvas · Vite · <a href="https://unicorn-rm.github.io/vibe-templates/24-pixel-game/">demo</a></sub></td>
+</tr>
 </table>
 <!-- gallery:end -->
 
@@ -104,10 +112,10 @@
 | 18 | [**Kepler Hall** · Музей космоса](templates/18-space-museum/README.ru.md) | Печатный звёздный атлас | Vanilla JS, Three.js, Vite | Перетаскиваемая 3D-небесная сфера, нарисованная как лист атласа: сетка координат, настоящие созвездия; выберите созвездие — и небо повернётся к нему |
 | 19 | [**Sharp & Sons** · Барбершоп / тату](templates/19-barbershop/README.ru.md) | Афиша из деревянного шрифта | Tailwind CSS 4, Alpine.js, Vite | Гравюра «до и после»: тяните бритву по двум профилям (лохматый и после стрижки) |
 | 20 | [**Tern** · ИИ-стартап](templates/20-ai-startup/README.ru.md) | Научная статья в духе arXiv | Next.js 16, Tailwind CSS 4, TypeScript | Рисунок 1: ответ модели печатается по токенам с подчёркиванием по уверенности; при наведении — альтернативы, а низкая уверенность ведёт к честному «не знаю» |
-| 21 | IT-конференция <sub>скоро</sub> | Кислотная плакатная сетка | React, Vite | — |
-| 22 | Студия интерьеров <sub>скоро</sub> | Japandi | Nuxt 3 | — |
-| 23 | Блог и рассылка <sub>скоро</sub> | Для чтения | Astro, MDX | — |
-| 24 | Инди-игра <sub>скоро</sub> | Пиксель-арт, 8 бит | HTML, Canvas | — |
+| 21 | [**Gate 27** · IT-конференция](templates/21-tech-conference/README.ru.md) | Навигация аэропорта | React 19, Vite | Расписание как табло вылетов с перекидными пластинками: буквы перещёлкиваются при смене дня или часового пояса; статусы «Посадка» и «Последний вызов» |
+| 22 | [**Atelier Hira** · Студия интерьеров](templates/22-interior-studio/README.ru.md) | Планшет образцов архитектора | Nuxt 4, Vue 3 | Развёртка комнаты, которая переодевается по схемам материалов: стены, пол, диван, ковёр и лампа получают фактуры образцов (дуб, лён, терраццо, штукатурка) |
+| 23 | [**Marginalia** · Блог и рассылка](templates/23-blog-newsletter/README.ru.md) | Карманная книга в мягкой обложке | Astro 7, MDX | Сноски на полях, которые на телефоне раскрываются по нажатию, + счётчик «с. 9 из 18» вместо полосы прогресса |
+| 24 | [**LAMPLIGHTER** · Инди-игра](templates/24-pixel-game/README.ru.md) | Коробка и инструкция 8-битного картриджа | Vanilla JS, Canvas, Vite | Играбельная 8-битная игра на одном экране (клавиатура + сенсорные кнопки): зажигайте фонари на крышах и уворачивайтесь от летучих мышей |
 <!-- catalog:end -->
 
 ## Быстрый старт
